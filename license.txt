@@ -1,0 +1,24 @@
+Cirdia Algorithms — License Terms  
+Copyright © 2025 Cirdia PBC
+
+This software is made available under the terms of the GNU Affero General Public License v3.0 (AGPL-3.0), with the following additional restriction:
+
+---  
+**Additional Terms (Non-Commercial Use Restriction):**  
+Use of this software, including in modified or unmodified form, is permitted **only for non-commercial purposes**.
+
+Commercial use — including incorporation into commercial services, hardware, or proprietary software — is **not permitted** without prior written consent from Cirdia PBC.
+
+Examples of non-commercial use include:  
+- Personal use  
+- Academic research  
+- Transparency and reproducibility efforts  
+- Community-based modifications or extensions
+
+To inquire about commercial licensing, contact: info@cirdia.com
+
+---  
+The full AGPL v3.0 license text is available at:  
+https://www.gnu.org/licenses/agpl-3.0.en.html
+
+All other AGPL terms apply.
