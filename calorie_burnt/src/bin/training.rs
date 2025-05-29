@@ -1,0 +1,220 @@
+use csv::Reader;
+use linfa::{Dataset, traits::Fit};
+use ndarray::Array2;
+use std::error::Error;
+use std::path::{Path, PathBuf};
+
+#[derive(Debug, serde::Deserialize)]
+#[serde(rename_all = "PascalCase")]
+struct TestDataCsv {
+    #[allow(dead_code)]
+    user_id: String,
+    gender: String,
+    age: u8,
+    height: f64,
+    weight: f64,
+    body_temp: f64,
+    heart_rate: u8,
+    calories: f64,
+    duration: u64,
+}
+
+#[derive(Debug, clap::Parser)]
+pub struct Args {
+    /// Input csv file location with training data
+    #[arg(default_value_os_t = std::env::current_dir().unwrap_or_default().join("input.csv"), required = false)]
+    pub input: PathBuf,
+    /// Output model file. _Note_: will truncate old file if exists
+    #[arg(default_value_os_t = std::env::current_dir().unwrap_or_default().join("calorie_burnt.json"), required = false)]
+    pub output: PathBuf,
+    /// Don't save changes
+    #[arg(short, long, default_value_t = false, required = false)]
+    pub dry: bool,
+    /// Print result to stdout
+    #[arg(short, long, default_value_t = false, required = false)]
+    pub print: bool,
+}
+
+fn load_data(file_path: impl AsRef<Path>) -> Result<Array2<f64>, Box<dyn Error>> {
+    const ARRAY_SIZE: usize = 8;
+
+    let mut reader = Reader::from_path(file_path.as_ref())
+        .map_err(|e| format!("Failed to open input file. Reason: {e}"))?;
+
+    let data: Vec<_> = reader
+        .deserialize::<TestDataCsv>()
+        .filter_map(|r| r.ok())
+        .flat_map(
+            |TestDataCsv {
+                 user_id: _,
+                 gender,
+                 age,
+                 height,
+                 weight,
+                 body_temp,
+                 heart_rate,
+                 calories,
+                 duration,
+             }| {
+                [
+                    match gender.contains("male") {
+                        true => 0.0,
+                        false => 1.0,
+                    },
+                    age as f64,
+                    height,
+                    weight,
+                    body_temp,
+                    heart_rate as f64,
+                    duration as f64,
+                    calories,
+                ]
+            },
+        )
+        .collect();
+
+    Ok(
+        Array2::from_shape_vec((data.len() / ARRAY_SIZE, ARRAY_SIZE), data)
+            .map_err(|e| format!("Failed to init dataset vector. Reason: {e}"))?,
+    )
+}
+
+fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let Args {
+        input,
+        output,
+        dry,
+        print,
+    } = <Args as clap::Parser>::parse();
+
+    let array = load_data(input)?;
+
+    let (data, targets) = (
+        array.slice(ndarray::s![.., 0..7]).to_owned(),
+        array.column(7).to_owned(),
+    );
+
+    println!("Number of records for training: {}", data.len());
+
+    let feature_names = vec![
+        "sex",
+        "age",
+        "height",
+        "weight",
+        "body_temp",
+        "heart_rate",
+        "duration",
+    ];
+
+    let train = Dataset::new(data, targets)
+        .with_feature_names(feature_names)
+        .map_targets(|this| this.floor() as usize);
+
+    let model = linfa_trees::DecisionTree::params()
+        .fit(&train)
+        .map_err(|e| format!("Failed to fit dataset to model. Reason: {e}"))?;
+
+    if print {
+        println!(
+            "{}",
+            serde_json::to_string_pretty(&model).expect("serde serialization can't fail")
+        );
+    }
+
+    if !dry {
+        println!("Save to {}", output.to_string_lossy());
+
+        std::fs::write(
+            output,
+            serde_json::to_string_pretty(&model).expect("serde serialization can't fail"),
+        )
+        .map_err(|e| format!("Failed to save mode. Reason: {e}"))?;
+    }
+
+    println!("Done!");
+
+    Ok(())
+}
+
+// #[cfg(test)]
+// mod test {
+//     use std::fs::File;
+
+//     use linfa::traits::Predict;
+
+//     const TEST_FILE: &str = "assets/exercise.csv";
+//     const EXPECTED_PRECISION: f64 = 0.6;
+
+//     use super::*;
+
+//     #[test]
+//     fn test() {
+//         let mut rdr = csv::Reader::from_reader(File::open(&TEST_FILE).unwrap());
+
+//         let data = rdr
+//             .deserialize::<TestDataCsv>()
+//             .filter_map(|this| this.ok().map(|this| this))
+//             .collect::<Vec<_>>();
+
+//         let model = serde_json::from_reader::<_, linfa_trees::DecisionTree<f64, usize>>(
+//             std::fs::File::open("../model.json").unwrap(),
+//         )
+//         .unwrap();
+
+//         for TestDataCsv {
+//             user_id,
+//             gender,
+//             age,
+//             height,
+//             weight,
+//             body_temp,
+//             heart_rate,
+//             calories,
+//             duration,
+//         } in data
+//         {
+//             if calories < 50.0 {
+//                 continue;
+//             }
+
+//             let data = Array2::from_shape_vec(
+//                 (1, 7),
+//                 vec![
+//                     match gender.contains("male") {
+//                         true => 0.0,
+//                         false => 1.0,
+//                     },
+//                     age as f64,
+//                     height,
+//                     weight,
+//                     body_temp,
+//                     heart_rate as f64,
+//                     duration as f64,
+//                 ],
+//             )
+//             .unwrap();
+
+//             let prediction = model.predict(&data);
+//             let actual_calories = prediction.first().map(|this| *this as f64).unwrap();
+
+//             check_result(calories, actual_calories, user_id);
+//         }
+//     }
+
+//     fn check_result(expected_calories: f64, actual_calories: f64, user_id: String) {
+//         let precision = match expected_calories < actual_calories {
+//             true => expected_calories / actual_calories,
+//             false => actual_calories / expected_calories,
+//         };
+
+//         let precision = match precision.is_sign_negative() {
+//             true => precision * -1.0,
+//             false => precision,
+//         };
+
+//         assert!(
+//             precision > EXPECTED_PRECISION,
+//             "Expected {expected_calories} | Actual {actual_calories} | Precision {precision} | User {user_id}"
+//         )
+//     }
+// }
