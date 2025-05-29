@@ -10,7 +10,7 @@ bench = false
 [dependencies]
 # ML
 linfa = { version = "0.7", default-features = false, optional = true, features = [ ] } 
-linfa-trees = { version = "0.7", optional = true, default-features = false, features = ["serde" ] }
+linfa-trees = { version = "0.7", optional = true, default-features = false, features = [ "serde" ] }
 ndarray = { version = "0.15", default-features = false, optional = true }
 
 # FS
@@ -30,8 +30,9 @@ workspace = true
 
 [features]
 default = [ ]
-ml = [ "dep:linfa", "dep:csv",  "dep:serde", "dep:serde_json", "dep:ndarray", "dep:linfa-trees" ]
-binary = [ "ml", "dep:clap" ]
+serde = [ "dep:serde" ]
+ml = [ "serde", "dep:linfa", "dep:ndarray", "dep:linfa-trees", "dep:serde_json", ]
+binary = [ "ml", "dep:clap", "dep:csv", ]
 
 [[bin]]         
 name = "training"

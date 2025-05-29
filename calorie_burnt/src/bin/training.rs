@@ -4,8 +4,12 @@ use ndarray::Array2;
 use std::error::Error;
 use std::path::{Path, PathBuf};
 
-#[derive(Debug, serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug)]
+#[cfg_attr(
+    feature = "serde",
+    derive(serde::Deserialize),
+    serde(rename_all = "PascalCase")
+)]
 struct TestDataCsv {
     #[allow(dead_code)]
     user_id: String,

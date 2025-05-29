@@ -2,8 +2,12 @@ use std::{fs::File, io::Write, path::PathBuf};
 
 use linfa::traits::Predict;
 
-#[derive(Debug, serde::Deserialize)]
-#[serde(rename_all = "PascalCase")]
+#[derive(Debug)]
+#[cfg_attr(
+    feature = "serde",
+    derive(serde::Deserialize),
+    serde(rename_all = "PascalCase")
+)]
 struct TestDataCsv {
     user_id: String,
     gender: String,
@@ -16,7 +20,8 @@ struct TestDataCsv {
     calories: f64,
 }
 
-#[derive(Debug, serde::Serialize)]
+#[derive(Debug)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize))]
 pub struct Report {
     user: String,
     expected: f64,

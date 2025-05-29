@@ -1,6 +1,7 @@
 use std::time::Duration;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord)]
+#[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
 pub enum Sex {
     Male,
     Female,
@@ -34,6 +35,7 @@ impl From<Sex> for f64 {
 }
 
 #[derive(Debug, Clone, PartialEq, PartialOrd)]
+#[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
 pub struct HearRate {
     age: u8,
     resting_rate: f64,
@@ -41,6 +43,7 @@ pub struct HearRate {
 }
 
 #[derive(Debug, Clone, PartialEq, PartialOrd)]
+#[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
 pub struct ComplexMet {
     pub age: u8,
     pub weight: f64,
@@ -49,6 +52,7 @@ pub struct ComplexMet {
 }
 
 #[derive(Debug, Clone, PartialEq, PartialOrd)]
+#[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
 pub enum ActivityMETKind {
     /// Slowly walking or writing
     Light,
@@ -116,4 +120,72 @@ pub fn calories_burnt_by_activity_kind(
     weight: f64,
 ) -> f64 {
     ((duration.as_secs_f64() / 60.0) * kind.met_index() * weight) / 200.0
+}
+
+#[cfg(feature = "ml")]
+pub use prediction::*;
+
+#[cfg(feature = "ml")]
+mod prediction {
+    use std::path::Path;
+
+    use linfa::traits::Predict;
+
+    use super::*;
+
+    #[derive(Debug, Clone, PartialEq, PartialOrd, serde::Deserialize, serde::Serialize)]
+    pub struct UserInfo {
+        pub gender: Sex,
+        pub age: u8,
+        pub height: f64,
+        pub weight: f64,
+        pub body_temp: f64,
+        pub heart_rate: u8,
+        pub duration: std::time::Duration,
+    }
+
+    pub fn calories_burnt_by_decision_tree(
+        UserInfo {
+            gender,
+            age,
+            height,
+            weight,
+            body_temp,
+            heart_rate,
+            duration,
+        }: UserInfo,
+        model_location: impl AsRef<Path>,
+    ) -> Result<f64, Box<dyn std::error::Error>> {
+        let model = serde_json::from_reader::<_, linfa_trees::DecisionTree<f64, usize>>(
+            std::fs::File::open(model_location.as_ref())
+                .map_err(|e| format!("Failed to open model. Reason {e}"))?,
+        )
+        .map_err(|e| format!("Failed to init model. Reason {e}"))?;
+
+        let data = ndarray::Array2::from_shape_vec(
+            (1, 7),
+            vec![
+                match gender {
+                    Sex::Male => 0.0,
+                    Sex::Female => 1.0,
+                },
+                age as f64,
+                height,
+                weight,
+                body_temp,
+                heart_rate as f64,
+                (duration.as_secs_f64() / 60.0),
+            ],
+        )
+        .expect("can't fail");
+
+        let prediction = model.predict(&data);
+
+        let actual_calories = prediction
+            .first()
+            .map(|this| *this as f64)
+            .ok_or(format!("Empty prediction"))?;
+
+        Ok(actual_calories)
+    }
 }
