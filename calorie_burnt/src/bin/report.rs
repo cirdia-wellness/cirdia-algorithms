@@ -63,7 +63,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         .filter_map(|this| this.ok())
         .collect::<Vec<_>>();
 
-    println!("Total: {} records", data.len());
+    let total_data = data.len();
+
+    println!("Total: {total_data} records",);
 
     let model = serde_json::from_reader::<_, linfa_trees::DecisionTree<f64, usize>>(
         std::fs::File::open(model).map_err(|e| format!("Failed to open model. Reason {e}"))?,
@@ -169,7 +171,10 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     }
 
     for (f, count, count_total) in threshold {
-        println!("> {f}: {count:5} records | total: {count_total:5}")
+        println!(
+            "> {f}: {count:5} records | total: {count_total:5} - {}%",
+            ((count_total as f64 / total_data as f64) * 100.0).floor()
+        )
     }
 
     if !dry {
