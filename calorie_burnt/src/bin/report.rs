@@ -63,7 +63,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         .filter_map(|this| this.ok())
         .collect::<Vec<_>>();
 
-    println!("Reading: {} records", data.len());
+    println!("Total: {} records", data.len());
 
     let model = serde_json::from_reader::<_, linfa_trees::DecisionTree<f64, usize>>(
         std::fs::File::open(model).map_err(|e| format!("Failed to open model. Reason {e}"))?,
@@ -82,6 +82,18 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         }
         false => None,
     };
+
+    let mut threshold = [
+        (0.9, 0, 0),
+        (0.8, 0, 0),
+        (0.7, 0, 0),
+        (0.6, 0, 0),
+        (0.5, 0, 0),
+        (0.4, 0, 0),
+        (0.3, 0, 0),
+        (0.2, 0, 0),
+        (0.1, 0, 0),
+    ];
 
     for TestDataCsv {
         user_id,
@@ -128,6 +140,14 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             false => precision,
         };
 
+        if let Some((_, count, _)) = threshold.iter_mut().find(|(th, _, _)| precision > *th) {
+            *count += 1;
+        }
+
+        for (_, _, count) in threshold.iter_mut().filter(|(th, _, _)| precision > *th) {
+            *count += 1;
+        }
+
         if let Some(io) = &mut io {
             io.write_fmt(format_args!(
                 "{user_id},{expected_calories},{actual_calories},{precision}"
@@ -146,6 +166,10 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 precision,
             })?;
         }
+    }
+
+    for (f, count, count_total) in threshold {
+        println!("> {f}: {count:5} records | total: {count_total:5}")
     }
 
     if !dry {
