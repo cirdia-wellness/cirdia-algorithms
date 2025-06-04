@@ -1,3 +1,9 @@
+mod steps;
+
+pub use steps::*;
+
+// mod machine_counting;
+
 /// Simple formula to calculate virtual steps
 ///
 /// If Heart Rate increases significantly above

@@ -4,6 +4,14 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+serde = { workspace = true, optional = true }
+
+[dev-dependencies]
+csv = { workspace = true }
+
+[features]
+default = []
+serde = [ "dep:serde" ] 
 
 [lints]
 workspace = true
