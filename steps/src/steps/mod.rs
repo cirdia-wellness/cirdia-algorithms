@@ -127,11 +127,11 @@ mod tests {
 
         let mut wr = csv::Writer::from_writer(File::create("../tmp/steps_25_report.csv").unwrap());
 
-        report
-            .read()
-            .unwrap()
-            .iter()
-            .for_each(|this| wr.serialize(this).unwrap());
+        let mut reports = report.write().unwrap();
+
+        reports.sort_by_key(|this| this.file_name.clone());
+
+        reports.iter().for_each(|this| wr.serialize(this).unwrap());
 
         wr.flush().unwrap();
     }
