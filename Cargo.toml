@@ -1,5 +1,7 @@
 [workspace]
-members = []
+members = [
+    "heart_rate"
+]
 resolver = "2"
 
 [workspace.dependencies]
