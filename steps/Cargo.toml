@@ -8,6 +8,9 @@ serde = { workspace = true, optional = true }
 
 [dev-dependencies]
 csv = { workspace = true }
+time = { workspace = true, features = [ "serde", "serde-human-readable"]}
+serde = { workspace = true }
+rayon = "1.10"
 
 [features]
 default = []
