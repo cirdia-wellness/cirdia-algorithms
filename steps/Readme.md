@@ -14,6 +14,10 @@ Currently precision varies by person in existing dataset used to validate it. Fo
 | <20%      | 19    |
 | **Total** | **39**|
 
+## How
+
+As input algorithm accepts raw accelerometer data as `f64` and Unix Timestamp.
+
 ## Algorithm stages
 
 - [Global](#global)
