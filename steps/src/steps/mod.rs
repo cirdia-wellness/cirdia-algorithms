@@ -10,7 +10,8 @@ struct DataPoint {
     pub timestamp: std::time::Duration,
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone, PartialEq, PartialOrd)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct Accelerometer {
     pub timestamp: std::time::Duration,
     pub x: f64,
@@ -28,7 +29,7 @@ impl From<Accelerometer> for DataPoint {
 }
 
 pub fn steps_count(input: impl IntoIterator<Item = Accelerometer>) -> usize {
-    let after_processing = intepolation::interpolation(input);
+    let after_processing = intepolation::interpolation(input.into_iter().map(DataPoint::from));
     let after_filter = filtering::filtering(after_processing);
     let after_scoring = scoring::scoring(after_filter);
     let after_detection = detection::detection(after_scoring);

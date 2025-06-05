@@ -1,11 +1,11 @@
 use std::time::Duration;
 
-use crate::steps::{Accelerometer, DataPoint};
+use crate::steps::DataPoint;
 
 const INTERPOLATION_TIME: Duration = Duration::from_millis(10);
 
-pub fn interpolation(input: impl IntoIterator<Item = Accelerometer>) -> Vec<DataPoint> {
-    let input = input.into_iter().map(DataPoint::from).collect::<Vec<_>>();
+pub fn interpolation(input: impl IntoIterator<Item = DataPoint>) -> Vec<DataPoint> {
+    let input = input.into_iter().collect::<Vec<_>>();
 
     if input.len() < 2 {
         return Vec::new();
