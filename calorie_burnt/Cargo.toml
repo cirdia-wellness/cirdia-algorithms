@@ -29,7 +29,7 @@ serde = { workspace = true }
 workspace = true
 
 [features]
-default = [ ]
+default = [ "ml", "binary"]
 serde = [ "dep:serde" ]
 ml = [ "serde", "dep:linfa", "dep:ndarray", "dep:linfa-trees", "dep:serde_json", ]
 binary = [ "ml", "dep:clap", "dep:csv", ]

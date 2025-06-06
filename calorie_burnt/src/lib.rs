@@ -66,7 +66,6 @@ pub enum ActivityMETKind {
     VigorousPlus,
     /// Use heart rate
     HearRateBased(HearRate),
-    ///
     Complex(ComplexMet),
     /// Custom variable which isn't included as option and `HearRateBased` don't have enough precision
     Custom(f64),
@@ -89,9 +88,8 @@ impl ActivityMETKind {
                 let apmhr = 220 - age;
                 let hrr = apmhr as f64 - resting_rate;
                 let rhr = (exercise_rate - resting_rate) / hrr;
-                let met = (rhr * 3.5) + 1.0;
 
-                met
+                (rhr * 3.5) + 1.0
             }
             Self::Complex(ComplexMet {
                 age,
@@ -184,7 +182,7 @@ mod prediction {
         let actual_calories = prediction
             .first()
             .map(|this| *this as f64)
-            .ok_or(format!("Empty prediction"))?;
+            .ok_or("Empty prediction")?;
 
         Ok(actual_calories)
     }
