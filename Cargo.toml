@@ -1,13 +1,18 @@
 [workspace]
-members = []
+members = [
+    "activity_duration"
+]
 resolver = "2"
 
 [workspace.dependencies]
+time = { version = "0.3" }
 
-[workspace.lints.clippy]
-unused_async = "deny"
+[workspace.lints.rust]
 rust_2018_idioms = "deny"
-missing_docs = "deny"
+# missing_docs = "deny"
 missing_debug_implementations = "deny" # opt out where Debug is really redundant
 future_incompatible = "deny"
 unsafe-code = "deny"
+
+[workspace.lints.clippy]
+unused_async = "deny"
