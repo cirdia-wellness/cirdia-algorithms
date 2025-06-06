@@ -54,5 +54,5 @@ pub fn interpolation(input: impl IntoIterator<Item = DataPoint>) -> Vec<DataPoin
 
         window.remove(0);
     }
-    return output;
+    output
 }

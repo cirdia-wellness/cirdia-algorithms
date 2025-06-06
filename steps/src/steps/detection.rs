@@ -4,7 +4,7 @@ const INITIAL_LENGTH: usize = 15;
 const THRESHOLD: f64 = 1.2;
 
 pub fn detection(input: impl IntoIterator<Item = DataPoint>) -> Vec<DataPoint> {
-    let input = input.into_iter().map(DataPoint::from).collect::<Vec<_>>();
+    let input = input.into_iter().collect::<Vec<_>>();
 
     let mut count = 0;
     let mut mean = 0.0;

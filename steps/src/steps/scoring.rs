@@ -3,7 +3,7 @@ use crate::steps::DataPoint;
 const SCORING_SIZE: usize = 35;
 
 pub fn scoring(input: impl IntoIterator<Item = DataPoint>) -> Vec<DataPoint> {
-    let input = input.into_iter().map(DataPoint::from).collect::<Vec<_>>();
+    let input = input.into_iter().collect::<Vec<_>>();
 
     input
         .windows(SCORING_SIZE)

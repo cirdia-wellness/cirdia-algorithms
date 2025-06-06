@@ -8,7 +8,6 @@ static FILTER_COEF: LazyLock<Vec<f64>> = LazyLock::new(|| {
     const FILTER_STD: f64 = 0.35;
 
     (0..FILTER_LENGTH)
-        .into_iter()
         .map(|i| {
             std::f64::consts::E.powf(
                 -0.5 * ((i as f64 - ((FILTER_LENGTH - 1) as f64) / 2.0)
@@ -22,7 +21,7 @@ static FILTER_COEF: LazyLock<Vec<f64>> = LazyLock::new(|| {
 static FILTER_SUM: LazyLock<f64> = LazyLock::new(|| FILTER_COEF.iter().sum());
 
 pub fn filtering(input: impl IntoIterator<Item = DataPoint>) -> Vec<DataPoint> {
-    let input = input.into_iter().map(DataPoint::from).collect::<Vec<_>>();
+    let input = input.into_iter().collect::<Vec<_>>();
 
     if input.len() < FILTER_LENGTH {
         return Vec::new();
