@@ -1,0 +1,13 @@
+[package]
+name = "activity_duration"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+time = { workspace = true, features = []}
+
+[dev-dependencies]
+time = { workspace = true, features = ["macros"] }
+
+[lints]
+workspace = true
