@@ -13,7 +13,7 @@
 //!
 //! To calculate target:
 //!
-//! 
+//!
 //! ```notrust
 //! THR = [(MHR - RHR) x %Intensity] + RHR
 //! ```
@@ -29,6 +29,7 @@
 
 use time::{Duration, PrimitiveDateTime};
 
+#[derive(Debug)]
 pub struct Report {
     pub total_resting_duration: Duration,
     pub total_exercise_duration: Duration,
@@ -47,10 +48,14 @@ pub enum ActivityKind {
 
 impl ActivityKind {
     pub fn is_exercising(self) -> bool {
-        match self {
-            ActivityKind::VO2 | ActivityKind::Anaerobic | ActivityKind::Aerobic => true,
-            _ => false,
+        if matches!(
+            self,
+            ActivityKind::VO2 | ActivityKind::Anaerobic | ActivityKind::Aerobic
+        ) {
+            return true;
         }
+
+        false
     }
 
     pub fn from_rate(age: u8, rhr: u8, rate: u8) -> Self {
@@ -92,6 +97,7 @@ impl ActivityKind {
     }
 }
 
+#[derive(Debug)]
 pub struct Activity {
     pub heart_rate: u8,
     pub kind: ActivityKind,
