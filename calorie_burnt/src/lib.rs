@@ -144,7 +144,7 @@ mod prediction {
         pub duration: std::time::Duration,
     }
 
-    pub fn calories_burnt_by_decision_tree(
+    pub fn calories_burnt_prediction(
         UserInfo {
             gender,
             age,
