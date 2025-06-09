@@ -1,6 +1,7 @@
 [workspace]
 members = [
-    "activity_duration"
+    "activity_duration",
+    "heart_rate",
 ]
 resolver = "2"
 
