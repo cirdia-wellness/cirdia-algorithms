@@ -1,0 +1,167 @@
+//! Distance between coordinates.
+//!
+//! If we have only two coordinates we could use this formula:
+//!
+//! ```norust
+//! d=2R*sin ^ −1(√(sin^2((Φ2​−Φ1​​)/2)+cos(Φ1​)cos(Φ2​)sin^2((λ2​−λ1​​)/2)))
+//! ```
+//!
+//! where:
+//!
+//! - R – Earth's radius (R = 6371 km);
+//! - λ1, φ₁ – First point longitude and latitude coordinates;
+//! - λ2, φ₂ – Second point longitude and latitude coordinates;
+//! - d – Distance between them along Earth's surface.
+//!
+
+mod models;
+
+pub use models::*;
+
+const WINDOW_SIZE: usize = 2;
+const R: f64 = 6371.0;
+
+const SPEED_THRESHOLD_KMPHR: f64 = 20.0;
+
+pub fn movement_from_gps(data: impl IntoIterator<Item = Gps>) -> Vec<Movement> {
+    let data = data.into_iter().collect::<Vec<_>>();
+
+    data.windows(WINDOW_SIZE)
+        .map(|this| {
+            let first = &this[0];
+            let second = &this[1];
+
+            let distance = haversine(
+                first.longitude,
+                first.latitude,
+                second.longitude,
+                second.latitude,
+            );
+
+            Movement {
+                distance: Distance::from_kilometers(distance),
+                duration: second.timestamp - first.timestamp,
+            }
+        })
+        .collect()
+}
+
+/// Calculate number of steps using data from GPS.
+/// This method filters out movement if it was above threshold e.g. bicycling or driving a car.
+///
+/// # Params
+/// - data - gps data which sorted by timestamp in asc order
+/// - height - height of person in meters
+pub fn steps_from_gps(data: impl IntoIterator<Item = Gps>, height: f64) -> f64 {
+    let steps_lenght = height * 0.41;
+
+    movement_from_gps(data)
+        .into_iter()
+        .filter_map(|this| {
+            if SPEED_THRESHOLD_KMPHR < this.speed_kmhr() {
+                return None;
+            }
+
+            Some((this.distance.as_meters() / steps_lenght).floor())
+        })
+        .sum::<f64>()
+}
+
+/// Calculates distance from point A to point B in kilometers
+fn haversine(longitude_1: f64, latitude_1: f64, longitude_2: f64, latitude_2: f64) -> f64 {
+    let d_lat = (std::f64::consts::PI / 180.0) * (latitude_2 - latitude_1);
+    let d_lon = (std::f64::consts::PI / 180.0) * (longitude_2 - longitude_1);
+
+    // convert to radians
+    let latitude_1 = (std::f64::consts::PI / 180.0) * latitude_1;
+    let latitude_2 = (std::f64::consts::PI / 180.0) * latitude_2;
+
+    R * (2.0
+        * ((d_lat / 2.0).sin().powi(2)
+            + (d_lon / 2.0).sin().powi(2) * latitude_1.cos() * latitude_2.cos())
+        .sqrt()
+        .asin())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_haversine_flat_large() {
+        let latitude_1 = 51.5007;
+        let longitude_1 = 0.1246;
+
+        let latitude_2 = 40.6892;
+        let longitude_2 = 74.0445;
+
+        let expected = 5574.840456848555;
+
+        let actual = haversine(longitude_1, latitude_1, longitude_2, latitude_2);
+
+        assert_eq!(actual, expected);
+    }
+
+    #[test]
+    fn test_haversine_flat_small() {
+        let latitude_1 = 49.235835445219784;
+        let longitude_1 = 28.48586563389628;
+
+        let latitude_2 = 49.23297532196681;
+        let longitude_2 = 28.493329182275833;
+
+        let expected = 0.6283325034446198;
+
+        let actual = haversine(longitude_1, latitude_1, longitude_2, latitude_2);
+
+        assert_eq!(actual, expected);
+    }
+
+    #[test]
+    fn steps() {
+        let gps = [
+            Gps {
+                timestamp: std::time::Duration::from_secs(1000),
+                latitude: 49.235835445219784,
+                longitude: 28.48586563389628,
+                altitude: None,
+            },
+            Gps {
+                timestamp: std::time::Duration::from_secs(2000),
+                latitude: 49.23297532196681,
+                longitude: 28.493329182275833,
+                altitude: None,
+            },
+        ];
+
+        let expected = 806.0;
+
+        let actual = steps_from_gps(gps, 1.9);
+
+        assert_eq!(expected, actual);
+    }
+
+    #[test]
+    fn steps_none_too_quick_movement() {
+        let gps = [
+            Gps {
+                timestamp: std::time::Duration::from_secs(1000),
+                latitude: 49.235835445219784,
+                longitude: 28.48586563389628,
+                altitude: None,
+            },
+            Gps {
+                timestamp: std::time::Duration::from_secs(1001),
+                latitude: 49.23297532196681,
+                longitude: 28.493329182275833,
+                altitude: None,
+            },
+        ];
+
+        let expected = 0.0;
+
+        let actual = steps_from_gps(gps, 1.9);
+
+        assert_eq!(expected, actual);
+    }
+}

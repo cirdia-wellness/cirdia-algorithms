@@ -1,6 +1,7 @@
+mod gps;
 mod steps;
 
-pub use steps::*;
+pub use self::{gps::*, steps::*};
 
 // mod machine_counting;
 
