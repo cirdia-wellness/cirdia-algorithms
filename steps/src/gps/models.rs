@@ -5,6 +5,7 @@ pub struct Gps {
     pub timestamp: std::time::Duration,
     pub latitude: f64,
     pub longitude: f64,
+    /// The altitude of location in meters above the WGS84 reference ellipsoid
     pub altitude: Option<f64>,
 }
 
