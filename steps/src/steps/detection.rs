@@ -23,14 +23,14 @@ pub fn detection(input: impl IntoIterator<Item = DataPoint>) -> Vec<DataPoint> {
                 }
                 2 => {
                     mean = (mean + this.magnitude) / 2.0;
-                    std = ((this.magnitude - mean).powi(2) + (o_mean - mean).powi(2)).sqrt() / 2.0
+                    std = ((this.magnitude - mean).powi(2) + (o_mean - mean).powi(2)).sqrt() / 2.0;
                 }
                 _ => {
-                    mean = (this.magnitude + (count as f64 - 1.0) * mean) / count as f64;
-                    std = ((count as f64 - 2.0) * std.powi(2) / (count as f64 - 1.0)
+                    mean = (this.magnitude + (f64::from(count) - 1.0) * mean) / f64::from(count);
+                    std = ((f64::from(count) - 2.0) * std.powi(2) / (f64::from(count) - 1.0)
                         + (o_mean - mean).powi(2)
                         + (this.magnitude - mean).powi(2))
-                    .sqrt()
+                    .sqrt();
                 }
             }
         });
