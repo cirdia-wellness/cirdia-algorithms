@@ -1,6 +1,7 @@
 [workspace]
 members = [
     "activity_duration",
+    "calorie_burnt",
     "steps",
     "heart_rate",
 ]

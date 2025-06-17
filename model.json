@@ -1,0 +1,4914 @@
+{
+  "root_node": {
+    "feature_idx": 6,
+    "feature_name": "duration",
+    "split_value": 4.5,
+    "impurity_decrease": 0.006608724594116211,
+    "left_child": {
+      "feature_idx": 6,
+      "feature_name": "duration",
+      "split_value": 2.5,
+      "impurity_decrease": 0.03564298152923584,
+      "left_child": {
+        "feature_idx": 6,
+        "feature_name": "duration",
+        "split_value": 1.5,
+        "impurity_decrease": 0.06846356391906738,
+        "left_child": {
+          "feature_idx": 5,
+          "feature_name": "heart_rate",
+          "split_value": 81.5,
+          "impurity_decrease": 0.09690570831298828,
+          "left_child": {
+            "feature_idx": 4,
+            "feature_name": "body_temp",
+            "split_value": 37.95,
+            "impurity_decrease": 0.061448752880096436,
+            "left_child": {
+              "feature_idx": 2,
+              "feature_name": "height",
+              "split_value": 150.5,
+              "impurity_decrease": 0.06098616123199463,
+              "left_child": {
+                "feature_idx": 0,
+                "feature_name": "",
+                "split_value": 0.0,
+                "impurity_decrease": 0.0,
+                "left_child": null,
+                "right_child": null,
+                "leaf_node": true,
+                "prediction": 4,
+                "depth": 6
+              },
+              "right_child": {
+                "feature_idx": 4,
+                "feature_name": "body_temp",
+                "split_value": 37.349999999999994,
+                "impurity_decrease": 0.03177082538604736,
+                "left_child": {
+                  "feature_idx": 0,
+                  "feature_name": "",
+                  "split_value": 0.0,
+                  "impurity_decrease": 0.0,
+                  "left_child": null,
+                  "right_child": null,
+                  "leaf_node": true,
+                  "prediction": 3,
+                  "depth": 7
+                },
+                "right_child": {
+                  "feature_idx": 4,
+                  "feature_name": "body_temp",
+                  "split_value": 37.45,
+                  "impurity_decrease": 0.08341878652572632,
+                  "left_child": {
+                    "feature_idx": 0,
+                    "feature_name": "",
+                    "split_value": 0.0,
+                    "impurity_decrease": 0.0,
+                    "left_child": null,
+                    "right_child": null,
+                    "leaf_node": true,
+                    "prediction": 2,
+                    "depth": 8
+                  },
+                  "right_child": {
+                    "feature_idx": 4,
+                    "feature_name": "body_temp",
+                    "split_value": 37.75,
+                    "impurity_decrease": 0.007044196128845215,
+                    "left_child": null,
+                    "right_child": null,
+                    "leaf_node": true,
+                    "prediction": 3,
+                    "depth": 8
+                  },
+                  "leaf_node": false,
+                  "prediction": 3,
+                  "depth": 7
+                },
+                "leaf_node": false,
+                "prediction": 3,
+                "depth": 6
+              },
+              "leaf_node": false,
+              "prediction": 3,
+              "depth": 5
+            },
+            "right_child": {
+              "feature_idx": 0,
+              "feature_name": "",
+              "split_value": 0.0,
+              "impurity_decrease": 0.0,
+              "left_child": null,
+              "right_child": null,
+              "leaf_node": true,
+              "prediction": 3,
+              "depth": 5
+            },
+            "leaf_node": false,
+            "prediction": 3,
+            "depth": 4
+          },
+          "right_child": {
+            "feature_idx": 4,
+            "feature_name": "body_temp",
+            "split_value": 37.849999999999994,
+            "impurity_decrease": 0.1305803656578064,
+            "left_child": {
+              "feature_idx": 3,
+              "feature_name": "weight",
+              "split_value": 76.5,
+              "impurity_decrease": 0.10969388484954834,
+              "left_child": {
+                "feature_idx": 1,
+                "feature_name": "age",
+                "split_value": 27.5,
+                "impurity_decrease": 0.052083343267440796,
+                "left_child": null,
+                "right_child": null,
+                "leaf_node": true,
+                "prediction": 4,
+                "depth": 6
+              },
+              "right_child": {
+                "feature_idx": 4,
+                "feature_name": "body_temp",
+                "split_value": 37.650000000000006,
+                "impurity_decrease": 0.333333283662796,
+                "left_child": {
+                  "feature_idx": 0,
+                  "feature_name": "",
+                  "split_value": 0.0,
+                  "impurity_decrease": 0.0,
+                  "left_child": null,
+                  "right_child": null,
+                  "leaf_node": true,
+                  "prediction": 4,
+                  "depth": 7
+                },
+                "right_child": {
+                  "feature_idx": 0,
+                  "feature_name": "",
+                  "split_value": 0.0,
+                  "impurity_decrease": 0.0,
+                  "left_child": null,
+                  "right_child": null,
+                  "leaf_node": true,
+                  "prediction": 3,
+                  "depth": 7
+                },
+                "leaf_node": false,
+                "prediction": 4,
+                "depth": 6
+              },
+              "leaf_node": false,
+              "prediction": 4,
+              "depth": 5
+            },
+            "right_child": {
+              "feature_idx": 0,
+              "feature_name": "",
+              "split_value": 0.0,
+              "impurity_decrease": 0.0,
+              "left_child": null,
+              "right_child": null,
+              "leaf_node": true,
+              "prediction": 5,
+              "depth": 5
+            },
+            "leaf_node": false,
+            "prediction": 4,
+            "depth": 4
+          },
+          "leaf_node": false,
+          "prediction": 3,
+          "depth": 3
+        },
+        "right_child": {
+          "feature_idx": 3,
+          "feature_name": "weight",
+          "split_value": 95.5,
+          "impurity_decrease": 0.0382237434387207,
+          "left_child": {
+            "feature_idx": 4,
+            "feature_name": "body_temp",
+            "split_value": 38.650000000000006,
+            "impurity_decrease": 0.04040640592575073,
+            "left_child": {
+              "feature_idx": 5,
+              "feature_name": "heart_rate",
+              "split_value": 78.5,
+              "impurity_decrease": 0.03501182794570923,
+              "left_child": {
+                "feature_idx": 5,
+                "feature_name": "heart_rate",
+                "split_value": 71.5,
+                "impurity_decrease": 0.0659722089767456,
+                "left_child": {
+                  "feature_idx": 5,
+                  "feature_name": "heart_rate",
+                  "split_value": 68.5,
+                  "impurity_decrease": 0.1250000298023224,
+                  "left_child": {
+                    "feature_idx": 0,
+                    "feature_name": "",
+                    "split_value": 0.0,
+                    "impurity_decrease": 0.0,
+                    "left_child": null,
+                    "right_child": null,
+                    "leaf_node": true,
+                    "prediction": 5,
+                    "depth": 8
+                  },
+                  "right_child": {
+                    "feature_idx": 5,
+                    "feature_name": "heart_rate",
+                    "split_value": 70.5,
+                    "impurity_decrease": 0.3333333134651184,
+                    "left_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 3,
+                      "depth": 9
+                    },
+                    "right_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 5,
+                      "depth": 9
+                    },
+                    "leaf_node": false,
+                    "prediction": 5,
+                    "depth": 8
+                  },
+                  "leaf_node": false,
+                  "prediction": 5,
+                  "depth": 7
+                },
+                "right_child": {
+                  "feature_idx": 5,
+                  "feature_name": "heart_rate",
+                  "split_value": 76.5,
+                  "impurity_decrease": 0.030000030994415283,
+                  "left_child": {
+                    "feature_idx": 5,
+                    "feature_name": "heart_rate",
+                    "split_value": 75.5,
+                    "impurity_decrease": 0.07238095998764038,
+                    "left_child": null,
+                    "right_child": null,
+                    "leaf_node": true,
+                    "prediction": 7,
+                    "depth": 8
+                  },
+                  "right_child": {
+                    "feature_idx": 5,
+                    "feature_name": "heart_rate",
+                    "split_value": 77.5,
+                    "impurity_decrease": 0.07999998331069946,
+                    "left_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 6,
+                      "depth": 9
+                    },
+                    "right_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 3,
+                      "depth": 9
+                    },
+                    "leaf_node": false,
+                    "prediction": 6,
+                    "depth": 8
+                  },
+                  "leaf_node": false,
+                  "prediction": 7,
+                  "depth": 7
+                },
+                "leaf_node": false,
+                "prediction": 7,
+                "depth": 6
+              },
+              "right_child": {
+                "feature_idx": 3,
+                "feature_name": "weight",
+                "split_value": 69.5,
+                "impurity_decrease": 0.04536503553390503,
+                "left_child": {
+                  "feature_idx": 2,
+                  "feature_name": "height",
+                  "split_value": 136.5,
+                  "impurity_decrease": 0.0504000186920166,
+                  "left_child": {
+                    "feature_idx": 0,
+                    "feature_name": "",
+                    "split_value": 0.0,
+                    "impurity_decrease": 0.0,
+                    "left_child": null,
+                    "right_child": null,
+                    "leaf_node": true,
+                    "prediction": 10,
+                    "depth": 8
+                  },
+                  "right_child": {
+                    "feature_idx": 2,
+                    "feature_name": "height",
+                    "split_value": 167.5,
+                    "impurity_decrease": 0.04583334922790527,
+                    "left_child": {
+                      "feature_idx": 2,
+                      "feature_name": "height",
+                      "split_value": 151.5,
+                      "impurity_decrease": 0.04598039388656616,
+                      "left_child": {
+                        "feature_idx": 2,
+                        "feature_name": "height",
+                        "split_value": 142.0,
+                        "impurity_decrease": 0.11111107468605042,
+                        "left_child": {
+                          "feature_idx": 0,
+                          "feature_name": "",
+                          "split_value": 0.0,
+                          "impurity_decrease": 0.0,
+                          "left_child": null,
+                          "right_child": null,
+                          "leaf_node": true,
+                          "prediction": 9,
+                          "depth": 11
+                        },
+                        "right_child": {
+                          "feature_idx": 0,
+                          "feature_name": "",
+                          "split_value": 0.0,
+                          "impurity_decrease": 0.0,
+                          "left_child": null,
+                          "right_child": null,
+                          "leaf_node": true,
+                          "prediction": 7,
+                          "depth": 11
+                        },
+                        "leaf_node": false,
+                        "prediction": 9,
+                        "depth": 10
+                      },
+                      "right_child": {
+                        "feature_idx": 3,
+                        "feature_name": "weight",
+                        "split_value": 59.5,
+                        "impurity_decrease": 0.021722376346588135,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 8,
+                        "depth": 10
+                      },
+                      "leaf_node": false,
+                      "prediction": 8,
+                      "depth": 9
+                    },
+                    "right_child": {
+                      "feature_idx": 4,
+                      "feature_name": "body_temp",
+                      "split_value": 38.150000000000006,
+                      "impurity_decrease": 0.04166668653488159,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 7,
+                      "depth": 9
+                    },
+                    "leaf_node": false,
+                    "prediction": 7,
+                    "depth": 8
+                  },
+                  "leaf_node": false,
+                  "prediction": 7,
+                  "depth": 7
+                },
+                "right_child": {
+                  "feature_idx": 4,
+                  "feature_name": "body_temp",
+                  "split_value": 38.25,
+                  "impurity_decrease": 0.0733182430267334,
+                  "left_child": {
+                    "feature_idx": 3,
+                    "feature_name": "weight",
+                    "split_value": 91.5,
+                    "impurity_decrease": 0.08333331346511841,
+                    "left_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 6,
+                      "depth": 9
+                    },
+                    "right_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 5,
+                      "depth": 9
+                    },
+                    "leaf_node": false,
+                    "prediction": 6,
+                    "depth": 8
+                  },
+                  "right_child": {
+                    "feature_idx": 0,
+                    "feature_name": "",
+                    "split_value": 0.0,
+                    "impurity_decrease": 0.0,
+                    "left_child": null,
+                    "right_child": null,
+                    "leaf_node": true,
+                    "prediction": 8,
+                    "depth": 8
+                  },
+                  "leaf_node": false,
+                  "prediction": 8,
+                  "depth": 7
+                },
+                "leaf_node": false,
+                "prediction": 8,
+                "depth": 6
+              },
+              "leaf_node": false,
+              "prediction": 7,
+              "depth": 5
+            },
+            "right_child": {
+              "feature_idx": 5,
+              "feature_name": "heart_rate",
+              "split_value": 74.5,
+              "impurity_decrease": 0.053333282470703125,
+              "left_child": {
+                "feature_idx": 5,
+                "feature_name": "heart_rate",
+                "split_value": 72.5,
+                "impurity_decrease": 0.11111107468605042,
+                "left_child": {
+                  "feature_idx": 0,
+                  "feature_name": "",
+                  "split_value": 0.0,
+                  "impurity_decrease": 0.0,
+                  "left_child": null,
+                  "right_child": null,
+                  "leaf_node": true,
+                  "prediction": 5,
+                  "depth": 7
+                },
+                "right_child": {
+                  "feature_idx": 0,
+                  "feature_name": "",
+                  "split_value": 0.0,
+                  "impurity_decrease": 0.0,
+                  "left_child": null,
+                  "right_child": null,
+                  "leaf_node": true,
+                  "prediction": 4,
+                  "depth": 7
+                },
+                "leaf_node": false,
+                "prediction": 5,
+                "depth": 6
+              },
+              "right_child": {
+                "feature_idx": 0,
+                "feature_name": "",
+                "split_value": 0.0,
+                "impurity_decrease": 0.0,
+                "left_child": null,
+                "right_child": null,
+                "leaf_node": true,
+                "prediction": 5,
+                "depth": 6
+              },
+              "leaf_node": false,
+              "prediction": 5,
+              "depth": 5
+            },
+            "leaf_node": false,
+            "prediction": 7,
+            "depth": 4
+          },
+          "right_child": {
+            "feature_idx": 4,
+            "feature_name": "body_temp",
+            "split_value": 38.05,
+            "impurity_decrease": 0.08641970157623291,
+            "left_child": null,
+            "right_child": null,
+            "leaf_node": true,
+            "prediction": 10,
+            "depth": 4
+          },
+          "leaf_node": false,
+          "prediction": 7,
+          "depth": 3
+        },
+        "leaf_node": false,
+        "prediction": 7,
+        "depth": 2
+      },
+      "right_child": {
+        "feature_idx": 6,
+        "feature_name": "duration",
+        "split_value": 3.5,
+        "impurity_decrease": 0.017525196075439453,
+        "left_child": {
+          "feature_idx": 1,
+          "feature_name": "age",
+          "split_value": 47.5,
+          "impurity_decrease": 0.03346753120422363,
+          "left_child": {
+            "feature_idx": 2,
+            "feature_name": "height",
+            "split_value": 157.5,
+            "impurity_decrease": 0.029190480709075928,
+            "left_child": {
+              "feature_idx": 2,
+              "feature_name": "height",
+              "split_value": 139.0,
+              "impurity_decrease": 0.11160719394683838,
+              "left_child": {
+                "feature_idx": 0,
+                "feature_name": "",
+                "split_value": 0.0,
+                "impurity_decrease": 0.0,
+                "left_child": null,
+                "right_child": null,
+                "leaf_node": true,
+                "prediction": 12,
+                "depth": 6
+              },
+              "right_child": {
+                "feature_idx": 4,
+                "feature_name": "body_temp",
+                "split_value": 38.75,
+                "impurity_decrease": 0.09387749433517456,
+                "left_child": {
+                  "feature_idx": 0,
+                  "feature_name": "",
+                  "split_value": 0.0,
+                  "impurity_decrease": 0.0,
+                  "left_child": null,
+                  "right_child": null,
+                  "leaf_node": true,
+                  "prediction": 11,
+                  "depth": 7
+                },
+                "right_child": {
+                  "feature_idx": 0,
+                  "feature_name": "",
+                  "split_value": 0.0,
+                  "impurity_decrease": 0.0,
+                  "left_child": null,
+                  "right_child": null,
+                  "leaf_node": true,
+                  "prediction": 12,
+                  "depth": 7
+                },
+                "leaf_node": false,
+                "prediction": 11,
+                "depth": 6
+              },
+              "leaf_node": false,
+              "prediction": 11,
+              "depth": 5
+            },
+            "right_child": {
+              "feature_idx": 5,
+              "feature_name": "heart_rate",
+              "split_value": 85.5,
+              "impurity_decrease": 0.023053765296936035,
+              "left_child": {
+                "feature_idx": 2,
+                "feature_name": "height",
+                "split_value": 162.5,
+                "impurity_decrease": 0.027044594287872314,
+                "left_child": {
+                  "feature_idx": 0,
+                  "feature_name": "",
+                  "split_value": 0.0,
+                  "impurity_decrease": 0.0,
+                  "left_child": null,
+                  "right_child": null,
+                  "leaf_node": true,
+                  "prediction": 10,
+                  "depth": 7
+                },
+                "right_child": {
+                  "feature_idx": 4,
+                  "feature_name": "body_temp",
+                  "split_value": 38.349999999999994,
+                  "impurity_decrease": 0.018061578273773193,
+                  "left_child": {
+                    "feature_idx": 0,
+                    "feature_name": "",
+                    "split_value": 0.0,
+                    "impurity_decrease": 0.0,
+                    "left_child": null,
+                    "right_child": null,
+                    "leaf_node": true,
+                    "prediction": 10,
+                    "depth": 8
+                  },
+                  "right_child": {
+                    "feature_idx": 0,
+                    "feature_name": "",
+                    "split_value": 0.0,
+                    "impurity_decrease": 0.0,
+                    "left_child": null,
+                    "right_child": null,
+                    "leaf_node": true,
+                    "prediction": 9,
+                    "depth": 8
+                  },
+                  "leaf_node": false,
+                  "prediction": 9,
+                  "depth": 7
+                },
+                "leaf_node": false,
+                "prediction": 9,
+                "depth": 6
+              },
+              "right_child": {
+                "feature_idx": 0,
+                "feature_name": "",
+                "split_value": 0.0,
+                "impurity_decrease": 0.0,
+                "left_child": null,
+                "right_child": null,
+                "leaf_node": true,
+                "prediction": 11,
+                "depth": 6
+              },
+              "leaf_node": false,
+              "prediction": 9,
+              "depth": 5
+            },
+            "leaf_node": false,
+            "prediction": 11,
+            "depth": 4
+          },
+          "right_child": {
+            "feature_idx": 5,
+            "feature_name": "heart_rate",
+            "split_value": 73.5,
+            "impurity_decrease": 0.06161320209503174,
+            "left_child": {
+              "feature_idx": 0,
+              "feature_name": "",
+              "split_value": 0.0,
+              "impurity_decrease": 0.0,
+              "left_child": null,
+              "right_child": null,
+              "leaf_node": true,
+              "prediction": 9,
+              "depth": 5
+            },
+            "right_child": {
+              "feature_idx": 4,
+              "feature_name": "body_temp",
+              "split_value": 38.55,
+              "impurity_decrease": 0.013101935386657715,
+              "left_child": null,
+              "right_child": null,
+              "leaf_node": true,
+              "prediction": 13,
+              "depth": 5
+            },
+            "leaf_node": false,
+            "prediction": 13,
+            "depth": 4
+          },
+          "leaf_node": false,
+          "prediction": 13,
+          "depth": 3
+        },
+        "right_child": {
+          "feature_idx": 4,
+          "feature_name": "body_temp",
+          "split_value": 38.45,
+          "impurity_decrease": 0.02761465311050415,
+          "left_child": {
+            "feature_idx": 0,
+            "feature_name": "",
+            "split_value": 0.0,
+            "impurity_decrease": 0.0,
+            "left_child": null,
+            "right_child": null,
+            "leaf_node": true,
+            "prediction": 17,
+            "depth": 4
+          },
+          "right_child": {
+            "feature_idx": 1,
+            "feature_name": "age",
+            "split_value": 45.5,
+            "impurity_decrease": 0.024731814861297607,
+            "left_child": {
+              "feature_idx": 5,
+              "feature_name": "heart_rate",
+              "split_value": 69.5,
+              "impurity_decrease": 0.01659947633743286,
+              "left_child": {
+                "feature_idx": 0,
+                "feature_name": "",
+                "split_value": 0.0,
+                "impurity_decrease": 0.0,
+                "left_child": null,
+                "right_child": null,
+                "leaf_node": true,
+                "prediction": 8,
+                "depth": 6
+              },
+              "right_child": {
+                "feature_idx": 5,
+                "feature_name": "heart_rate",
+                "split_value": 91.5,
+                "impurity_decrease": 0.01688319444656372,
+                "left_child": {
+                  "feature_idx": 1,
+                  "feature_name": "age",
+                  "split_value": 30.5,
+                  "impurity_decrease": 0.01586371660232544,
+                  "left_child": {
+                    "feature_idx": 0,
+                    "feature_name": "",
+                    "split_value": 0.0,
+                    "impurity_decrease": 0.0,
+                    "left_child": null,
+                    "right_child": null,
+                    "leaf_node": true,
+                    "prediction": 13,
+                    "depth": 8
+                  },
+                  "right_child": {
+                    "feature_idx": 1,
+                    "feature_name": "age",
+                    "split_value": 34.5,
+                    "impurity_decrease": 0.07189351320266724,
+                    "left_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 15,
+                      "depth": 9
+                    },
+                    "right_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 14,
+                      "depth": 9
+                    },
+                    "leaf_node": false,
+                    "prediction": 14,
+                    "depth": 8
+                  },
+                  "leaf_node": false,
+                  "prediction": 14,
+                  "depth": 7
+                },
+                "right_child": {
+                  "feature_idx": 0,
+                  "feature_name": "",
+                  "split_value": 0.0,
+                  "impurity_decrease": 0.0,
+                  "left_child": null,
+                  "right_child": null,
+                  "leaf_node": true,
+                  "prediction": 17,
+                  "depth": 7
+                },
+                "leaf_node": false,
+                "prediction": 14,
+                "depth": 6
+              },
+              "leaf_node": false,
+              "prediction": 14,
+              "depth": 5
+            },
+            "right_child": {
+              "feature_idx": 4,
+              "feature_name": "body_temp",
+              "split_value": 38.849999999999994,
+              "impurity_decrease": 0.027354836463928223,
+              "left_child": {
+                "feature_idx": 0,
+                "feature_name": "",
+                "split_value": 0.0,
+                "impurity_decrease": 0.0,
+                "left_child": null,
+                "right_child": null,
+                "leaf_node": true,
+                "prediction": 21,
+                "depth": 6
+              },
+              "right_child": {
+                "feature_idx": 2,
+                "feature_name": "height",
+                "split_value": 153.5,
+                "impurity_decrease": 0.037948668003082275,
+                "left_child": null,
+                "right_child": null,
+                "leaf_node": true,
+                "prediction": 17,
+                "depth": 6
+              },
+              "leaf_node": false,
+              "prediction": 17,
+              "depth": 5
+            },
+            "leaf_node": false,
+            "prediction": 14,
+            "depth": 4
+          },
+          "leaf_node": false,
+          "prediction": 14,
+          "depth": 3
+        },
+        "leaf_node": false,
+        "prediction": 13,
+        "depth": 2
+      },
+      "leaf_node": false,
+      "prediction": 7,
+      "depth": 1
+    },
+    "right_child": {
+      "feature_idx": 6,
+      "feature_name": "duration",
+      "split_value": 10.5,
+      "impurity_decrease": 0.005497455596923828,
+      "left_child": {
+        "feature_idx": 6,
+        "feature_name": "duration",
+        "split_value": 6.5,
+        "impurity_decrease": 0.012411773204803467,
+        "left_child": {
+          "feature_idx": 6,
+          "feature_name": "duration",
+          "split_value": 5.5,
+          "impurity_decrease": 0.015725433826446533,
+          "left_child": {
+            "feature_idx": 3,
+            "feature_name": "weight",
+            "split_value": 71.5,
+            "impurity_decrease": 0.020626604557037354,
+            "left_child": {
+              "feature_idx": 3,
+              "feature_name": "weight",
+              "split_value": 46.5,
+              "impurity_decrease": 0.025288403034210205,
+              "left_child": {
+                "feature_idx": 0,
+                "feature_name": "",
+                "split_value": 0.0,
+                "impurity_decrease": 0.0,
+                "left_child": null,
+                "right_child": null,
+                "leaf_node": true,
+                "prediction": 26,
+                "depth": 6
+              },
+              "right_child": {
+                "feature_idx": 0,
+                "feature_name": "",
+                "split_value": 0.0,
+                "impurity_decrease": 0.0,
+                "left_child": null,
+                "right_child": null,
+                "leaf_node": true,
+                "prediction": 22,
+                "depth": 6
+              },
+              "leaf_node": false,
+              "prediction": 22,
+              "depth": 5
+            },
+            "right_child": {
+              "feature_idx": 3,
+              "feature_name": "weight",
+              "split_value": 89.5,
+              "impurity_decrease": 0.03357827663421631,
+              "left_child": {
+                "feature_idx": 3,
+                "feature_name": "weight",
+                "split_value": 81.5,
+                "impurity_decrease": 0.0648760199546814,
+                "left_child": {
+                  "feature_idx": 0,
+                  "feature_name": "",
+                  "split_value": 0.0,
+                  "impurity_decrease": 0.0,
+                  "left_child": null,
+                  "right_child": null,
+                  "leaf_node": true,
+                  "prediction": 12,
+                  "depth": 7
+                },
+                "right_child": {
+                  "feature_idx": 0,
+                  "feature_name": "",
+                  "split_value": 0.0,
+                  "impurity_decrease": 0.0,
+                  "left_child": null,
+                  "right_child": null,
+                  "leaf_node": true,
+                  "prediction": 16,
+                  "depth": 7
+                },
+                "leaf_node": false,
+                "prediction": 16,
+                "depth": 6
+              },
+              "right_child": {
+                "feature_idx": 0,
+                "feature_name": "",
+                "split_value": 0.0,
+                "impurity_decrease": 0.0,
+                "left_child": null,
+                "right_child": null,
+                "leaf_node": true,
+                "prediction": 20,
+                "depth": 6
+              },
+              "leaf_node": false,
+              "prediction": 23,
+              "depth": 5
+            },
+            "leaf_node": false,
+            "prediction": 22,
+            "depth": 4
+          },
+          "right_child": {
+            "feature_idx": 5,
+            "feature_name": "heart_rate",
+            "split_value": 84.5,
+            "impurity_decrease": 0.02606368064880371,
+            "left_child": {
+              "feature_idx": 4,
+              "feature_name": "body_temp",
+              "split_value": 39.25,
+              "impurity_decrease": 0.052237629890441895,
+              "left_child": {
+                "feature_idx": 2,
+                "feature_name": "height",
+                "split_value": 174.5,
+                "impurity_decrease": 0.09139382839202881,
+                "left_child": {
+                  "feature_idx": 1,
+                  "feature_name": "age",
+                  "split_value": 24.5,
+                  "impurity_decrease": 0.15102040767669678,
+                  "left_child": {
+                    "feature_idx": 2,
+                    "feature_name": "height",
+                    "split_value": 135.5,
+                    "impurity_decrease": 0.5,
+                    "left_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 23,
+                      "depth": 9
+                    },
+                    "right_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 10,
+                      "depth": 9
+                    },
+                    "leaf_node": false,
+                    "prediction": 10,
+                    "depth": 8
+                  },
+                  "right_child": {
+                    "feature_idx": 0,
+                    "feature_name": "",
+                    "split_value": 0.0,
+                    "impurity_decrease": 0.0,
+                    "left_child": null,
+                    "right_child": null,
+                    "leaf_node": true,
+                    "prediction": 24,
+                    "depth": 8
+                  },
+                  "leaf_node": false,
+                  "prediction": 24,
+                  "depth": 7
+                },
+                "right_child": {
+                  "feature_idx": 2,
+                  "feature_name": "height",
+                  "split_value": 177.5,
+                  "impurity_decrease": 0.1252204179763794,
+                  "left_child": {
+                    "feature_idx": 0,
+                    "feature_name": "",
+                    "split_value": 0.0,
+                    "impurity_decrease": 0.0,
+                    "left_child": null,
+                    "right_child": null,
+                    "leaf_node": true,
+                    "prediction": 26,
+                    "depth": 8
+                  },
+                  "right_child": {
+                    "feature_idx": 0,
+                    "feature_name": "",
+                    "split_value": 0.0,
+                    "impurity_decrease": 0.0,
+                    "left_child": null,
+                    "right_child": null,
+                    "leaf_node": true,
+                    "prediction": 13,
+                    "depth": 8
+                  },
+                  "leaf_node": false,
+                  "prediction": 13,
+                  "depth": 7
+                },
+                "leaf_node": false,
+                "prediction": 24,
+                "depth": 6
+              },
+              "right_child": {
+                "feature_idx": 0,
+                "feature_name": "",
+                "split_value": 0.0,
+                "impurity_decrease": 0.0,
+                "left_child": null,
+                "right_child": null,
+                "leaf_node": true,
+                "prediction": 21,
+                "depth": 6
+              },
+              "leaf_node": false,
+              "prediction": 21,
+              "depth": 5
+            },
+            "right_child": {
+              "feature_idx": 5,
+              "feature_name": "heart_rate",
+              "split_value": 92.5,
+              "impurity_decrease": 0.031817734241485596,
+              "left_child": {
+                "feature_idx": 2,
+                "feature_name": "height",
+                "split_value": 149.5,
+                "impurity_decrease": 0.03377038240432739,
+                "left_child": {
+                  "feature_idx": 0,
+                  "feature_name": "",
+                  "split_value": 0.0,
+                  "impurity_decrease": 0.0,
+                  "left_child": null,
+                  "right_child": null,
+                  "leaf_node": true,
+                  "prediction": 26,
+                  "depth": 7
+                },
+                "right_child": {
+                  "feature_idx": 2,
+                  "feature_name": "height",
+                  "split_value": 152.5,
+                  "impurity_decrease": 0.027969777584075928,
+                  "left_child": {
+                    "feature_idx": 0,
+                    "feature_name": "",
+                    "split_value": 0.0,
+                    "impurity_decrease": 0.0,
+                    "left_child": null,
+                    "right_child": null,
+                    "leaf_node": true,
+                    "prediction": 29,
+                    "depth": 8
+                  },
+                  "right_child": {
+                    "feature_idx": 2,
+                    "feature_name": "height",
+                    "split_value": 161.5,
+                    "impurity_decrease": 0.026613235473632812,
+                    "left_child": {
+                      "feature_idx": 4,
+                      "feature_name": "body_temp",
+                      "split_value": 39.349999999999994,
+                      "impurity_decrease": 0.14285719394683838,
+                      "left_child": {
+                        "feature_idx": 1,
+                        "feature_name": "age",
+                        "split_value": 20.5,
+                        "impurity_decrease": 0.17006802558898926,
+                        "left_child": {
+                          "feature_idx": 0,
+                          "feature_name": "",
+                          "split_value": 0.0,
+                          "impurity_decrease": 0.0,
+                          "left_child": null,
+                          "right_child": null,
+                          "leaf_node": true,
+                          "prediction": 27,
+                          "depth": 11
+                        },
+                        "right_child": {
+                          "feature_idx": 0,
+                          "feature_name": "",
+                          "split_value": 0.0,
+                          "impurity_decrease": 0.0,
+                          "left_child": null,
+                          "right_child": null,
+                          "leaf_node": true,
+                          "prediction": 28,
+                          "depth": 11
+                        },
+                        "leaf_node": false,
+                        "prediction": 28,
+                        "depth": 10
+                      },
+                      "right_child": {
+                        "feature_idx": 0,
+                        "feature_name": "",
+                        "split_value": 0.0,
+                        "impurity_decrease": 0.0,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 31,
+                        "depth": 10
+                      },
+                      "leaf_node": false,
+                      "prediction": 28,
+                      "depth": 9
+                    },
+                    "right_child": {
+                      "feature_idx": 2,
+                      "feature_name": "height",
+                      "split_value": 193.5,
+                      "impurity_decrease": 0.028893768787384033,
+                      "left_child": {
+                        "feature_idx": 3,
+                        "feature_name": "weight",
+                        "split_value": 85.5,
+                        "impurity_decrease": 0.021320044994354248,
+                        "left_child": {
+                          "feature_idx": 0,
+                          "feature_name": "",
+                          "split_value": 0.0,
+                          "impurity_decrease": 0.0,
+                          "left_child": null,
+                          "right_child": null,
+                          "leaf_node": true,
+                          "prediction": 25,
+                          "depth": 11
+                        },
+                        "right_child": {
+                          "feature_idx": 5,
+                          "feature_name": "heart_rate",
+                          "split_value": 89.5,
+                          "impurity_decrease": 0.11000001430511475,
+                          "left_child": {
+                            "feature_idx": 0,
+                            "feature_name": "",
+                            "split_value": 0.0,
+                            "impurity_decrease": 0.0,
+                            "left_child": null,
+                            "right_child": null,
+                            "leaf_node": true,
+                            "prediction": 30,
+                            "depth": 12
+                          },
+                          "right_child": {
+                            "feature_idx": 0,
+                            "feature_name": "",
+                            "split_value": 0.0,
+                            "impurity_decrease": 0.0,
+                            "left_child": null,
+                            "right_child": null,
+                            "leaf_node": true,
+                            "prediction": 26,
+                            "depth": 12
+                          },
+                          "leaf_node": false,
+                          "prediction": 26,
+                          "depth": 11
+                        },
+                        "leaf_node": false,
+                        "prediction": 27,
+                        "depth": 10
+                      },
+                      "right_child": {
+                        "feature_idx": 0,
+                        "feature_name": "",
+                        "split_value": 0.0,
+                        "impurity_decrease": 0.0,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 37,
+                        "depth": 10
+                      },
+                      "leaf_node": false,
+                      "prediction": 27,
+                      "depth": 9
+                    },
+                    "leaf_node": false,
+                    "prediction": 27,
+                    "depth": 8
+                  },
+                  "leaf_node": false,
+                  "prediction": 27,
+                  "depth": 7
+                },
+                "leaf_node": false,
+                "prediction": 27,
+                "depth": 6
+              },
+              "right_child": {
+                "feature_idx": 0,
+                "feature_name": "",
+                "split_value": 0.0,
+                "impurity_decrease": 0.0,
+                "left_child": null,
+                "right_child": null,
+                "leaf_node": true,
+                "prediction": 23,
+                "depth": 6
+              },
+              "leaf_node": false,
+              "prediction": 27,
+              "depth": 5
+            },
+            "leaf_node": false,
+            "prediction": 27,
+            "depth": 4
+          },
+          "leaf_node": false,
+          "prediction": 23,
+          "depth": 3
+        },
+        "right_child": {
+          "feature_idx": 6,
+          "feature_name": "duration",
+          "split_value": 8.5,
+          "impurity_decrease": 0.009893655776977539,
+          "left_child": {
+            "feature_idx": 5,
+            "feature_name": "heart_rate",
+            "split_value": 82.5,
+            "impurity_decrease": 0.010055780410766602,
+            "left_child": {
+              "feature_idx": 4,
+              "feature_name": "body_temp",
+              "split_value": 39.650000000000006,
+              "impurity_decrease": 0.04362243413925171,
+              "left_child": {
+                "feature_idx": 2,
+                "feature_name": "height",
+                "split_value": 194.5,
+                "impurity_decrease": 0.047105252742767334,
+                "left_child": {
+                  "feature_idx": 1,
+                  "feature_name": "age",
+                  "split_value": 63.5,
+                  "impurity_decrease": 0.04546201229095459,
+                  "left_child": {
+                    "feature_idx": 0,
+                    "feature_name": "",
+                    "split_value": 0.0,
+                    "impurity_decrease": 0.0,
+                    "left_child": null,
+                    "right_child": null,
+                    "leaf_node": true,
+                    "prediction": 26,
+                    "depth": 8
+                  },
+                  "right_child": {
+                    "feature_idx": 0,
+                    "feature_name": "",
+                    "split_value": 0.0,
+                    "impurity_decrease": 0.0,
+                    "left_child": null,
+                    "right_child": null,
+                    "leaf_node": true,
+                    "prediction": 19,
+                    "depth": 8
+                  },
+                  "leaf_node": false,
+                  "prediction": 26,
+                  "depth": 7
+                },
+                "right_child": {
+                  "feature_idx": 0,
+                  "feature_name": "",
+                  "split_value": 0.0,
+                  "impurity_decrease": 0.0,
+                  "left_child": null,
+                  "right_child": null,
+                  "leaf_node": true,
+                  "prediction": 29,
+                  "depth": 7
+                },
+                "leaf_node": false,
+                "prediction": 26,
+                "depth": 6
+              },
+              "right_child": {
+                "feature_idx": 1,
+                "feature_name": "age",
+                "split_value": 58.5,
+                "impurity_decrease": 0.1383928656578064,
+                "left_child": {
+                  "feature_idx": 0,
+                  "feature_name": "",
+                  "split_value": 0.0,
+                  "impurity_decrease": 0.0,
+                  "left_child": null,
+                  "right_child": null,
+                  "leaf_node": true,
+                  "prediction": 24,
+                  "depth": 7
+                },
+                "right_child": {
+                  "feature_idx": 0,
+                  "feature_name": "",
+                  "split_value": 0.0,
+                  "impurity_decrease": 0.0,
+                  "left_child": null,
+                  "right_child": null,
+                  "leaf_node": true,
+                  "prediction": 34,
+                  "depth": 7
+                },
+                "leaf_node": false,
+                "prediction": 24,
+                "depth": 6
+              },
+              "leaf_node": false,
+              "prediction": 24,
+              "depth": 5
+            },
+            "right_child": {
+              "feature_idx": 2,
+              "feature_name": "height",
+              "split_value": 182.5,
+              "impurity_decrease": 0.010676860809326172,
+              "left_child": {
+                "feature_idx": 6,
+                "feature_name": "duration",
+                "split_value": 7.5,
+                "impurity_decrease": 0.013030409812927246,
+                "left_child": {
+                  "feature_idx": 2,
+                  "feature_name": "height",
+                  "split_value": 146.5,
+                  "impurity_decrease": 0.021750807762145996,
+                  "left_child": {
+                    "feature_idx": 0,
+                    "feature_name": "",
+                    "split_value": 0.0,
+                    "impurity_decrease": 0.0,
+                    "left_child": null,
+                    "right_child": null,
+                    "leaf_node": true,
+                    "prediction": 35,
+                    "depth": 8
+                  },
+                  "right_child": {
+                    "feature_idx": 3,
+                    "feature_name": "weight",
+                    "split_value": 55.5,
+                    "impurity_decrease": 0.020431578159332275,
+                    "left_child": {
+                      "feature_idx": 4,
+                      "feature_name": "body_temp",
+                      "split_value": 39.55,
+                      "impurity_decrease": 0.14583337306976318,
+                      "left_child": {
+                        "feature_idx": 1,
+                        "feature_name": "age",
+                        "split_value": 21.5,
+                        "impurity_decrease": 0.19999992847442627,
+                        "left_child": {
+                          "feature_idx": 0,
+                          "feature_name": "",
+                          "split_value": 0.0,
+                          "impurity_decrease": 0.0,
+                          "left_child": null,
+                          "right_child": null,
+                          "leaf_node": true,
+                          "prediction": 33,
+                          "depth": 11
+                        },
+                        "right_child": {
+                          "feature_idx": 0,
+                          "feature_name": "",
+                          "split_value": 0.0,
+                          "impurity_decrease": 0.0,
+                          "left_child": null,
+                          "right_child": null,
+                          "leaf_node": true,
+                          "prediction": 31,
+                          "depth": 11
+                        },
+                        "leaf_node": false,
+                        "prediction": 33,
+                        "depth": 10
+                      },
+                      "right_child": {
+                        "feature_idx": 0,
+                        "feature_name": "",
+                        "split_value": 0.0,
+                        "impurity_decrease": 0.0,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 29,
+                        "depth": 10
+                      },
+                      "leaf_node": false,
+                      "prediction": 33,
+                      "depth": 9
+                    },
+                    "right_child": {
+                      "feature_idx": 2,
+                      "feature_name": "height",
+                      "split_value": 156.5,
+                      "impurity_decrease": 0.033950626850128174,
+                      "left_child": {
+                        "feature_idx": 0,
+                        "feature_name": "",
+                        "split_value": 0.0,
+                        "impurity_decrease": 0.0,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 32,
+                        "depth": 10
+                      },
+                      "right_child": {
+                        "feature_idx": 3,
+                        "feature_name": "weight",
+                        "split_value": 64.5,
+                        "impurity_decrease": 0.02090907096862793,
+                        "left_child": {
+                          "feature_idx": 0,
+                          "feature_name": "",
+                          "split_value": 0.0,
+                          "impurity_decrease": 0.0,
+                          "left_child": null,
+                          "right_child": null,
+                          "leaf_node": true,
+                          "prediction": 32,
+                          "depth": 11
+                        },
+                        "right_child": {
+                          "feature_idx": 0,
+                          "feature_name": "",
+                          "split_value": 0.0,
+                          "impurity_decrease": 0.0,
+                          "left_child": null,
+                          "right_child": null,
+                          "leaf_node": true,
+                          "prediction": 33,
+                          "depth": 11
+                        },
+                        "leaf_node": false,
+                        "prediction": 34,
+                        "depth": 10
+                      },
+                      "leaf_node": false,
+                      "prediction": 32,
+                      "depth": 9
+                    },
+                    "leaf_node": false,
+                    "prediction": 32,
+                    "depth": 8
+                  },
+                  "leaf_node": false,
+                  "prediction": 33,
+                  "depth": 7
+                },
+                "right_child": {
+                  "feature_idx": 1,
+                  "feature_name": "age",
+                  "split_value": 74.5,
+                  "impurity_decrease": 0.0230979323387146,
+                  "left_child": {
+                    "feature_idx": 0,
+                    "feature_name": "",
+                    "split_value": 0.0,
+                    "impurity_decrease": 0.0,
+                    "left_child": null,
+                    "right_child": null,
+                    "leaf_node": true,
+                    "prediction": 34,
+                    "depth": 8
+                  },
+                  "right_child": {
+                    "feature_idx": 0,
+                    "feature_name": "",
+                    "split_value": 0.0,
+                    "impurity_decrease": 0.0,
+                    "left_child": null,
+                    "right_child": null,
+                    "leaf_node": true,
+                    "prediction": 51,
+                    "depth": 8
+                  },
+                  "leaf_node": false,
+                  "prediction": 35,
+                  "depth": 7
+                },
+                "leaf_node": false,
+                "prediction": 34,
+                "depth": 6
+              },
+              "right_child": {
+                "feature_idx": 3,
+                "feature_name": "weight",
+                "split_value": 103.5,
+                "impurity_decrease": 0.018313825130462646,
+                "left_child": {
+                  "feature_idx": 2,
+                  "feature_name": "height",
+                  "split_value": 189.5,
+                  "impurity_decrease": 0.021835386753082275,
+                  "left_child": {
+                    "feature_idx": 1,
+                    "feature_name": "age",
+                    "split_value": 59.5,
+                    "impurity_decrease": 0.057257115840911865,
+                    "left_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 41,
+                      "depth": 9
+                    },
+                    "right_child": {
+                      "feature_idx": 4,
+                      "feature_name": "body_temp",
+                      "split_value": 39.150000000000006,
+                      "impurity_decrease": 0.1250000298023224,
+                      "left_child": {
+                        "feature_idx": 0,
+                        "feature_name": "",
+                        "split_value": 0.0,
+                        "impurity_decrease": 0.0,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 43,
+                        "depth": 10
+                      },
+                      "right_child": {
+                        "feature_idx": 0,
+                        "feature_name": "",
+                        "split_value": 0.0,
+                        "impurity_decrease": 0.0,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 52,
+                        "depth": 10
+                      },
+                      "leaf_node": false,
+                      "prediction": 43,
+                      "depth": 9
+                    },
+                    "leaf_node": false,
+                    "prediction": 41,
+                    "depth": 8
+                  },
+                  "right_child": {
+                    "feature_idx": 4,
+                    "feature_name": "body_temp",
+                    "split_value": 39.45,
+                    "impurity_decrease": 0.05262041091918945,
+                    "left_child": {
+                      "feature_idx": 2,
+                      "feature_name": "height",
+                      "split_value": 201.5,
+                      "impurity_decrease": 0.06802719831466675,
+                      "left_child": {
+                        "feature_idx": 0,
+                        "feature_name": "",
+                        "split_value": 0.0,
+                        "impurity_decrease": 0.0,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 41,
+                        "depth": 10
+                      },
+                      "right_child": {
+                        "feature_idx": 0,
+                        "feature_name": "",
+                        "split_value": 0.0,
+                        "impurity_decrease": 0.0,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 25,
+                        "depth": 10
+                      },
+                      "leaf_node": false,
+                      "prediction": 23,
+                      "depth": 9
+                    },
+                    "right_child": {
+                      "feature_idx": 3,
+                      "feature_name": "weight",
+                      "split_value": 96.5,
+                      "impurity_decrease": 0.09880954027175903,
+                      "left_child": {
+                        "feature_idx": 0,
+                        "feature_name": "",
+                        "split_value": 0.0,
+                        "impurity_decrease": 0.0,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 29,
+                        "depth": 10
+                      },
+                      "right_child": {
+                        "feature_idx": 0,
+                        "feature_name": "",
+                        "split_value": 0.0,
+                        "impurity_decrease": 0.0,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 33,
+                        "depth": 10
+                      },
+                      "leaf_node": false,
+                      "prediction": 29,
+                      "depth": 9
+                    },
+                    "leaf_node": false,
+                    "prediction": 26,
+                    "depth": 8
+                  },
+                  "leaf_node": false,
+                  "prediction": 41,
+                  "depth": 7
+                },
+                "right_child": {
+                  "feature_idx": 0,
+                  "feature_name": "",
+                  "split_value": 0.0,
+                  "impurity_decrease": 0.0,
+                  "left_child": null,
+                  "right_child": null,
+                  "leaf_node": true,
+                  "prediction": 34,
+                  "depth": 7
+                },
+                "leaf_node": false,
+                "prediction": 41,
+                "depth": 6
+              },
+              "leaf_node": false,
+              "prediction": 34,
+              "depth": 5
+            },
+            "leaf_node": false,
+            "prediction": 34,
+            "depth": 4
+          },
+          "right_child": {
+            "feature_idx": 3,
+            "feature_name": "weight",
+            "split_value": 77.5,
+            "impurity_decrease": 0.009523570537567139,
+            "left_child": {
+              "feature_idx": 2,
+              "feature_name": "height",
+              "split_value": 160.5,
+              "impurity_decrease": 0.012599647045135498,
+              "left_child": {
+                "feature_idx": 3,
+                "feature_name": "weight",
+                "split_value": 48.5,
+                "impurity_decrease": 0.03571420907974243,
+                "left_child": {
+                  "feature_idx": 2,
+                  "feature_name": "height",
+                  "split_value": 133.5,
+                  "impurity_decrease": 0.5,
+                  "left_child": {
+                    "feature_idx": 0,
+                    "feature_name": "",
+                    "split_value": 0.0,
+                    "impurity_decrease": 0.0,
+                    "left_child": null,
+                    "right_child": null,
+                    "leaf_node": true,
+                    "prediction": 55,
+                    "depth": 8
+                  },
+                  "right_child": {
+                    "feature_idx": 0,
+                    "feature_name": "",
+                    "split_value": 0.0,
+                    "impurity_decrease": 0.0,
+                    "left_child": null,
+                    "right_child": null,
+                    "leaf_node": true,
+                    "prediction": 59,
+                    "depth": 8
+                  },
+                  "leaf_node": false,
+                  "prediction": 55,
+                  "depth": 7
+                },
+                "right_child": {
+                  "feature_idx": 2,
+                  "feature_name": "height",
+                  "split_value": 140.5,
+                  "impurity_decrease": 0.033846139907836914,
+                  "left_child": {
+                    "feature_idx": 0,
+                    "feature_name": "",
+                    "split_value": 0.0,
+                    "impurity_decrease": 0.0,
+                    "left_child": null,
+                    "right_child": null,
+                    "leaf_node": true,
+                    "prediction": 45,
+                    "depth": 8
+                  },
+                  "right_child": {
+                    "feature_idx": 5,
+                    "feature_name": "heart_rate",
+                    "split_value": 88.5,
+                    "impurity_decrease": 0.02480006217956543,
+                    "left_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 48,
+                      "depth": 9
+                    },
+                    "right_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 47,
+                      "depth": 9
+                    },
+                    "leaf_node": false,
+                    "prediction": 47,
+                    "depth": 8
+                  },
+                  "leaf_node": false,
+                  "prediction": 47,
+                  "depth": 7
+                },
+                "leaf_node": false,
+                "prediction": 47,
+                "depth": 6
+              },
+              "right_child": {
+                "feature_idx": 5,
+                "feature_name": "heart_rate",
+                "split_value": 80.5,
+                "impurity_decrease": 0.013694524765014648,
+                "left_child": {
+                  "feature_idx": 0,
+                  "feature_name": "",
+                  "split_value": 0.0,
+                  "impurity_decrease": 0.0,
+                  "left_child": null,
+                  "right_child": null,
+                  "leaf_node": true,
+                  "prediction": 24,
+                  "depth": 7
+                },
+                "right_child": {
+                  "feature_idx": 1,
+                  "feature_name": "age",
+                  "split_value": 61.5,
+                  "impurity_decrease": 0.012705862522125244,
+                  "left_child": {
+                    "feature_idx": 2,
+                    "feature_name": "height",
+                    "split_value": 168.5,
+                    "impurity_decrease": 0.011871576309204102,
+                    "left_child": {
+                      "feature_idx": 1,
+                      "feature_name": "age",
+                      "split_value": 54.5,
+                      "impurity_decrease": 0.027971923351287842,
+                      "left_child": {
+                        "feature_idx": 0,
+                        "feature_name": "",
+                        "split_value": 0.0,
+                        "impurity_decrease": 0.0,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 43,
+                        "depth": 10
+                      },
+                      "right_child": {
+                        "feature_idx": 0,
+                        "feature_name": "",
+                        "split_value": 0.0,
+                        "impurity_decrease": 0.0,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 54,
+                        "depth": 10
+                      },
+                      "leaf_node": false,
+                      "prediction": 43,
+                      "depth": 9
+                    },
+                    "right_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 43,
+                      "depth": 9
+                    },
+                    "leaf_node": false,
+                    "prediction": 43,
+                    "depth": 8
+                  },
+                  "right_child": {
+                    "feature_idx": 1,
+                    "feature_name": "age",
+                    "split_value": 75.5,
+                    "impurity_decrease": 0.07438021898269653,
+                    "left_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 36,
+                      "depth": 9
+                    },
+                    "right_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 50,
+                      "depth": 9
+                    },
+                    "leaf_node": false,
+                    "prediction": 50,
+                    "depth": 8
+                  },
+                  "leaf_node": false,
+                  "prediction": 43,
+                  "depth": 7
+                },
+                "leaf_node": false,
+                "prediction": 43,
+                "depth": 6
+              },
+              "leaf_node": false,
+              "prediction": 43,
+              "depth": 5
+            },
+            "right_child": {
+              "feature_idx": 1,
+              "feature_name": "age",
+              "split_value": 71.5,
+              "impurity_decrease": 0.015221595764160156,
+              "left_child": {
+                "feature_idx": 5,
+                "feature_name": "heart_rate",
+                "split_value": 87.5,
+                "impurity_decrease": 0.015511631965637207,
+                "left_child": {
+                  "feature_idx": 4,
+                  "feature_name": "body_temp",
+                  "split_value": 39.849999999999994,
+                  "impurity_decrease": 0.06804221868515015,
+                  "left_child": {
+                    "feature_idx": 2,
+                    "feature_name": "height",
+                    "split_value": 191.5,
+                    "impurity_decrease": 0.05523872375488281,
+                    "left_child": {
+                      "feature_idx": 3,
+                      "feature_name": "weight",
+                      "split_value": 92.5,
+                      "impurity_decrease": 0.060553669929504395,
+                      "left_child": {
+                        "feature_idx": 6,
+                        "feature_name": "duration",
+                        "split_value": 9.5,
+                        "impurity_decrease": 0.05208331346511841,
+                        "left_child": {
+                          "feature_idx": 0,
+                          "feature_name": "",
+                          "split_value": 0.0,
+                          "impurity_decrease": 0.0,
+                          "left_child": null,
+                          "right_child": null,
+                          "leaf_node": true,
+                          "prediction": 23,
+                          "depth": 11
+                        },
+                        "right_child": {
+                          "feature_idx": 0,
+                          "feature_name": "",
+                          "split_value": 0.0,
+                          "impurity_decrease": 0.0,
+                          "left_child": null,
+                          "right_child": null,
+                          "leaf_node": true,
+                          "prediction": 40,
+                          "depth": 11
+                        },
+                        "leaf_node": false,
+                        "prediction": 40,
+                        "depth": 10
+                      },
+                      "right_child": {
+                        "feature_idx": 0,
+                        "feature_name": "",
+                        "split_value": 0.0,
+                        "impurity_decrease": 0.0,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 44,
+                        "depth": 10
+                      },
+                      "leaf_node": false,
+                      "prediction": 40,
+                      "depth": 9
+                    },
+                    "right_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 26,
+                      "depth": 9
+                    },
+                    "leaf_node": false,
+                    "prediction": 40,
+                    "depth": 8
+                  },
+                  "right_child": {
+                    "feature_idx": 0,
+                    "feature_name": "",
+                    "split_value": 0.0,
+                    "impurity_decrease": 0.0,
+                    "left_child": null,
+                    "right_child": null,
+                    "leaf_node": true,
+                    "prediction": 30,
+                    "depth": 8
+                  },
+                  "leaf_node": false,
+                  "prediction": 30,
+                  "depth": 7
+                },
+                "right_child": {
+                  "feature_idx": 2,
+                  "feature_name": "height",
+                  "split_value": 199.5,
+                  "impurity_decrease": 0.023292064666748047,
+                  "left_child": {
+                    "feature_idx": 0,
+                    "feature_name": "",
+                    "split_value": 0.0,
+                    "impurity_decrease": 0.0,
+                    "left_child": null,
+                    "right_child": null,
+                    "leaf_node": true,
+                    "prediction": 41,
+                    "depth": 8
+                  },
+                  "right_child": {
+                    "feature_idx": 0,
+                    "feature_name": "",
+                    "split_value": 0.0,
+                    "impurity_decrease": 0.0,
+                    "left_child": null,
+                    "right_child": null,
+                    "leaf_node": true,
+                    "prediction": 40,
+                    "depth": 8
+                  },
+                  "leaf_node": false,
+                  "prediction": 41,
+                  "depth": 7
+                },
+                "leaf_node": false,
+                "prediction": 41,
+                "depth": 6
+              },
+              "right_child": {
+                "feature_idx": 0,
+                "feature_name": "",
+                "split_value": 0.0,
+                "impurity_decrease": 0.0,
+                "left_child": null,
+                "right_child": null,
+                "leaf_node": true,
+                "prediction": 47,
+                "depth": 6
+              },
+              "leaf_node": false,
+              "prediction": 41,
+              "depth": 5
+            },
+            "leaf_node": false,
+            "prediction": 43,
+            "depth": 4
+          },
+          "leaf_node": false,
+          "prediction": 43,
+          "depth": 3
+        },
+        "leaf_node": false,
+        "prediction": 23,
+        "depth": 2
+      },
+      "right_child": {
+        "feature_idx": 6,
+        "feature_name": "duration",
+        "split_value": 18.5,
+        "impurity_decrease": 0.004785001277923584,
+        "left_child": {
+          "feature_idx": 6,
+          "feature_name": "duration",
+          "split_value": 14.5,
+          "impurity_decrease": 0.006547510623931885,
+          "left_child": {
+            "feature_idx": 1,
+            "feature_name": "age",
+            "split_value": 53.5,
+            "impurity_decrease": 0.007064700126647949,
+            "left_child": {
+              "feature_idx": 5,
+              "feature_name": "heart_rate",
+              "split_value": 86.5,
+              "impurity_decrease": 0.008133411407470703,
+              "left_child": {
+                "feature_idx": 6,
+                "feature_name": "duration",
+                "split_value": 13.5,
+                "impurity_decrease": 0.04320991039276123,
+                "left_child": {
+                  "feature_idx": 6,
+                  "feature_name": "duration",
+                  "split_value": 11.5,
+                  "impurity_decrease": 0.040036797523498535,
+                  "left_child": {
+                    "feature_idx": 1,
+                    "feature_name": "age",
+                    "split_value": 49.5,
+                    "impurity_decrease": 0.06804734468460083,
+                    "left_child": {
+                      "feature_idx": 2,
+                      "feature_name": "height",
+                      "split_value": 147.5,
+                      "impurity_decrease": 0.08712124824523926,
+                      "left_child": {
+                        "feature_idx": 0,
+                        "feature_name": "",
+                        "split_value": 0.0,
+                        "impurity_decrease": 0.0,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 44,
+                        "depth": 10
+                      },
+                      "right_child": {
+                        "feature_idx": 0,
+                        "feature_name": "",
+                        "split_value": 0.0,
+                        "impurity_decrease": 0.0,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 42,
+                        "depth": 10
+                      },
+                      "leaf_node": false,
+                      "prediction": 42,
+                      "depth": 9
+                    },
+                    "right_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 44,
+                      "depth": 9
+                    },
+                    "leaf_node": false,
+                    "prediction": 42,
+                    "depth": 8
+                  },
+                  "right_child": {
+                    "feature_idx": 0,
+                    "feature_name": "",
+                    "split_value": 0.0,
+                    "impurity_decrease": 0.0,
+                    "left_child": null,
+                    "right_child": null,
+                    "leaf_node": true,
+                    "prediction": 28,
+                    "depth": 8
+                  },
+                  "leaf_node": false,
+                  "prediction": 44,
+                  "depth": 7
+                },
+                "right_child": {
+                  "feature_idx": 0,
+                  "feature_name": "",
+                  "split_value": 0.0,
+                  "impurity_decrease": 0.0,
+                  "left_child": null,
+                  "right_child": null,
+                  "leaf_node": true,
+                  "prediction": 54,
+                  "depth": 7
+                },
+                "leaf_node": false,
+                "prediction": 54,
+                "depth": 6
+              },
+              "right_child": {
+                "feature_idx": 6,
+                "feature_name": "duration",
+                "split_value": 12.5,
+                "impurity_decrease": 0.008671939373016357,
+                "left_child": {
+                  "feature_idx": 1,
+                  "feature_name": "age",
+                  "split_value": 32.5,
+                  "impurity_decrease": 0.009254932403564453,
+                  "left_child": {
+                    "feature_idx": 1,
+                    "feature_name": "age",
+                    "split_value": 23.5,
+                    "impurity_decrease": 0.015010297298431396,
+                    "left_child": {
+                      "feature_idx": 3,
+                      "feature_name": "weight",
+                      "split_value": 53.5,
+                      "impurity_decrease": 0.038529396057128906,
+                      "left_child": {
+                        "feature_idx": 0,
+                        "feature_name": "",
+                        "split_value": 0.0,
+                        "impurity_decrease": 0.0,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 52,
+                        "depth": 10
+                      },
+                      "right_child": {
+                        "feature_idx": 0,
+                        "feature_name": "",
+                        "split_value": 0.0,
+                        "impurity_decrease": 0.0,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 49,
+                        "depth": 10
+                      },
+                      "leaf_node": false,
+                      "prediction": 51,
+                      "depth": 9
+                    },
+                    "right_child": {
+                      "feature_idx": 2,
+                      "feature_name": "height",
+                      "split_value": 196.5,
+                      "impurity_decrease": 0.024699866771697998,
+                      "left_child": {
+                        "feature_idx": 0,
+                        "feature_name": "",
+                        "split_value": 0.0,
+                        "impurity_decrease": 0.0,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 45,
+                        "depth": 10
+                      },
+                      "right_child": {
+                        "feature_idx": 0,
+                        "feature_name": "",
+                        "split_value": 0.0,
+                        "impurity_decrease": 0.0,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 48,
+                        "depth": 10
+                      },
+                      "leaf_node": false,
+                      "prediction": 45,
+                      "depth": 9
+                    },
+                    "leaf_node": false,
+                    "prediction": 51,
+                    "depth": 8
+                  },
+                  "right_child": {
+                    "feature_idx": 2,
+                    "feature_name": "height",
+                    "split_value": 159.5,
+                    "impurity_decrease": 0.01509404182434082,
+                    "left_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 59,
+                      "depth": 9
+                    },
+                    "right_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 61,
+                      "depth": 9
+                    },
+                    "leaf_node": false,
+                    "prediction": 60,
+                    "depth": 8
+                  },
+                  "leaf_node": false,
+                  "prediction": 52,
+                  "depth": 7
+                },
+                "right_child": {
+                  "feature_idx": 3,
+                  "feature_name": "weight",
+                  "split_value": 72.5,
+                  "impurity_decrease": 0.01495504379272461,
+                  "left_child": {
+                    "feature_idx": 1,
+                    "feature_name": "age",
+                    "split_value": 25.5,
+                    "impurity_decrease": 0.02354121208190918,
+                    "left_child": {
+                      "feature_idx": 2,
+                      "feature_name": "height",
+                      "split_value": 175.5,
+                      "impurity_decrease": 0.05878728628158569,
+                      "left_child": {
+                        "feature_idx": 0,
+                        "feature_name": "",
+                        "split_value": 0.0,
+                        "impurity_decrease": 0.0,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 68,
+                        "depth": 10
+                      },
+                      "right_child": {
+                        "feature_idx": 0,
+                        "feature_name": "",
+                        "split_value": 0.0,
+                        "impurity_decrease": 0.0,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 82,
+                        "depth": 10
+                      },
+                      "leaf_node": false,
+                      "prediction": 68,
+                      "depth": 9
+                    },
+                    "right_child": {
+                      "feature_idx": 3,
+                      "feature_name": "weight",
+                      "split_value": 42.5,
+                      "impurity_decrease": 0.029614269733428955,
+                      "left_child": {
+                        "feature_idx": 0,
+                        "feature_name": "",
+                        "split_value": 0.0,
+                        "impurity_decrease": 0.0,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 74,
+                        "depth": 10
+                      },
+                      "right_child": {
+                        "feature_idx": 0,
+                        "feature_name": "",
+                        "split_value": 0.0,
+                        "impurity_decrease": 0.0,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 64,
+                        "depth": 10
+                      },
+                      "leaf_node": false,
+                      "prediction": 59,
+                      "depth": 9
+                    },
+                    "leaf_node": false,
+                    "prediction": 68,
+                    "depth": 8
+                  },
+                  "right_child": {
+                    "feature_idx": 2,
+                    "feature_name": "height",
+                    "split_value": 202.5,
+                    "impurity_decrease": 0.01819300651550293,
+                    "left_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 65,
+                      "depth": 9
+                    },
+                    "right_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 81,
+                      "depth": 9
+                    },
+                    "leaf_node": false,
+                    "prediction": 65,
+                    "depth": 8
+                  },
+                  "leaf_node": false,
+                  "prediction": 60,
+                  "depth": 7
+                },
+                "leaf_node": false,
+                "prediction": 60,
+                "depth": 6
+              },
+              "leaf_node": false,
+              "prediction": 60,
+              "depth": 5
+            },
+            "right_child": {
+              "feature_idx": 5,
+              "feature_name": "heart_rate",
+              "split_value": 97.5,
+              "impurity_decrease": 0.011970818042755127,
+              "left_child": {
+                "feature_idx": 3,
+                "feature_name": "weight",
+                "split_value": 52.5,
+                "impurity_decrease": 0.012633800506591797,
+                "left_child": {
+                  "feature_idx": 2,
+                  "feature_name": "height",
+                  "split_value": 145.5,
+                  "impurity_decrease": 0.5,
+                  "left_child": {
+                    "feature_idx": 0,
+                    "feature_name": "",
+                    "split_value": 0.0,
+                    "impurity_decrease": 0.0,
+                    "left_child": null,
+                    "right_child": null,
+                    "leaf_node": true,
+                    "prediction": 83,
+                    "depth": 8
+                  },
+                  "right_child": {
+                    "feature_idx": 0,
+                    "feature_name": "",
+                    "split_value": 0.0,
+                    "impurity_decrease": 0.0,
+                    "left_child": null,
+                    "right_child": null,
+                    "leaf_node": true,
+                    "prediction": 49,
+                    "depth": 8
+                  },
+                  "leaf_node": false,
+                  "prediction": 83,
+                  "depth": 7
+                },
+                "right_child": {
+                  "feature_idx": 1,
+                  "feature_name": "age",
+                  "split_value": 77.5,
+                  "impurity_decrease": 0.010278701782226562,
+                  "left_child": {
+                    "feature_idx": 0,
+                    "feature_name": "",
+                    "split_value": 0.0,
+                    "impurity_decrease": 0.0,
+                    "left_child": null,
+                    "right_child": null,
+                    "leaf_node": true,
+                    "prediction": 66,
+                    "depth": 8
+                  },
+                  "right_child": {
+                    "feature_idx": 0,
+                    "feature_name": "",
+                    "split_value": 0.0,
+                    "impurity_decrease": 0.0,
+                    "left_child": null,
+                    "right_child": null,
+                    "leaf_node": true,
+                    "prediction": 73,
+                    "depth": 8
+                  },
+                  "leaf_node": false,
+                  "prediction": 66,
+                  "depth": 7
+                },
+                "leaf_node": false,
+                "prediction": 66,
+                "depth": 6
+              },
+              "right_child": {
+                "feature_idx": 1,
+                "feature_name": "age",
+                "split_value": 72.5,
+                "impurity_decrease": 0.04496842622756958,
+                "left_child": {
+                  "feature_idx": 0,
+                  "feature_name": "",
+                  "split_value": 0.0,
+                  "impurity_decrease": 0.0,
+                  "left_child": null,
+                  "right_child": null,
+                  "leaf_node": true,
+                  "prediction": 94,
+                  "depth": 7
+                },
+                "right_child": {
+                  "feature_idx": 0,
+                  "feature_name": "",
+                  "split_value": 0.0,
+                  "impurity_decrease": 0.0,
+                  "left_child": null,
+                  "right_child": null,
+                  "leaf_node": true,
+                  "prediction": 106,
+                  "depth": 7
+                },
+                "leaf_node": false,
+                "prediction": 94,
+                "depth": 6
+              },
+              "leaf_node": false,
+              "prediction": 66,
+              "depth": 5
+            },
+            "leaf_node": false,
+            "prediction": 60,
+            "depth": 4
+          },
+          "right_child": {
+            "feature_idx": 5,
+            "feature_name": "heart_rate",
+            "split_value": 99.5,
+            "impurity_decrease": 0.0063471198081970215,
+            "left_child": {
+              "feature_idx": 5,
+              "feature_name": "heart_rate",
+              "split_value": 90.5,
+              "impurity_decrease": 0.007259666919708252,
+              "left_child": {
+                "feature_idx": 4,
+                "feature_name": "body_temp",
+                "split_value": 40.25,
+                "impurity_decrease": 0.010653853416442871,
+                "left_child": {
+                  "feature_idx": 0,
+                  "feature_name": "",
+                  "split_value": 0.0,
+                  "impurity_decrease": 0.0,
+                  "left_child": null,
+                  "right_child": null,
+                  "leaf_node": true,
+                  "prediction": 66,
+                  "depth": 7
+                },
+                "right_child": {
+                  "feature_idx": 0,
+                  "feature_name": "",
+                  "split_value": 0.0,
+                  "impurity_decrease": 0.0,
+                  "left_child": null,
+                  "right_child": null,
+                  "leaf_node": true,
+                  "prediction": 63,
+                  "depth": 7
+                },
+                "leaf_node": false,
+                "prediction": 63,
+                "depth": 6
+              },
+              "right_child": {
+                "feature_idx": 1,
+                "feature_name": "age",
+                "split_value": 39.5,
+                "impurity_decrease": 0.010001301765441895,
+                "left_child": {
+                  "feature_idx": 6,
+                  "feature_name": "duration",
+                  "split_value": 16.5,
+                  "impurity_decrease": 0.014805376529693604,
+                  "left_child": {
+                    "feature_idx": 1,
+                    "feature_name": "age",
+                    "split_value": 35.5,
+                    "impurity_decrease": 0.020980656147003174,
+                    "left_child": {
+                      "feature_idx": 2,
+                      "feature_name": "height",
+                      "split_value": 181.5,
+                      "impurity_decrease": 0.01592499017715454,
+                      "left_child": {
+                        "feature_idx": 0,
+                        "feature_name": "",
+                        "split_value": 0.0,
+                        "impurity_decrease": 0.0,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 69,
+                        "depth": 10
+                      },
+                      "right_child": {
+                        "feature_idx": 0,
+                        "feature_name": "",
+                        "split_value": 0.0,
+                        "impurity_decrease": 0.0,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 74,
+                        "depth": 10
+                      },
+                      "leaf_node": false,
+                      "prediction": 69,
+                      "depth": 9
+                    },
+                    "right_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 80,
+                      "depth": 9
+                    },
+                    "leaf_node": false,
+                    "prediction": 76,
+                    "depth": 8
+                  },
+                  "right_child": {
+                    "feature_idx": 3,
+                    "feature_name": "weight",
+                    "split_value": 75.5,
+                    "impurity_decrease": 0.017852425575256348,
+                    "left_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 88,
+                      "depth": 9
+                    },
+                    "right_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 68,
+                      "depth": 9
+                    },
+                    "leaf_node": false,
+                    "prediction": 88,
+                    "depth": 8
+                  },
+                  "leaf_node": false,
+                  "prediction": 80,
+                  "depth": 7
+                },
+                "right_child": {
+                  "feature_idx": 6,
+                  "feature_name": "duration",
+                  "split_value": 15.5,
+                  "impurity_decrease": 0.011715888977050781,
+                  "left_child": {
+                    "feature_idx": 4,
+                    "feature_name": "body_temp",
+                    "split_value": 40.45,
+                    "impurity_decrease": 0.044688642024993896,
+                    "left_child": {
+                      "feature_idx": 3,
+                      "feature_name": "weight",
+                      "split_value": 90.5,
+                      "impurity_decrease": 0.05143815279006958,
+                      "left_child": {
+                        "feature_idx": 1,
+                        "feature_name": "age",
+                        "split_value": 51.5,
+                        "impurity_decrease": 0.04879605770111084,
+                        "left_child": {
+                          "feature_idx": 0,
+                          "feature_name": "",
+                          "split_value": 0.0,
+                          "impurity_decrease": 0.0,
+                          "left_child": null,
+                          "right_child": null,
+                          "leaf_node": true,
+                          "prediction": 92,
+                          "depth": 11
+                        },
+                        "right_child": {
+                          "feature_idx": 0,
+                          "feature_name": "",
+                          "split_value": 0.0,
+                          "impurity_decrease": 0.0,
+                          "left_child": null,
+                          "right_child": null,
+                          "leaf_node": true,
+                          "prediction": 79,
+                          "depth": 11
+                        },
+                        "leaf_node": false,
+                        "prediction": 79,
+                        "depth": 10
+                      },
+                      "right_child": {
+                        "feature_idx": 0,
+                        "feature_name": "",
+                        "split_value": 0.0,
+                        "impurity_decrease": 0.0,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 99,
+                        "depth": 10
+                      },
+                      "leaf_node": false,
+                      "prediction": 79,
+                      "depth": 9
+                    },
+                    "right_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 86,
+                      "depth": 9
+                    },
+                    "leaf_node": false,
+                    "prediction": 86,
+                    "depth": 8
+                  },
+                  "right_child": {
+                    "feature_idx": 3,
+                    "feature_name": "weight",
+                    "split_value": 70.5,
+                    "impurity_decrease": 0.009070277214050293,
+                    "left_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 92,
+                      "depth": 9
+                    },
+                    "right_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 90,
+                      "depth": 9
+                    },
+                    "leaf_node": false,
+                    "prediction": 90,
+                    "depth": 8
+                  },
+                  "leaf_node": false,
+                  "prediction": 90,
+                  "depth": 7
+                },
+                "leaf_node": false,
+                "prediction": 80,
+                "depth": 6
+              },
+              "leaf_node": false,
+              "prediction": 80,
+              "depth": 5
+            },
+            "right_child": {
+              "feature_idx": 1,
+              "feature_name": "age",
+              "split_value": 70.5,
+              "impurity_decrease": 0.0125160813331604,
+              "left_child": {
+                "feature_idx": 5,
+                "feature_name": "heart_rate",
+                "split_value": 101.5,
+                "impurity_decrease": 0.012318789958953857,
+                "left_child": {
+                  "feature_idx": 5,
+                  "feature_name": "heart_rate",
+                  "split_value": 100.5,
+                  "impurity_decrease": 0.025954365730285645,
+                  "left_child": {
+                    "feature_idx": 2,
+                    "feature_name": "height",
+                    "split_value": 184.5,
+                    "impurity_decrease": 0.056689441204071045,
+                    "left_child": {
+                      "feature_idx": 3,
+                      "feature_name": "weight",
+                      "split_value": 78.5,
+                      "impurity_decrease": 0.07959175109863281,
+                      "left_child": {
+                        "feature_idx": 0,
+                        "feature_name": "",
+                        "split_value": 0.0,
+                        "impurity_decrease": 0.0,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 104,
+                        "depth": 10
+                      },
+                      "right_child": {
+                        "feature_idx": 0,
+                        "feature_name": "",
+                        "split_value": 0.0,
+                        "impurity_decrease": 0.0,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 69,
+                        "depth": 10
+                      },
+                      "leaf_node": false,
+                      "prediction": 104,
+                      "depth": 9
+                    },
+                    "right_child": {
+                      "feature_idx": 3,
+                      "feature_name": "weight",
+                      "split_value": 97.5,
+                      "impurity_decrease": 0.11836731433868408,
+                      "left_child": {
+                        "feature_idx": 0,
+                        "feature_name": "",
+                        "split_value": 0.0,
+                        "impurity_decrease": 0.0,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 96,
+                        "depth": 10
+                      },
+                      "right_child": {
+                        "feature_idx": 0,
+                        "feature_name": "",
+                        "split_value": 0.0,
+                        "impurity_decrease": 0.0,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 94,
+                        "depth": 10
+                      },
+                      "leaf_node": false,
+                      "prediction": 96,
+                      "depth": 9
+                    },
+                    "leaf_node": false,
+                    "prediction": 96,
+                    "depth": 8
+                  },
+                  "right_child": {
+                    "feature_idx": 2,
+                    "feature_name": "height",
+                    "split_value": 173.5,
+                    "impurity_decrease": 0.036538541316986084,
+                    "left_child": {
+                      "feature_idx": 4,
+                      "feature_name": "body_temp",
+                      "split_value": 39.75,
+                      "impurity_decrease": 0.04895830154418945,
+                      "left_child": {
+                        "feature_idx": 0,
+                        "feature_name": "",
+                        "split_value": 0.0,
+                        "impurity_decrease": 0.0,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 92,
+                        "depth": 10
+                      },
+                      "right_child": {
+                        "feature_idx": 0,
+                        "feature_name": "",
+                        "split_value": 0.0,
+                        "impurity_decrease": 0.0,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 101,
+                        "depth": 10
+                      },
+                      "leaf_node": false,
+                      "prediction": 92,
+                      "depth": 9
+                    },
+                    "right_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 100,
+                      "depth": 9
+                    },
+                    "leaf_node": false,
+                    "prediction": 92,
+                    "depth": 8
+                  },
+                  "leaf_node": false,
+                  "prediction": 92,
+                  "depth": 7
+                },
+                "right_child": {
+                  "feature_idx": 5,
+                  "feature_name": "heart_rate",
+                  "split_value": 105.5,
+                  "impurity_decrease": 0.019683241844177246,
+                  "left_child": {
+                    "feature_idx": 1,
+                    "feature_name": "age",
+                    "split_value": 66.5,
+                    "impurity_decrease": 0.019578874111175537,
+                    "left_child": {
+                      "feature_idx": 2,
+                      "feature_name": "height",
+                      "split_value": 179.5,
+                      "impurity_decrease": 0.018568694591522217,
+                      "left_child": {
+                        "feature_idx": 0,
+                        "feature_name": "",
+                        "split_value": 0.0,
+                        "impurity_decrease": 0.0,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 80,
+                        "depth": 10
+                      },
+                      "right_child": {
+                        "feature_idx": 0,
+                        "feature_name": "",
+                        "split_value": 0.0,
+                        "impurity_decrease": 0.0,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 104,
+                        "depth": 10
+                      },
+                      "leaf_node": false,
+                      "prediction": 104,
+                      "depth": 9
+                    },
+                    "right_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 135,
+                      "depth": 9
+                    },
+                    "leaf_node": false,
+                    "prediction": 104,
+                    "depth": 8
+                  },
+                  "right_child": {
+                    "feature_idx": 0,
+                    "feature_name": "",
+                    "split_value": 0.0,
+                    "impurity_decrease": 0.0,
+                    "left_child": null,
+                    "right_child": null,
+                    "leaf_node": true,
+                    "prediction": 112,
+                    "depth": 8
+                  },
+                  "leaf_node": false,
+                  "prediction": 104,
+                  "depth": 7
+                },
+                "leaf_node": false,
+                "prediction": 104,
+                "depth": 6
+              },
+              "right_child": {
+                "feature_idx": 0,
+                "feature_name": "",
+                "split_value": 0.0,
+                "impurity_decrease": 0.0,
+                "left_child": null,
+                "right_child": null,
+                "leaf_node": true,
+                "prediction": 130,
+                "depth": 6
+              },
+              "leaf_node": false,
+              "prediction": 104,
+              "depth": 5
+            },
+            "leaf_node": false,
+            "prediction": 80,
+            "depth": 4
+          },
+          "leaf_node": false,
+          "prediction": 60,
+          "depth": 3
+        },
+        "right_child": {
+          "feature_idx": 6,
+          "feature_name": "duration",
+          "split_value": 24.5,
+          "impurity_decrease": 0.004455208778381348,
+          "left_child": {
+            "feature_idx": 6,
+            "feature_name": "duration",
+            "split_value": 21.5,
+            "impurity_decrease": 0.004873514175415039,
+            "left_child": {
+              "feature_idx": 5,
+              "feature_name": "heart_rate",
+              "split_value": 103.5,
+              "impurity_decrease": 0.009815633296966553,
+              "left_child": {
+                "feature_idx": 1,
+                "feature_name": "age",
+                "split_value": 44.5,
+                "impurity_decrease": 0.010218143463134766,
+                "left_child": {
+                  "feature_idx": 2,
+                  "feature_name": "height",
+                  "split_value": 178.5,
+                  "impurity_decrease": 0.012100636959075928,
+                  "left_child": {
+                    "feature_idx": 5,
+                    "feature_name": "heart_rate",
+                    "split_value": 94.5,
+                    "impurity_decrease": 0.020077288150787354,
+                    "left_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 97,
+                      "depth": 9
+                    },
+                    "right_child": {
+                      "feature_idx": 3,
+                      "feature_name": "weight",
+                      "split_value": 51.5,
+                      "impurity_decrease": 0.023174583911895752,
+                      "left_child": {
+                        "feature_idx": 2,
+                        "feature_name": "height",
+                        "split_value": 144.5,
+                        "impurity_decrease": 0.2916666865348816,
+                        "left_child": {
+                          "feature_idx": 0,
+                          "feature_name": "",
+                          "split_value": 0.0,
+                          "impurity_decrease": 0.0,
+                          "left_child": null,
+                          "right_child": null,
+                          "leaf_node": true,
+                          "prediction": 119,
+                          "depth": 11
+                        },
+                        "right_child": {
+                          "feature_idx": 0,
+                          "feature_name": "",
+                          "split_value": 0.0,
+                          "impurity_decrease": 0.0,
+                          "left_child": null,
+                          "right_child": null,
+                          "leaf_node": true,
+                          "prediction": 105,
+                          "depth": 11
+                        },
+                        "leaf_node": false,
+                        "prediction": 105,
+                        "depth": 10
+                      },
+                      "right_child": {
+                        "feature_idx": 1,
+                        "feature_name": "age",
+                        "split_value": 26.5,
+                        "impurity_decrease": 0.018549442291259766,
+                        "left_child": {
+                          "feature_idx": 5,
+                          "feature_name": "heart_rate",
+                          "split_value": 95.5,
+                          "impurity_decrease": 0.034293532371520996,
+                          "left_child": {
+                            "feature_idx": 0,
+                            "feature_name": "",
+                            "split_value": 0.0,
+                            "impurity_decrease": 0.0,
+                            "left_child": null,
+                            "right_child": null,
+                            "leaf_node": true,
+                            "prediction": 79,
+                            "depth": 12
+                          },
+                          "right_child": {
+                            "feature_idx": 0,
+                            "feature_name": "",
+                            "split_value": 0.0,
+                            "impurity_decrease": 0.0,
+                            "left_child": null,
+                            "right_child": null,
+                            "leaf_node": true,
+                            "prediction": 108,
+                            "depth": 12
+                          },
+                          "leaf_node": false,
+                          "prediction": 104,
+                          "depth": 11
+                        },
+                        "right_child": {
+                          "feature_idx": 2,
+                          "feature_name": "height",
+                          "split_value": 169.5,
+                          "impurity_decrease": 0.026668906211853027,
+                          "left_child": {
+                            "feature_idx": 3,
+                            "feature_name": "weight",
+                            "split_value": 67.5,
+                            "impurity_decrease": 0.02971714735031128,
+                            "left_child": null,
+                            "right_child": null,
+                            "leaf_node": true,
+                            "prediction": 110,
+                            "depth": 12
+                          },
+                          "right_child": {
+                            "feature_idx": 0,
+                            "feature_name": "",
+                            "split_value": 0.0,
+                            "impurity_decrease": 0.0,
+                            "left_child": null,
+                            "right_child": null,
+                            "leaf_node": true,
+                            "prediction": 114,
+                            "depth": 12
+                          },
+                          "leaf_node": false,
+                          "prediction": 110,
+                          "depth": 11
+                        },
+                        "leaf_node": false,
+                        "prediction": 110,
+                        "depth": 10
+                      },
+                      "leaf_node": false,
+                      "prediction": 110,
+                      "depth": 9
+                    },
+                    "leaf_node": false,
+                    "prediction": 110,
+                    "depth": 8
+                  },
+                  "right_child": {
+                    "feature_idx": 1,
+                    "feature_name": "age",
+                    "split_value": 31.5,
+                    "impurity_decrease": 0.02483808994293213,
+                    "left_child": {
+                      "feature_idx": 3,
+                      "feature_name": "weight",
+                      "split_value": 105.5,
+                      "impurity_decrease": 0.026889264583587646,
+                      "left_child": {
+                        "feature_idx": 2,
+                        "feature_name": "height",
+                        "split_value": 197.5,
+                        "impurity_decrease": 0.029327332973480225,
+                        "left_child": {
+                          "feature_idx": 0,
+                          "feature_name": "",
+                          "split_value": 0.0,
+                          "impurity_decrease": 0.0,
+                          "left_child": null,
+                          "right_child": null,
+                          "leaf_node": true,
+                          "prediction": 82,
+                          "depth": 11
+                        },
+                        "right_child": {
+                          "feature_idx": 0,
+                          "feature_name": "",
+                          "split_value": 0.0,
+                          "impurity_decrease": 0.0,
+                          "left_child": null,
+                          "right_child": null,
+                          "leaf_node": true,
+                          "prediction": 106,
+                          "depth": 11
+                        },
+                        "leaf_node": false,
+                        "prediction": 84,
+                        "depth": 10
+                      },
+                      "right_child": {
+                        "feature_idx": 0,
+                        "feature_name": "",
+                        "split_value": 0.0,
+                        "impurity_decrease": 0.0,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 105,
+                        "depth": 10
+                      },
+                      "leaf_node": false,
+                      "prediction": 100,
+                      "depth": 9
+                    },
+                    "right_child": {
+                      "feature_idx": 1,
+                      "feature_name": "age",
+                      "split_value": 43.5,
+                      "impurity_decrease": 0.05015873908996582,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 120,
+                      "depth": 9
+                    },
+                    "leaf_node": false,
+                    "prediction": 100,
+                    "depth": 8
+                  },
+                  "leaf_node": false,
+                  "prediction": 101,
+                  "depth": 7
+                },
+                "right_child": {
+                  "feature_idx": 6,
+                  "feature_name": "duration",
+                  "split_value": 19.5,
+                  "impurity_decrease": 0.03004831075668335,
+                  "left_child": {
+                    "feature_idx": 2,
+                    "feature_name": "height",
+                    "split_value": 171.5,
+                    "impurity_decrease": 0.06198352575302124,
+                    "left_child": {
+                      "feature_idx": 4,
+                      "feature_name": "body_temp",
+                      "split_value": 40.150000000000006,
+                      "impurity_decrease": 0.10743790864944458,
+                      "left_child": {
+                        "feature_idx": 0,
+                        "feature_name": "",
+                        "split_value": 0.0,
+                        "impurity_decrease": 0.0,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 126,
+                        "depth": 10
+                      },
+                      "right_child": {
+                        "feature_idx": 2,
+                        "feature_name": "height",
+                        "split_value": 164.5,
+                        "impurity_decrease": 0.08333337306976318,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 109,
+                        "depth": 10
+                      },
+                      "leaf_node": false,
+                      "prediction": 109,
+                      "depth": 9
+                    },
+                    "right_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 116,
+                      "depth": 9
+                    },
+                    "leaf_node": false,
+                    "prediction": 109,
+                    "depth": 8
+                  },
+                  "right_child": {
+                    "feature_idx": 3,
+                    "feature_name": "weight",
+                    "split_value": 58.5,
+                    "impurity_decrease": 0.028660237789154053,
+                    "left_child": {
+                      "feature_idx": 3,
+                      "feature_name": "weight",
+                      "split_value": 54.5,
+                      "impurity_decrease": 0.25333333015441895,
+                      "left_child": {
+                        "feature_idx": 0,
+                        "feature_name": "",
+                        "split_value": 0.0,
+                        "impurity_decrease": 0.0,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 142,
+                        "depth": 10
+                      },
+                      "right_child": {
+                        "feature_idx": 6,
+                        "feature_name": "duration",
+                        "split_value": 20.5,
+                        "impurity_decrease": 0.4444444179534912,
+                        "left_child": {
+                          "feature_idx": 0,
+                          "feature_name": "",
+                          "split_value": 0.0,
+                          "impurity_decrease": 0.0,
+                          "left_child": null,
+                          "right_child": null,
+                          "leaf_node": true,
+                          "prediction": 123,
+                          "depth": 11
+                        },
+                        "right_child": {
+                          "feature_idx": 0,
+                          "feature_name": "",
+                          "split_value": 0.0,
+                          "impurity_decrease": 0.0,
+                          "left_child": null,
+                          "right_child": null,
+                          "leaf_node": true,
+                          "prediction": 132,
+                          "depth": 11
+                        },
+                        "leaf_node": false,
+                        "prediction": 123,
+                        "depth": 10
+                      },
+                      "leaf_node": false,
+                      "prediction": 123,
+                      "depth": 9
+                    },
+                    "right_child": {
+                      "feature_idx": 1,
+                      "feature_name": "age",
+                      "split_value": 56.5,
+                      "impurity_decrease": 0.027623474597930908,
+                      "left_child": {
+                        "feature_idx": 3,
+                        "feature_name": "weight",
+                        "split_value": 61.5,
+                        "impurity_decrease": 0.0635417103767395,
+                        "left_child": {
+                          "feature_idx": 0,
+                          "feature_name": "",
+                          "split_value": 0.0,
+                          "impurity_decrease": 0.0,
+                          "left_child": null,
+                          "right_child": null,
+                          "leaf_node": true,
+                          "prediction": 126,
+                          "depth": 11
+                        },
+                        "right_child": {
+                          "feature_idx": 0,
+                          "feature_name": "",
+                          "split_value": 0.0,
+                          "impurity_decrease": 0.0,
+                          "left_child": null,
+                          "right_child": null,
+                          "leaf_node": true,
+                          "prediction": 134,
+                          "depth": 11
+                        },
+                        "leaf_node": false,
+                        "prediction": 134,
+                        "depth": 10
+                      },
+                      "right_child": {
+                        "feature_idx": 0,
+                        "feature_name": "",
+                        "split_value": 0.0,
+                        "impurity_decrease": 0.0,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 130,
+                        "depth": 10
+                      },
+                      "leaf_node": false,
+                      "prediction": 126,
+                      "depth": 9
+                    },
+                    "leaf_node": false,
+                    "prediction": 123,
+                    "depth": 8
+                  },
+                  "leaf_node": false,
+                  "prediction": 123,
+                  "depth": 7
+                },
+                "leaf_node": false,
+                "prediction": 110,
+                "depth": 6
+              },
+              "right_child": {
+                "feature_idx": 1,
+                "feature_name": "age",
+                "split_value": 73.5,
+                "impurity_decrease": 0.020845770835876465,
+                "left_child": {
+                  "feature_idx": 1,
+                  "feature_name": "age",
+                  "split_value": 33.5,
+                  "impurity_decrease": 0.020535528659820557,
+                  "left_child": {
+                    "feature_idx": 0,
+                    "feature_name": "",
+                    "split_value": 0.0,
+                    "impurity_decrease": 0.0,
+                    "left_child": null,
+                    "right_child": null,
+                    "leaf_node": true,
+                    "prediction": 124,
+                    "depth": 8
+                  },
+                  "right_child": {
+                    "feature_idx": 3,
+                    "feature_name": "weight",
+                    "split_value": 62.5,
+                    "impurity_decrease": 0.028977274894714355,
+                    "left_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 142,
+                      "depth": 9
+                    },
+                    "right_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 134,
+                      "depth": 9
+                    },
+                    "leaf_node": false,
+                    "prediction": 136,
+                    "depth": 8
+                  },
+                  "leaf_node": false,
+                  "prediction": 136,
+                  "depth": 7
+                },
+                "right_child": {
+                  "feature_idx": 0,
+                  "feature_name": "",
+                  "split_value": 0.0,
+                  "impurity_decrease": 0.0,
+                  "left_child": null,
+                  "right_child": null,
+                  "leaf_node": true,
+                  "prediction": 147,
+                  "depth": 7
+                },
+                "leaf_node": false,
+                "prediction": 136,
+                "depth": 6
+              },
+              "leaf_node": false,
+              "prediction": 110,
+              "depth": 5
+            },
+            "right_child": {
+              "feature_idx": 1,
+              "feature_name": "age",
+              "split_value": 55.5,
+              "impurity_decrease": 0.006104230880737305,
+              "left_child": {
+                "feature_idx": 5,
+                "feature_name": "heart_rate",
+                "split_value": 106.5,
+                "impurity_decrease": 0.007805764675140381,
+                "left_child": {
+                  "feature_idx": 2,
+                  "feature_name": "height",
+                  "split_value": 172.5,
+                  "impurity_decrease": 0.010133981704711914,
+                  "left_child": {
+                    "feature_idx": 2,
+                    "feature_name": "height",
+                    "split_value": 158.5,
+                    "impurity_decrease": 0.017775416374206543,
+                    "left_child": {
+                      "feature_idx": 2,
+                      "feature_name": "height",
+                      "split_value": 148.5,
+                      "impurity_decrease": 0.033059000968933105,
+                      "left_child": {
+                        "feature_idx": 0,
+                        "feature_name": "",
+                        "split_value": 0.0,
+                        "impurity_decrease": 0.0,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 143,
+                        "depth": 10
+                      },
+                      "right_child": {
+                        "feature_idx": 0,
+                        "feature_name": "",
+                        "split_value": 0.0,
+                        "impurity_decrease": 0.0,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 138,
+                        "depth": 10
+                      },
+                      "leaf_node": false,
+                      "prediction": 138,
+                      "depth": 9
+                    },
+                    "right_child": {
+                      "feature_idx": 1,
+                      "feature_name": "age",
+                      "split_value": 36.5,
+                      "impurity_decrease": 0.025637447834014893,
+                      "left_child": {
+                        "feature_idx": 3,
+                        "feature_name": "weight",
+                        "split_value": 73.5,
+                        "impurity_decrease": 0.030662477016448975,
+                        "left_child": {
+                          "feature_idx": 0,
+                          "feature_name": "",
+                          "split_value": 0.0,
+                          "impurity_decrease": 0.0,
+                          "left_child": null,
+                          "right_child": null,
+                          "leaf_node": true,
+                          "prediction": 130,
+                          "depth": 11
+                        },
+                        "right_child": {
+                          "feature_idx": 0,
+                          "feature_name": "",
+                          "split_value": 0.0,
+                          "impurity_decrease": 0.0,
+                          "left_child": null,
+                          "right_child": null,
+                          "leaf_node": true,
+                          "prediction": 99,
+                          "depth": 11
+                        },
+                        "leaf_node": false,
+                        "prediction": 118,
+                        "depth": 10
+                      },
+                      "right_child": {
+                        "feature_idx": 3,
+                        "feature_name": "weight",
+                        "split_value": 63.5,
+                        "impurity_decrease": 0.04129469394683838,
+                        "left_child": {
+                          "feature_idx": 0,
+                          "feature_name": "",
+                          "split_value": 0.0,
+                          "impurity_decrease": 0.0,
+                          "left_child": null,
+                          "right_child": null,
+                          "leaf_node": true,
+                          "prediction": 132,
+                          "depth": 11
+                        },
+                        "right_child": {
+                          "feature_idx": 0,
+                          "feature_name": "",
+                          "split_value": 0.0,
+                          "impurity_decrease": 0.0,
+                          "left_child": null,
+                          "right_child": null,
+                          "leaf_node": true,
+                          "prediction": 134,
+                          "depth": 11
+                        },
+                        "leaf_node": false,
+                        "prediction": 132,
+                        "depth": 10
+                      },
+                      "leaf_node": false,
+                      "prediction": 132,
+                      "depth": 9
+                    },
+                    "leaf_node": false,
+                    "prediction": 138,
+                    "depth": 8
+                  },
+                  "right_child": {
+                    "feature_idx": 1,
+                    "feature_name": "age",
+                    "split_value": 42.5,
+                    "impurity_decrease": 0.0113411545753479,
+                    "left_child": {
+                      "feature_idx": 4,
+                      "feature_name": "body_temp",
+                      "split_value": 40.349999999999994,
+                      "impurity_decrease": 0.014235317707061768,
+                      "left_child": {
+                        "feature_idx": 2,
+                        "feature_name": "height",
+                        "split_value": 183.5,
+                        "impurity_decrease": 0.19999992847442627,
+                        "left_child": {
+                          "feature_idx": 0,
+                          "feature_name": "",
+                          "split_value": 0.0,
+                          "impurity_decrease": 0.0,
+                          "left_child": null,
+                          "right_child": null,
+                          "leaf_node": true,
+                          "prediction": 148,
+                          "depth": 11
+                        },
+                        "right_child": {
+                          "feature_idx": 0,
+                          "feature_name": "",
+                          "split_value": 0.0,
+                          "impurity_decrease": 0.0,
+                          "left_child": null,
+                          "right_child": null,
+                          "leaf_node": true,
+                          "prediction": 131,
+                          "depth": 11
+                        },
+                        "leaf_node": false,
+                        "prediction": 148,
+                        "depth": 10
+                      },
+                      "right_child": {
+                        "feature_idx": 0,
+                        "feature_name": "",
+                        "split_value": 0.0,
+                        "impurity_decrease": 0.0,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 120,
+                        "depth": 10
+                      },
+                      "leaf_node": false,
+                      "prediction": 135,
+                      "depth": 9
+                    },
+                    "right_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 148,
+                      "depth": 9
+                    },
+                    "leaf_node": false,
+                    "prediction": 148,
+                    "depth": 8
+                  },
+                  "leaf_node": false,
+                  "prediction": 135,
+                  "depth": 7
+                },
+                "right_child": {
+                  "feature_idx": 1,
+                  "feature_name": "age",
+                  "split_value": 46.5,
+                  "impurity_decrease": 0.02636730670928955,
+                  "left_child": {
+                    "feature_idx": 6,
+                    "feature_name": "duration",
+                    "split_value": 23.5,
+                    "impurity_decrease": 0.01990985870361328,
+                    "left_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 138,
+                      "depth": 9
+                    },
+                    "right_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 156,
+                      "depth": 9
+                    },
+                    "leaf_node": false,
+                    "prediction": 156,
+                    "depth": 8
+                  },
+                  "right_child": {
+                    "feature_idx": 0,
+                    "feature_name": "",
+                    "split_value": 0.0,
+                    "impurity_decrease": 0.0,
+                    "left_child": null,
+                    "right_child": null,
+                    "leaf_node": true,
+                    "prediction": 160,
+                    "depth": 8
+                  },
+                  "leaf_node": false,
+                  "prediction": 156,
+                  "depth": 7
+                },
+                "leaf_node": false,
+                "prediction": 135,
+                "depth": 6
+              },
+              "right_child": {
+                "feature_idx": 2,
+                "feature_name": "height",
+                "split_value": 170.5,
+                "impurity_decrease": 0.0191076397895813,
+                "left_child": {
+                  "feature_idx": 2,
+                  "feature_name": "height",
+                  "split_value": 137.5,
+                  "impurity_decrease": 0.036470115184783936,
+                  "left_child": {
+                    "feature_idx": 0,
+                    "feature_name": "",
+                    "split_value": 0.0,
+                    "impurity_decrease": 0.0,
+                    "left_child": null,
+                    "right_child": null,
+                    "leaf_node": true,
+                    "prediction": 142,
+                    "depth": 8
+                  },
+                  "right_child": {
+                    "feature_idx": 0,
+                    "feature_name": "",
+                    "split_value": 0.0,
+                    "impurity_decrease": 0.0,
+                    "left_child": null,
+                    "right_child": null,
+                    "leaf_node": true,
+                    "prediction": 151,
+                    "depth": 8
+                  },
+                  "leaf_node": false,
+                  "prediction": 151,
+                  "depth": 7
+                },
+                "right_child": {
+                  "feature_idx": 5,
+                  "feature_name": "heart_rate",
+                  "split_value": 96.5,
+                  "impurity_decrease": 0.027721107006072998,
+                  "left_child": {
+                    "feature_idx": 1,
+                    "feature_name": "age",
+                    "split_value": 57.5,
+                    "impurity_decrease": 0.12946432828903198,
+                    "left_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 140,
+                      "depth": 9
+                    },
+                    "right_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 126,
+                      "depth": 9
+                    },
+                    "leaf_node": false,
+                    "prediction": 126,
+                    "depth": 8
+                  },
+                  "right_child": {
+                    "feature_idx": 5,
+                    "feature_name": "heart_rate",
+                    "split_value": 98.5,
+                    "impurity_decrease": 0.03140789270401001,
+                    "left_child": {
+                      "feature_idx": 4,
+                      "feature_name": "body_temp",
+                      "split_value": 40.55,
+                      "impurity_decrease": 0.375,
+                      "left_child": {
+                        "feature_idx": 0,
+                        "feature_name": "",
+                        "split_value": 0.0,
+                        "impurity_decrease": 0.0,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 166,
+                        "depth": 10
+                      },
+                      "right_child": {
+                        "feature_idx": 0,
+                        "feature_name": "",
+                        "split_value": 0.0,
+                        "impurity_decrease": 0.0,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 146,
+                        "depth": 10
+                      },
+                      "leaf_node": false,
+                      "prediction": 146,
+                      "depth": 9
+                    },
+                    "right_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 183,
+                      "depth": 9
+                    },
+                    "leaf_node": false,
+                    "prediction": 146,
+                    "depth": 8
+                  },
+                  "leaf_node": false,
+                  "prediction": 146,
+                  "depth": 7
+                },
+                "leaf_node": false,
+                "prediction": 151,
+                "depth": 6
+              },
+              "leaf_node": false,
+              "prediction": 138,
+              "depth": 5
+            },
+            "leaf_node": false,
+            "prediction": 138,
+            "depth": 4
+          },
+          "right_child": {
+            "feature_idx": 5,
+            "feature_name": "heart_rate",
+            "split_value": 108.5,
+            "impurity_decrease": 0.005275726318359375,
+            "left_child": {
+              "feature_idx": 6,
+              "feature_name": "duration",
+              "split_value": 25.5,
+              "impurity_decrease": 0.0074689388275146484,
+              "left_child": {
+                "feature_idx": 3,
+                "feature_name": "weight",
+                "split_value": 57.5,
+                "impurity_decrease": 0.01751500368118286,
+                "left_child": {
+                  "feature_idx": 5,
+                  "feature_name": "heart_rate",
+                  "split_value": 102.5,
+                  "impurity_decrease": 0.13253962993621826,
+                  "left_child": {
+                    "feature_idx": 1,
+                    "feature_name": "age",
+                    "split_value": 28.5,
+                    "impurity_decrease": 0.07755100727081299,
+                    "left_child": null,
+                    "right_child": null,
+                    "leaf_node": true,
+                    "prediction": 144,
+                    "depth": 8
+                  },
+                  "right_child": {
+                    "feature_idx": 5,
+                    "feature_name": "heart_rate",
+                    "split_value": 104.5,
+                    "impurity_decrease": 0.1199999451637268,
+                    "left_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 161,
+                      "depth": 9
+                    },
+                    "right_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 156,
+                      "depth": 9
+                    },
+                    "leaf_node": false,
+                    "prediction": 161,
+                    "depth": 8
+                  },
+                  "leaf_node": false,
+                  "prediction": 144,
+                  "depth": 7
+                },
+                "right_child": {
+                  "feature_idx": 1,
+                  "feature_name": "age",
+                  "split_value": 29.5,
+                  "impurity_decrease": 0.018220722675323486,
+                  "left_child": {
+                    "feature_idx": 3,
+                    "feature_name": "weight",
+                    "split_value": 93.5,
+                    "impurity_decrease": 0.03817397356033325,
+                    "left_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 137,
+                      "depth": 9
+                    },
+                    "right_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 147,
+                      "depth": 9
+                    },
+                    "leaf_node": false,
+                    "prediction": 137,
+                    "depth": 8
+                  },
+                  "right_child": {
+                    "feature_idx": 5,
+                    "feature_name": "heart_rate",
+                    "split_value": 107.5,
+                    "impurity_decrease": 0.02433490753173828,
+                    "left_child": {
+                      "feature_idx": 2,
+                      "feature_name": "height",
+                      "split_value": 186.5,
+                      "impurity_decrease": 0.024740219116210938,
+                      "left_child": {
+                        "feature_idx": 2,
+                        "feature_name": "height",
+                        "split_value": 165.5,
+                        "impurity_decrease": 0.025445520877838135,
+                        "left_child": {
+                          "feature_idx": 0,
+                          "feature_name": "",
+                          "split_value": 0.0,
+                          "impurity_decrease": 0.0,
+                          "left_child": null,
+                          "right_child": null,
+                          "leaf_node": true,
+                          "prediction": 170,
+                          "depth": 11
+                        },
+                        "right_child": {
+                          "feature_idx": 4,
+                          "feature_name": "body_temp",
+                          "split_value": 40.650000000000006,
+                          "impurity_decrease": 0.04728764295578003,
+                          "left_child": {
+                            "feature_idx": 0,
+                            "feature_name": "",
+                            "split_value": 0.0,
+                            "impurity_decrease": 0.0,
+                            "left_child": null,
+                            "right_child": null,
+                            "leaf_node": true,
+                            "prediction": 149,
+                            "depth": 12
+                          },
+                          "right_child": {
+                            "feature_idx": 0,
+                            "feature_name": "",
+                            "split_value": 0.0,
+                            "impurity_decrease": 0.0,
+                            "left_child": null,
+                            "right_child": null,
+                            "leaf_node": true,
+                            "prediction": 144,
+                            "depth": 12
+                          },
+                          "leaf_node": false,
+                          "prediction": 147,
+                          "depth": 11
+                        },
+                        "leaf_node": false,
+                        "prediction": 147,
+                        "depth": 10
+                      },
+                      "right_child": {
+                        "feature_idx": 0,
+                        "feature_name": "",
+                        "split_value": 0.0,
+                        "impurity_decrease": 0.0,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 188,
+                        "depth": 10
+                      },
+                      "leaf_node": false,
+                      "prediction": 149,
+                      "depth": 9
+                    },
+                    "right_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 167,
+                      "depth": 9
+                    },
+                    "leaf_node": false,
+                    "prediction": 149,
+                    "depth": 8
+                  },
+                  "leaf_node": false,
+                  "prediction": 147,
+                  "depth": 7
+                },
+                "leaf_node": false,
+                "prediction": 147,
+                "depth": 6
+              },
+              "right_child": {
+                "feature_idx": 1,
+                "feature_name": "age",
+                "split_value": 52.5,
+                "impurity_decrease": 0.00929558277130127,
+                "left_child": {
+                  "feature_idx": 6,
+                  "feature_name": "duration",
+                  "split_value": 27.5,
+                  "impurity_decrease": 0.01006859540939331,
+                  "left_child": {
+                    "feature_idx": 1,
+                    "feature_name": "age",
+                    "split_value": 50.5,
+                    "impurity_decrease": 0.01990509033203125,
+                    "left_child": {
+                      "feature_idx": 4,
+                      "feature_name": "body_temp",
+                      "split_value": 40.849999999999994,
+                      "impurity_decrease": 0.016119182109832764,
+                      "left_child": {
+                        "feature_idx": 6,
+                        "feature_name": "duration",
+                        "split_value": 26.5,
+                        "impurity_decrease": 0.031462669372558594,
+                        "left_child": {
+                          "feature_idx": 3,
+                          "feature_name": "weight",
+                          "split_value": 84.5,
+                          "impurity_decrease": 0.04629623889923096,
+                          "left_child": null,
+                          "right_child": null,
+                          "leaf_node": true,
+                          "prediction": 165,
+                          "depth": 11
+                        },
+                        "right_child": {
+                          "feature_idx": 2,
+                          "feature_name": "height",
+                          "split_value": 192.5,
+                          "impurity_decrease": 0.044507503509521484,
+                          "left_child": {
+                            "feature_idx": 0,
+                            "feature_name": "",
+                            "split_value": 0.0,
+                            "impurity_decrease": 0.0,
+                            "left_child": null,
+                            "right_child": null,
+                            "leaf_node": true,
+                            "prediction": 155,
+                            "depth": 12
+                          },
+                          "right_child": {
+                            "feature_idx": 0,
+                            "feature_name": "",
+                            "split_value": 0.0,
+                            "impurity_decrease": 0.0,
+                            "left_child": null,
+                            "right_child": null,
+                            "leaf_node": true,
+                            "prediction": 118,
+                            "depth": 12
+                          },
+                          "leaf_node": false,
+                          "prediction": 155,
+                          "depth": 11
+                        },
+                        "leaf_node": false,
+                        "prediction": 155,
+                        "depth": 10
+                      },
+                      "right_child": {
+                        "feature_idx": 4,
+                        "feature_name": "body_temp",
+                        "split_value": 41.05,
+                        "impurity_decrease": 0.041254281997680664,
+                        "left_child": {
+                          "feature_idx": 2,
+                          "feature_name": "height",
+                          "split_value": 198.5,
+                          "impurity_decrease": 0.060553669929504395,
+                          "left_child": {
+                            "feature_idx": 0,
+                            "feature_name": "",
+                            "split_value": 0.0,
+                            "impurity_decrease": 0.0,
+                            "left_child": null,
+                            "right_child": null,
+                            "leaf_node": true,
+                            "prediction": 124,
+                            "depth": 12
+                          },
+                          "right_child": {
+                            "feature_idx": 0,
+                            "feature_name": "",
+                            "split_value": 0.0,
+                            "impurity_decrease": 0.0,
+                            "left_child": null,
+                            "right_child": null,
+                            "leaf_node": true,
+                            "prediction": 174,
+                            "depth": 12
+                          },
+                          "leaf_node": false,
+                          "prediction": 164,
+                          "depth": 11
+                        },
+                        "right_child": {
+                          "feature_idx": 0,
+                          "feature_name": "",
+                          "split_value": 0.0,
+                          "impurity_decrease": 0.0,
+                          "left_child": null,
+                          "right_child": null,
+                          "leaf_node": true,
+                          "prediction": 170,
+                          "depth": 11
+                        },
+                        "leaf_node": false,
+                        "prediction": 161,
+                        "depth": 10
+                      },
+                      "leaf_node": false,
+                      "prediction": 155,
+                      "depth": 9
+                    },
+                    "right_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 155,
+                      "depth": 9
+                    },
+                    "leaf_node": false,
+                    "prediction": 155,
+                    "depth": 8
+                  },
+                  "right_child": {
+                    "feature_idx": 1,
+                    "feature_name": "age",
+                    "split_value": 41.5,
+                    "impurity_decrease": 0.012904763221740723,
+                    "left_child": {
+                      "feature_idx": 3,
+                      "feature_name": "weight",
+                      "split_value": 79.5,
+                      "impurity_decrease": 0.01372218132019043,
+                      "left_child": {
+                        "feature_idx": 0,
+                        "feature_name": "",
+                        "split_value": 0.0,
+                        "impurity_decrease": 0.0,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 170,
+                        "depth": 10
+                      },
+                      "right_child": {
+                        "feature_idx": 0,
+                        "feature_name": "",
+                        "split_value": 0.0,
+                        "impurity_decrease": 0.0,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 188,
+                        "depth": 10
+                      },
+                      "leaf_node": false,
+                      "prediction": 170,
+                      "depth": 9
+                    },
+                    "right_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 191,
+                      "depth": 9
+                    },
+                    "leaf_node": false,
+                    "prediction": 170,
+                    "depth": 8
+                  },
+                  "leaf_node": false,
+                  "prediction": 155,
+                  "depth": 7
+                },
+                "right_child": {
+                  "feature_idx": 3,
+                  "feature_name": "weight",
+                  "split_value": 109.5,
+                  "impurity_decrease": 0.01565086841583252,
+                  "left_child": {
+                    "feature_idx": 2,
+                    "feature_name": "height",
+                    "split_value": 129.5,
+                    "impurity_decrease": 0.0139198899269104,
+                    "left_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 189,
+                      "depth": 9
+                    },
+                    "right_child": {
+                      "feature_idx": 1,
+                      "feature_name": "age",
+                      "split_value": 60.5,
+                      "impurity_decrease": 0.012597620487213135,
+                      "left_child": {
+                        "feature_idx": 0,
+                        "feature_name": "",
+                        "split_value": 0.0,
+                        "impurity_decrease": 0.0,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 176,
+                        "depth": 10
+                      },
+                      "right_child": {
+                        "feature_idx": 0,
+                        "feature_name": "",
+                        "split_value": 0.0,
+                        "impurity_decrease": 0.0,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 230,
+                        "depth": 10
+                      },
+                      "leaf_node": false,
+                      "prediction": 230,
+                      "depth": 9
+                    },
+                    "leaf_node": false,
+                    "prediction": 230,
+                    "depth": 8
+                  },
+                  "right_child": {
+                    "feature_idx": 0,
+                    "feature_name": "",
+                    "split_value": 0.0,
+                    "impurity_decrease": 0.0,
+                    "left_child": null,
+                    "right_child": null,
+                    "leaf_node": true,
+                    "prediction": 248,
+                    "depth": 8
+                  },
+                  "leaf_node": false,
+                  "prediction": 189,
+                  "depth": 7
+                },
+                "leaf_node": false,
+                "prediction": 155,
+                "depth": 6
+              },
+              "leaf_node": false,
+              "prediction": 170,
+              "depth": 5
+            },
+            "right_child": {
+              "feature_idx": 1,
+              "feature_name": "age",
+              "split_value": 40.5,
+              "impurity_decrease": 0.007326662540435791,
+              "left_child": {
+                "feature_idx": 6,
+                "feature_name": "duration",
+                "split_value": 28.5,
+                "impurity_decrease": 0.014232218265533447,
+                "left_child": {
+                  "feature_idx": 5,
+                  "feature_name": "heart_rate",
+                  "split_value": 112.5,
+                  "impurity_decrease": 0.022123515605926514,
+                  "left_child": {
+                    "feature_idx": 2,
+                    "feature_name": "height",
+                    "split_value": 190.5,
+                    "impurity_decrease": 0.029098033905029297,
+                    "left_child": {
+                      "feature_idx": 1,
+                      "feature_name": "age",
+                      "split_value": 37.5,
+                      "impurity_decrease": 0.02586042881011963,
+                      "left_child": {
+                        "feature_idx": 3,
+                        "feature_name": "weight",
+                        "split_value": 68.5,
+                        "impurity_decrease": 0.02606302499771118,
+                        "left_child": {
+                          "feature_idx": 0,
+                          "feature_name": "",
+                          "split_value": 0.0,
+                          "impurity_decrease": 0.0,
+                          "left_child": null,
+                          "right_child": null,
+                          "leaf_node": true,
+                          "prediction": 179,
+                          "depth": 11
+                        },
+                        "right_child": {
+                          "feature_idx": 0,
+                          "feature_name": "",
+                          "split_value": 0.0,
+                          "impurity_decrease": 0.0,
+                          "left_child": null,
+                          "right_child": null,
+                          "leaf_node": true,
+                          "prediction": 153,
+                          "depth": 11
+                        },
+                        "leaf_node": false,
+                        "prediction": 179,
+                        "depth": 10
+                      },
+                      "right_child": {
+                        "feature_idx": 3,
+                        "feature_name": "weight",
+                        "split_value": 60.5,
+                        "impurity_decrease": 0.2500000298023224,
+                        "left_child": {
+                          "feature_idx": 0,
+                          "feature_name": "",
+                          "split_value": 0.0,
+                          "impurity_decrease": 0.0,
+                          "left_child": null,
+                          "right_child": null,
+                          "leaf_node": true,
+                          "prediction": 179,
+                          "depth": 11
+                        },
+                        "right_child": {
+                          "feature_idx": 0,
+                          "feature_name": "",
+                          "split_value": 0.0,
+                          "impurity_decrease": 0.0,
+                          "left_child": null,
+                          "right_child": null,
+                          "leaf_node": true,
+                          "prediction": 187,
+                          "depth": 11
+                        },
+                        "leaf_node": false,
+                        "prediction": 179,
+                        "depth": 10
+                      },
+                      "leaf_node": false,
+                      "prediction": 179,
+                      "depth": 9
+                    },
+                    "right_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 184,
+                      "depth": 9
+                    },
+                    "leaf_node": false,
+                    "prediction": 179,
+                    "depth": 8
+                  },
+                  "right_child": {
+                    "feature_idx": 2,
+                    "feature_name": "height",
+                    "split_value": 187.5,
+                    "impurity_decrease": 0.041849374771118164,
+                    "left_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 194,
+                      "depth": 9
+                    },
+                    "right_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 191,
+                      "depth": 9
+                    },
+                    "leaf_node": false,
+                    "prediction": 194,
+                    "depth": 8
+                  },
+                  "leaf_node": false,
+                  "prediction": 179,
+                  "depth": 7
+                },
+                "right_child": {
+                  "feature_idx": 5,
+                  "feature_name": "heart_rate",
+                  "split_value": 111.5,
+                  "impurity_decrease": 0.02757495641708374,
+                  "left_child": {
+                    "feature_idx": 0,
+                    "feature_name": "",
+                    "split_value": 0.0,
+                    "impurity_decrease": 0.0,
+                    "left_child": null,
+                    "right_child": null,
+                    "leaf_node": true,
+                    "prediction": 189,
+                    "depth": 8
+                  },
+                  "right_child": {
+                    "feature_idx": 5,
+                    "feature_name": "heart_rate",
+                    "split_value": 119.5,
+                    "impurity_decrease": 0.034821152687072754,
+                    "left_child": {
+                      "feature_idx": 5,
+                      "feature_name": "heart_rate",
+                      "split_value": 113.5,
+                      "impurity_decrease": 0.03557342290878296,
+                      "left_child": {
+                        "feature_idx": 0,
+                        "feature_name": "",
+                        "split_value": 0.0,
+                        "impurity_decrease": 0.0,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 200,
+                        "depth": 10
+                      },
+                      "right_child": {
+                        "feature_idx": 0,
+                        "feature_name": "",
+                        "split_value": 0.0,
+                        "impurity_decrease": 0.0,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 201,
+                        "depth": 10
+                      },
+                      "leaf_node": false,
+                      "prediction": 201,
+                      "depth": 9
+                    },
+                    "right_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 219,
+                      "depth": 9
+                    },
+                    "leaf_node": false,
+                    "prediction": 201,
+                    "depth": 8
+                  },
+                  "leaf_node": false,
+                  "prediction": 219,
+                  "depth": 7
+                },
+                "leaf_node": false,
+                "prediction": 179,
+                "depth": 6
+              },
+              "right_child": {
+                "feature_idx": 3,
+                "feature_name": "weight",
+                "split_value": 83.5,
+                "impurity_decrease": 0.014976561069488525,
+                "left_child": {
+                  "feature_idx": 5,
+                  "feature_name": "heart_rate",
+                  "split_value": 110.5,
+                  "impurity_decrease": 0.016775429248809814,
+                  "left_child": {
+                    "feature_idx": 1,
+                    "feature_name": "age",
+                    "split_value": 68.5,
+                    "impurity_decrease": 0.07635331153869629,
+                    "left_child": {
+                      "feature_idx": 4,
+                      "feature_name": "body_temp",
+                      "split_value": 41.150000000000006,
+                      "impurity_decrease": 0.07034844160079956,
+                      "left_child": {
+                        "feature_idx": 0,
+                        "feature_name": "",
+                        "split_value": 0.0,
+                        "impurity_decrease": 0.0,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 217,
+                        "depth": 10
+                      },
+                      "right_child": {
+                        "feature_idx": 4,
+                        "feature_name": "body_temp",
+                        "split_value": 41.25,
+                        "impurity_decrease": 0.2500000298023224,
+                        "left_child": {
+                          "feature_idx": 0,
+                          "feature_name": "",
+                          "split_value": 0.0,
+                          "impurity_decrease": 0.0,
+                          "left_child": null,
+                          "right_child": null,
+                          "leaf_node": true,
+                          "prediction": 174,
+                          "depth": 11
+                        },
+                        "right_child": {
+                          "feature_idx": 0,
+                          "feature_name": "",
+                          "split_value": 0.0,
+                          "impurity_decrease": 0.0,
+                          "left_child": null,
+                          "right_child": null,
+                          "leaf_node": true,
+                          "prediction": 182,
+                          "depth": 11
+                        },
+                        "leaf_node": false,
+                        "prediction": 182,
+                        "depth": 10
+                      },
+                      "leaf_node": false,
+                      "prediction": 217,
+                      "depth": 9
+                    },
+                    "right_child": {
+                      "feature_idx": 1,
+                      "feature_name": "age",
+                      "split_value": 69.5,
+                      "impurity_decrease": 0.12000000476837158,
+                      "left_child": {
+                        "feature_idx": 0,
+                        "feature_name": "",
+                        "split_value": 0.0,
+                        "impurity_decrease": 0.0,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 202,
+                        "depth": 10
+                      },
+                      "right_child": {
+                        "feature_idx": 0,
+                        "feature_name": "",
+                        "split_value": 0.0,
+                        "impurity_decrease": 0.0,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 239,
+                        "depth": 10
+                      },
+                      "leaf_node": false,
+                      "prediction": 202,
+                      "depth": 9
+                    },
+                    "leaf_node": false,
+                    "prediction": 217,
+                    "depth": 8
+                  },
+                  "right_child": {
+                    "feature_idx": 5,
+                    "feature_name": "heart_rate",
+                    "split_value": 115.5,
+                    "impurity_decrease": 0.02261561155319214,
+                    "left_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 193,
+                      "depth": 9
+                    },
+                    "right_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 203,
+                      "depth": 9
+                    },
+                    "leaf_node": false,
+                    "prediction": 193,
+                    "depth": 8
+                  },
+                  "leaf_node": false,
+                  "prediction": 231,
+                  "depth": 7
+                },
+                "right_child": {
+                  "feature_idx": 2,
+                  "feature_name": "height",
+                  "split_value": 180.5,
+                  "impurity_decrease": 0.03600001335144043,
+                  "left_child": {
+                    "feature_idx": 3,
+                    "feature_name": "weight",
+                    "split_value": 86.5,
+                    "impurity_decrease": 0.19999992847442627,
+                    "left_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 249,
+                      "depth": 9
+                    },
+                    "right_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 254,
+                      "depth": 9
+                    },
+                    "leaf_node": false,
+                    "prediction": 230,
+                    "depth": 8
+                  },
+                  "right_child": {
+                    "feature_idx": 5,
+                    "feature_name": "heart_rate",
+                    "split_value": 116.5,
+                    "impurity_decrease": 0.04146665334701538,
+                    "left_child": {
+                      "feature_idx": 2,
+                      "feature_name": "height",
+                      "split_value": 209.5,
+                      "impurity_decrease": 0.04135096073150635,
+                      "left_child": {
+                        "feature_idx": 3,
+                        "feature_name": "weight",
+                        "split_value": 98.5,
+                        "impurity_decrease": 0.040495872497558594,
+                        "left_child": {
+                          "feature_idx": 0,
+                          "feature_name": "",
+                          "split_value": 0.0,
+                          "impurity_decrease": 0.0,
+                          "left_child": null,
+                          "right_child": null,
+                          "leaf_node": true,
+                          "prediction": 252,
+                          "depth": 11
+                        },
+                        "right_child": {
+                          "feature_idx": 0,
+                          "feature_name": "",
+                          "split_value": 0.0,
+                          "impurity_decrease": 0.0,
+                          "left_child": null,
+                          "right_child": null,
+                          "leaf_node": true,
+                          "prediction": 249,
+                          "depth": 11
+                        },
+                        "leaf_node": false,
+                        "prediction": 251,
+                        "depth": 10
+                      },
+                      "right_child": {
+                        "feature_idx": 0,
+                        "feature_name": "",
+                        "split_value": 0.0,
+                        "impurity_decrease": 0.0,
+                        "left_child": null,
+                        "right_child": null,
+                        "leaf_node": true,
+                        "prediction": 266,
+                        "depth": 10
+                      },
+                      "leaf_node": false,
+                      "prediction": 251,
+                      "depth": 9
+                    },
+                    "right_child": {
+                      "feature_idx": 0,
+                      "feature_name": "",
+                      "split_value": 0.0,
+                      "impurity_decrease": 0.0,
+                      "left_child": null,
+                      "right_child": null,
+                      "leaf_node": true,
+                      "prediction": 300,
+                      "depth": 9
+                    },
+                    "leaf_node": false,
+                    "prediction": 252,
+                    "depth": 8
+                  },
+                  "leaf_node": false,
+                  "prediction": 252,
+                  "depth": 7
+                },
+                "leaf_node": false,
+                "prediction": 193,
+                "depth": 6
+              },
+              "leaf_node": false,
+              "prediction": 193,
+              "depth": 5
+            },
+            "leaf_node": false,
+            "prediction": 193,
+            "depth": 4
+          },
+          "leaf_node": false,
+          "prediction": 138,
+          "depth": 3
+        },
+        "leaf_node": false,
+        "prediction": 104,
+        "depth": 2
+      },
+      "leaf_node": false,
+      "prediction": 23,
+      "depth": 1
+    },
+    "leaf_node": false,
+    "prediction": 13,
+    "depth": 0
+  },
+  "num_features": 7
+}
