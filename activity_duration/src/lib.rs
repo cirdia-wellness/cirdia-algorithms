@@ -27,16 +27,36 @@
 //!
 //! Based on American Heart Association (AHA) [data](https://www.heart.org/en/healthy-living/fitness/fitness-basics/target-heart-rates).
 
-use time::{Duration, PrimitiveDateTime};
+use std::time::Duration;
 
-#[derive(Debug)]
+pub mod pulse_points;
+
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+pub struct ActivityRecord {
+    pub heart_rate: u8,
+    pub timestamp: Duration,
+}
+
+impl From<(Duration, u8)> for ActivityRecord {
+    fn from((timestamp, heart_rate): (Duration, u8)) -> Self {
+        Self {
+            heart_rate,
+            timestamp,
+        }
+    }
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct Report {
     pub total_resting_duration: Duration,
     pub total_exercise_duration: Duration,
-    pub activity: Vec<(PrimitiveDateTime, Activity)>,
+    pub activity: Vec<Activity>,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub enum ActivityKind {
     VO2,
     Anaerobic,
@@ -97,64 +117,65 @@ impl ActivityKind {
     }
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct Activity {
     pub heart_rate: u8,
     pub kind: ActivityKind,
+    pub duration: Duration,
 }
 
 /// Report of user activity based on heart rate.
 ///
 /// Params:
 /// - `rhr` - resting heart rate
-pub fn heart_activity(
-    heart_rates: impl IntoIterator<Item = (PrimitiveDateTime, u8)>,
+pub fn heart_activity<T: Into<ActivityRecord>>(
+    heart_rates: impl IntoIterator<Item = T>,
     age: u8,
     rhr: u8,
 ) -> Report {
-    let heart_rates = heart_rates
+    const WINDOW_SIZE: usize = 2;
+
+    let mut heart_rates = heart_rates
         .into_iter()
-        .map(|(time, heart_rate)| {
-            (
-                time,
-                Activity {
-                    heart_rate,
-                    kind: ActivityKind::from_rate(age, rhr, heart_rate),
-                },
-            )
-        })
-        .collect::<Vec<(PrimitiveDateTime, Activity)>>();
+        .map(Into::into)
+        .collect::<Vec<ActivityRecord>>();
+
+    heart_rates.sort_by_key(|this| this.timestamp);
 
     let mut total_resting_duration = Duration::default();
     let mut total_exercise_duration = Duration::default();
 
-    if heart_rates.len() < 2 {
-        return Report {
-            total_resting_duration,
-            total_exercise_duration,
-            activity: heart_rates,
-        };
-    }
+    let activities = heart_rates
+        .windows(WINDOW_SIZE)
+        .map(|this| {
+            let ActivityRecord {
+                heart_rate,
+                timestamp,
+            } = &this[0];
+            let second_activity = &this[1];
 
-    for i in 0..(heart_rates.len() - 1) {
-        let ((first_time, activity), (second_time, _)) =
-            match (heart_rates.get(i), heart_rates.get(i + 1)) {
-                (Some(first), Some(second)) => (first, second),
-                _ => continue,
-            };
+            let duration = second_activity.timestamp - *timestamp;
 
-        let time_diff = *second_time - *first_time;
+            let kind = ActivityKind::from_rate(age, rhr, *heart_rate);
 
-        match activity.kind.is_exercising() {
-            true => total_exercise_duration += time_diff,
-            false => total_resting_duration += time_diff,
-        }
-    }
+            match kind.is_exercising() {
+                true => total_exercise_duration += duration,
+                false => total_resting_duration += duration,
+            }
+
+            Activity {
+                heart_rate: *heart_rate,
+                kind,
+                duration,
+            }
+        })
+        .collect::<Vec<_>>();
 
     Report {
         total_resting_duration,
         total_exercise_duration,
-        activity: heart_rates,
+        activity: activities,
     }
 }
 
@@ -162,16 +183,9 @@ pub fn heart_activity(
 mod tests {
     use super::*;
 
-    use time::{Duration, macros::datetime};
-
-    fn dt(sec: i64) -> PrimitiveDateTime {
-        // Helper to create a PrimitiveDateTime at a given second offset
-        datetime!(2024-01-01 00:00:00) + Duration::seconds(sec)
-    }
-
     #[test]
     fn test_empty_input() {
-        let report = heart_activity(vec![], 30, 60);
+        let report = heart_activity::<ActivityRecord>(vec![], 30, 60);
         assert_eq!(report.total_resting_duration, Duration::ZERO);
         assert_eq!(report.total_exercise_duration, Duration::ZERO);
         assert!(report.activity.is_empty());
@@ -179,38 +193,41 @@ mod tests {
 
     #[test]
     fn test_single_entry() {
-        let report = heart_activity(vec![(dt(0), 70)], 30, 60);
+        let report = heart_activity(vec![(Duration::from_secs(0), 70)], 30, 60);
         assert_eq!(report.total_resting_duration, Duration::ZERO);
         assert_eq!(report.total_exercise_duration, Duration::ZERO);
-        assert_eq!(report.activity.len(), 1);
+        assert!(report.activity.is_empty());
     }
 
     #[test]
     fn test_all_resting() {
-        let data = vec![(dt(0), 60), (dt(10), 61), (dt(20), 62)];
+        let data = vec![
+            (Duration::from_secs(0), 60),
+            (Duration::from_secs(10), 61),
+            (Duration::from_secs(20), 62),
+        ];
         let report = heart_activity(data, 40, 60);
         assert_eq!(report.total_exercise_duration, Duration::ZERO);
-        assert_eq!(report.total_resting_duration, Duration::seconds(20));
+        assert_eq!(report.total_resting_duration, Duration::from_secs(20));
         assert!(
             report
                 .activity
                 .iter()
-                .all(|(_, a)| a.kind == ActivityKind::Resting)
+                .all(|a| a.kind == ActivityKind::Resting)
         );
     }
 
     #[test]
     fn test_all_vo2() {
-        let data = vec![(dt(0), 200), (dt(10), 201), (dt(20), 202)];
+        let data = vec![
+            (Duration::from_secs(0), 200),
+            (Duration::from_secs(10), 201),
+            (Duration::from_secs(20), 202),
+        ];
         let report = heart_activity(data, 20, 60);
         assert_eq!(report.total_resting_duration, Duration::ZERO);
-        assert_eq!(report.total_exercise_duration, Duration::seconds(20));
-        assert!(
-            report
-                .activity
-                .iter()
-                .all(|(_, a)| a.kind == ActivityKind::VO2)
-        );
+        assert_eq!(report.total_exercise_duration, Duration::from_secs(20));
+        assert!(report.activity.iter().all(|a| a.kind == ActivityKind::VO2));
     }
 
     #[test]
@@ -228,12 +245,12 @@ mod tests {
         ];
 
         let data = vec![
-            (dt(0), 59),        // Resting
-            (dt(10), zones[0]), // WarmUp
-            (dt(20), zones[1]), // FatBurn
-            (dt(30), zones[2]), // Aerobic
-            (dt(40), zones[3]), // Anaerobic
-            (dt(50), zones[4]), // VO2
+            (Duration::from_secs(0), 59),        // Resting
+            (Duration::from_secs(10), zones[0]), // WarmUp
+            (Duration::from_secs(20), zones[1]), // FatBurn
+            (Duration::from_secs(30), zones[2]), // Aerobic
+            (Duration::from_secs(40), zones[3]), // Anaerobic
+            (Duration::from_secs(50), zones[4]), // VO2
         ];
         let report = heart_activity(data.clone(), age, rhr as u8);
 
@@ -245,7 +262,7 @@ mod tests {
             ActivityKind::Anaerobic,
             ActivityKind::VO2,
         ];
-        for ((_, activity), expected_kind) in report.activity.iter().zip(expected_kinds.iter()) {
+        for (activity, expected_kind) in report.activity.iter().zip(expected_kinds.iter()) {
             assert_eq!(&activity.kind, expected_kind);
         }
 
@@ -253,8 +270,8 @@ mod tests {
         let mut expected_rest = Duration::ZERO;
         let mut expected_ex = Duration::ZERO;
         for i in 0..data.len() - 1 {
-            let kind = report.activity[i].1.kind;
-            let diff = Duration::seconds(10);
+            let kind = report.activity[i].kind;
+            let diff = Duration::from_secs(10);
             if kind.is_exercising() {
                 expected_ex += diff;
             } else {
@@ -274,10 +291,10 @@ mod tests {
         let anaerobic = ((mhr - rhr) * 0.8 + rhr).floor() as u8;
 
         let data = vec![
-            (dt(0), 54),         // Resting
-            (dt(10), aerobic),   // Aerobic
-            (dt(20), anaerobic), // Anaerobic
-            (dt(30), 54),        // Resting
+            (Duration::from_secs(0), 54),         // Resting
+            (Duration::from_secs(10), aerobic),   // Aerobic
+            (Duration::from_secs(20), anaerobic), // Anaerobic
+            (Duration::from_secs(30), 54),        // Resting
         ];
         let report = heart_activity(data, age, rhr as u8);
 
@@ -285,22 +302,24 @@ mod tests {
         // Second: Aerobic (10-20)
         // Third: Anaerobic (20-30)
         // Last: Resting (no interval after)
-        assert_eq!(report.total_resting_duration, Duration::seconds(10));
-        assert_eq!(report.total_exercise_duration, Duration::seconds(20));
-        assert_eq!(report.activity[0].1.kind, ActivityKind::Resting);
-        assert_eq!(report.activity[1].1.kind, ActivityKind::Aerobic);
-        assert_eq!(report.activity[2].1.kind, ActivityKind::Anaerobic);
-        assert_eq!(report.activity[3].1.kind, ActivityKind::Resting);
+        assert_eq!(report.total_resting_duration, Duration::from_secs(10));
+        assert_eq!(report.total_exercise_duration, Duration::from_secs(20));
+        assert_eq!(report.activity[0].kind, ActivityKind::Resting);
+        assert_eq!(report.activity[1].kind, ActivityKind::Aerobic);
+        assert_eq!(report.activity[2].kind, ActivityKind::Anaerobic);
     }
 
     #[test]
     fn test_non_monotonic_timestamps() {
         let age = 35;
         let rhr = 65;
-        let data = vec![(dt(20), 80), (dt(0), 60), (dt(10), 70)];
+        let data = vec![
+            (Duration::from_secs(20), 80),
+            (Duration::from_secs(0), 60),
+            (Duration::from_secs(10), 70),
+        ];
         let report = heart_activity(data, age, rhr);
-        // Should not panic, but durations may be negative or nonsensical
-        assert_eq!(report.activity.len(), 3);
+        assert_eq!(report.activity.len(), 2);
     }
 
     #[test]
@@ -310,15 +329,14 @@ mod tests {
         let mut data = Vec::new();
         for i in 0..1000 {
             let hr = if i % 2 == 0 { 60 } else { 180 };
-            data.push((dt(i as i64), hr));
+            data.push((Duration::from_secs(i), hr));
         }
         let report = heart_activity(data, age, rhr);
         // Should process all entries
-        assert_eq!(report.activity.len(), 1000);
-        // Durations should sum to 999 seconds
+        assert_eq!(report.activity.len(), 999);
         assert_eq!(
             report.total_resting_duration + report.total_exercise_duration,
-            Duration::seconds(999)
+            Duration::from_secs(999)
         );
     }
 }
