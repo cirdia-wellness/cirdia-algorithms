@@ -53,6 +53,8 @@ pub fn movement_from_gps(data: impl IntoIterator<Item = Gps>) -> Vec<Movement> {
             Movement {
                 distance: Distance::from_kilometers(distance),
                 duration: second.timestamp - first.timestamp,
+                from: Location::from(first),
+                to: Location::from(second),
             }
         })
         .collect()
@@ -64,13 +66,20 @@ pub fn movement_from_gps(data: impl IntoIterator<Item = Gps>) -> Vec<Movement> {
 /// # Params
 /// - data - gps data which sorted by timestamp in asc order
 /// - height - height of person in meters
-pub fn steps_from_gps(data: impl IntoIterator<Item = Gps>, height: f64) -> f64 {
+/// - upper_threshold_kmphr - threshold after which algorithm stops counting this movements as running/walking and don't track as steps
+pub fn steps_from_gps(
+    data: impl IntoIterator<Item = Gps>,
+    height: f64,
+    upper_threshold_kmphr: Option<f64>,
+) -> f64 {
     let steps_lenght = height * 0.41;
+
+    let upper_threshold_kmphr = upper_threshold_kmphr.unwrap_or(SPEED_THRESHOLD_KMPHR);
 
     movement_from_gps(data)
         .into_iter()
         .filter_map(|this| {
-            if SPEED_THRESHOLD_KMPHR < this.speed_kmhr() {
+            if upper_threshold_kmphr < this.speed_kmhr() {
                 return None;
             }
 
@@ -148,7 +157,7 @@ mod tests {
 
         let expected = 806.0;
 
-        let actual = steps_from_gps(gps, 1.9);
+        let actual = steps_from_gps(gps, 1.9, None);
 
         assert_eq!(expected, actual);
     }
@@ -172,7 +181,7 @@ mod tests {
 
         let expected = 0.0;
 
-        let actual = steps_from_gps(gps, 1.9);
+        let actual = steps_from_gps(gps, 1.9, None);
 
         assert_eq!(expected, actual);
     }
@@ -196,7 +205,7 @@ mod tests {
 
         let expected = 806.0;
 
-        let actual = steps_from_gps(gps, 1.9);
+        let actual = steps_from_gps(gps, 1.9, None);
 
         assert_eq!(expected, actual);
     }
@@ -220,7 +229,7 @@ mod tests {
 
         let expected = 809.0;
 
-        let actual = steps_from_gps(gps, 1.9);
+        let actual = steps_from_gps(gps, 1.9, None);
 
         assert_eq!(expected, actual);
     }
