@@ -1,13 +1,15 @@
 [workspace]
 members = [
     "activity_duration",
+    "steps",
     "heart_rate",
 ]
 resolver = "2"
 
 [workspace.dependencies]
+csv = "1.3"
+serde = { version = "1.0", features = [ "derive" ] }
 time = { version = "0.3" }
-serde = { version = "1", features = [ "derive" ] }
 
 [workspace.lints.rust]
 rust_2018_idioms = "deny"
