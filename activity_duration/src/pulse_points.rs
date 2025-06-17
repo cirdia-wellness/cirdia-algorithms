@@ -35,9 +35,9 @@ pub enum PulseRateCategory {
 impl From<ActivityKind> for PulseRateCategory {
     fn from(value: ActivityKind) -> Self {
         match value {
-            ActivityKind::VO2 | ActivityKind::Anaerobic | ActivityKind::Aerobic => Self::High,
-            ActivityKind::FatBurn | ActivityKind::WarmUp => Self::Medium,
-            ActivityKind::Resting => Self::Low,
+            ActivityKind::VO2 | ActivityKind::Anaerobic => Self::High,
+            ActivityKind::WarmUp | ActivityKind::Aerobic => Self::Medium,
+            ActivityKind::FatBurn | ActivityKind::Resting => Self::Low,
         }
     }
 }
