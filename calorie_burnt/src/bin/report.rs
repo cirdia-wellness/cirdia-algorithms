@@ -1,5 +1,6 @@
 use std::{fs::File, io::Write, path::PathBuf};
 
+use calorie_burnt::Sex;
 use linfa::traits::Predict;
 
 #[derive(Debug)]
@@ -10,7 +11,7 @@ use linfa::traits::Predict;
 )]
 struct TestDataCsv {
     user_id: String,
-    gender: String,
+    gender: Sex,
     age: u8,
     height: f64,
     weight: f64,
@@ -90,6 +91,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         false => None,
     };
 
+    // 0 - Threshold for precision
+    // 1 - Count for this 10% precision category
+    // 2 -  Count for all precision >= threshold
     let mut threshold = [
         (0.9, 0, 0),
         (0.8, 0, 0),
@@ -117,10 +121,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         let data = ndarray::Array2::from_shape_vec(
             (1, 7),
             vec![
-                match gender.contains("male") {
-                    true => 0.0,
-                    false => 1.0,
-                },
+                f64::from(gender),
                 age as f64,
                 height,
                 weight,

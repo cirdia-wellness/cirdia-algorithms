@@ -1,8 +1,12 @@
+use calorie_burnt::Sex;
 use csv::Reader;
 use linfa::{Dataset, traits::Fit};
 use ndarray::Array2;
 use std::error::Error;
 use std::path::{Path, PathBuf};
+
+const ARRAY_SIZE: usize = 8;
+const TRAINING_SLICE: usize = ARRAY_SIZE - 1;
 
 #[derive(Debug)]
 #[cfg_attr(
@@ -13,7 +17,7 @@ use std::path::{Path, PathBuf};
 struct TestDataCsv {
     #[allow(dead_code)]
     user_id: String,
-    gender: String,
+    gender: Sex,
     age: u8,
     height: f64,
     weight: f64,
@@ -40,8 +44,6 @@ pub struct Args {
 }
 
 fn load_data(file_path: impl AsRef<Path>) -> Result<Array2<f64>, Box<dyn Error>> {
-    const ARRAY_SIZE: usize = 8;
-
     let mut reader = Reader::from_path(file_path.as_ref())
         .map_err(|e| format!("Failed to open input file. Reason: {e}"))?;
 
@@ -61,10 +63,7 @@ fn load_data(file_path: impl AsRef<Path>) -> Result<Array2<f64>, Box<dyn Error>>
                  duration,
              }| {
                 [
-                    match gender.contains("male") {
-                        true => 0.0,
-                        false => 1.0,
-                    },
+                    f64::from(gender),
                     age as f64,
                     height,
                     weight,
@@ -94,8 +93,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let array = load_data(input)?;
 
     let (data, targets) = (
-        array.slice(ndarray::s![.., 0..7]).to_owned(),
-        array.column(7).to_owned(),
+        array.slice(ndarray::s![.., 0..TRAINING_SLICE]).to_owned(),
+        array.column(TRAINING_SLICE).to_owned(),
     );
 
     println!("Number of records for training: {}", data.len());
