@@ -2,6 +2,7 @@
 members = [
     "activity_duration",
     "steps",
+    "heart_rate",
 ]
 resolver = "2"
 

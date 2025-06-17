@@ -4,10 +4,13 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-time = { workspace = true, features = []}
+serde = { workspace = true, optional = true }
 
 [dev-dependencies]
-time = { workspace = true, features = ["macros"] }
+
+[features]
+default = []
+serde = [ "dep:serde" ]
 
 [lints]
 workspace = true
