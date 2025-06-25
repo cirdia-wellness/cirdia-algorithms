@@ -4,6 +4,7 @@ members = [
     "calorie_burnt",
     "steps",
     "heart_rate",
+    "sleep",
 ]
 resolver = "2"
 
