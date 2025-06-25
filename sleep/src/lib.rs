@@ -81,12 +81,18 @@ impl Default for DetectionOptions {
 }
 
 #[derive(Debug, Clone)]
-pub struct DataPoint {
+struct DataPoint {
     pub magnitude_delta: f64,
     pub heart_rate: (u8, u8),
-    pub temperature: (f64, f64),
+    // pub temperature: (f64, f64),
     pub timestamp_start: std::time::Duration,
     pub timestamp_end: std::time::Duration,
+}
+
+impl DataPoint {
+    pub fn duration(&self) -> std::time::Duration {
+        self.timestamp_end - self.timestamp_start
+    }
 }
 
 #[derive(Debug, Clone)]
@@ -129,7 +135,7 @@ fn sleep_detection(
             DataPoint {
                 magnitude_delta,
                 heart_rate: (first.heart_rate, second.heart_rate),
-                temperature: (first.temperature, second.temperature),
+                // temperature: (first.temperature, second.temperature),
                 timestamp_start: first.timestamp,
                 timestamp_end: second.timestamp,
             }
@@ -199,4 +205,29 @@ fn sleep_detection(
         .enumerate()
         .filter(|(index, _)| sleep_indexes.contains(index))
         .collect()
+}
+
+pub fn sleep_duration(
+    data: impl IntoIterator<Item = SleepMetrics>,
+    opt: DetectionOptions,
+    resting_heart_rate: u8,
+) -> std::time::Duration {
+    let data = sleep_detection(data, opt, resting_heart_rate);
+
+    let (_, time) = data.into_iter().fold(
+        (0, std::time::Duration::default()),
+        |(prev_index, mut time), (index, point)| {
+            if prev_index == 0 {
+                time += point.duration();
+            }
+
+            if prev_index + 1 == index {
+                time += point.duration();
+            }
+
+            (index, time)
+        },
+    );
+
+    time
 }
