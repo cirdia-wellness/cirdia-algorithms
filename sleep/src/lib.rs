@@ -163,18 +163,9 @@ fn sleep_detection(
             jumps_counter += 1;
         }
 
-        let first_diff = match resting_heart_rate > *first_hr {
-            true => resting_heart_rate - *first_hr,
-            false => *first_hr - resting_heart_rate,
-        };
-        let second_diff = match resting_heart_rate > *second_hr {
-            true => resting_heart_rate - *second_hr,
-            false => *second_hr - resting_heart_rate,
-        };
-
         if jumps_counter > allowed_magnitude_jumps
-            || first_diff > max_heart_rate_diff
-            || second_diff > max_heart_rate_diff
+            || resting_heart_rate.abs_diff(*first_hr) > max_heart_rate_diff
+            || resting_heart_rate.abs_diff(*second_hr) > max_heart_rate_diff
             || time_diff > max_delay
         {
             jumps_counter = 0;
