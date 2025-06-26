@@ -236,3 +236,142 @@ pub fn sleep_duration(
 
     time
 }
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn make_metrics(
+        times: impl IntoIterator<Item = u64>,
+        mags: impl IntoIterator<Item = (f64, f64, f64)>,
+        heart_rates: impl IntoIterator<Item = u8>,
+        temps: impl IntoIterator<Item = f64>,
+    ) -> Vec<SleepMetrics> {
+        times
+            .into_iter()
+            .zip(mags)
+            .zip(heart_rates)
+            .zip(temps)
+            .map(|(((t, (x, y, z)), heart_rate), temperature)| SleepMetrics {
+                accelerometer: Accelerometer { x, y, z },
+                heart_rate,
+                temperature,
+                timestamp: Duration::from_secs(t),
+            })
+            .collect()
+    }
+
+    #[test]
+    fn detects_sleep_when_no_movement_and_heart_rate_ok() {
+        let times = [0, 60, 120, 180, 240, 300];
+        let mags = [(0.0, 0.0, 1.0); 6];
+        let heart_rates = [60, 61, 62, 60, 61, 62];
+        let temps = [36.5; 6];
+        let data = make_metrics(times, mags, heart_rates, temps);
+
+        let opt = DetectionOptions::new()
+            .set_duration_for_movement(Duration::from_secs(60 * 3))
+            .set_max_heart_rate_diff(5);
+
+        let result = sleep_detection(data, opt, 60);
+        assert!(!result.is_empty());
+        // All points after the movement duration should be detected as sleep
+        let indexes: Vec<_> = result.keys().copied().collect();
+        assert!(indexes.contains(&2));
+        assert!(indexes.contains(&3));
+        assert!(indexes.contains(&4));
+    }
+
+    #[test]
+    fn resets_on_movement_jump() {
+        let times = [0, 60, 120, 180, 240, 300];
+        let mags = [
+            (0.0, 0.0, 1.0),
+            (0.0, 0.0, 1.0),
+            (10.0, 0.0, 1.0), // big jump
+            (0.0, 0.0, 1.0),
+            (0.0, 0.0, 1.0),
+            (0.0, 0.0, 1.0),
+        ];
+        let heart_rates = [60; 6];
+        let temps = [36.5; 6];
+        let data = make_metrics(times, mags, heart_rates, temps);
+
+        let opt = DetectionOptions::new()
+            .set_duration_for_movement(Duration::from_secs(60 * 3))
+            .set_magnitude_threshold(5.0)
+            .set_allowed_magnitude_jumps(0);
+
+        let result = sleep_detection(data, opt, 60);
+        // Should not include indexes around the jump
+        let indexes: Vec<_> = result.keys().copied().collect();
+        assert!(!indexes.contains(&1));
+        assert!(!indexes.contains(&2));
+        assert!(!indexes.contains(&3));
+    }
+
+    #[test]
+    fn resets_on_heart_rate_spike() {
+        let times = [0, 60, 120, 180, 240, 300];
+        let mags = [(0.0, 0.0, 1.0); 6];
+        let heart_rates = [60, 61, 80, 60, 61, 62]; // spike at index 2
+        let temps = [36.5; 6];
+        let data = make_metrics(times, mags, heart_rates, temps);
+
+        let opt = DetectionOptions::new()
+            .set_duration_for_movement(Duration::from_secs(60 * 3))
+            .set_max_heart_rate_diff(5);
+
+        let result = sleep_detection(data, opt, 60);
+        let indexes: Vec<_> = result.keys().copied().collect();
+        assert!(!indexes.contains(&2));
+        assert!(!indexes.contains(&3));
+    }
+
+    #[test]
+    fn resets_on_large_delay() {
+        let times = [0, 60, 120, 500, 560, 620];
+        let mags = [(0.0, 0.0, 1.0); 6];
+        let heart_rates = [60; 6];
+        let temps = [36.5; 6];
+        let data = make_metrics(times, mags, heart_rates, temps);
+
+        let opt = DetectionOptions::new()
+            .set_duration_for_movement(Duration::from_secs(60 * 3))
+            .set_max_heart_rate_diff(5)
+            .set_magnitude_threshold(1.0)
+            .set_allowed_magnitude_jumps(1);
+
+        let result = sleep_detection(data, opt, 60);
+        let indexes: Vec<_> = result.keys().copied().collect();
+        // Should not include indexes after the large delay
+        assert!(!indexes.contains(&2));
+        assert!(!indexes.contains(&3));
+    }
+
+    #[test]
+    fn allows_some_jumps() {
+        let times = [0, 60, 120, 180, 240, 300];
+        let mags = [
+            (0.0, 0.0, 1.0),
+            (0.0, 0.0, 1.0),
+            (2.0, 0.0, 1.0), // small jump
+            (0.0, 0.0, 1.0),
+            (0.0, 0.0, 1.0),
+            (0.0, 0.0, 1.0),
+        ];
+        let heart_rates = [60; 6];
+        let temps = [36.5; 6];
+        let data = make_metrics(times, mags, heart_rates, temps);
+
+        let opt = DetectionOptions::new()
+            .set_duration_for_movement(Duration::from_secs(60 * 3))
+            .set_magnitude_threshold(1.5)
+            .set_allowed_magnitude_jumps(1);
+
+        let result = sleep_detection(data, opt, 60);
+        let indexes: Vec<_> = result.keys().copied().collect();
+        // Should still detect sleep after one allowed jump
+        assert!(indexes.contains(&3));
+        assert!(indexes.contains(&4));
+    }
+}
