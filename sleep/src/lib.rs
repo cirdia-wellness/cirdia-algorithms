@@ -1,4 +1,7 @@
-use std::collections::{BTreeMap, HashSet};
+use std::{
+    collections::{BTreeMap, HashSet},
+    time::Duration,
+};
 
 const WINDOW_SIZE: usize = 2;
 
@@ -8,7 +11,7 @@ pub struct SleepMetrics {
     pub accelerometer: Accelerometer,
     pub heart_rate: u8,
     pub temperature: f64,
-    pub timestamp: std::time::Duration,
+    pub timestamp: Duration,
 }
 
 #[derive(Debug, Clone, PartialEq, PartialOrd)]
@@ -34,9 +37,10 @@ pub struct DetectionOptions {
     /// Maximum difference for person resting heart rate and actual to consider this sleep
     pub max_heart_rate_diff: u8,
     /// How long there should be no movement to start tracking this as sleep
-    pub duration_for_movement: std::time::Duration,
+    pub duration_for_movement: Duration,
     /// Max delay between data points in sensors data. If delay bigger that this value sleep counting will be reset
-    pub max_delay: std::time::Duration,
+    pub max_delay: Duration,
+    pub time_to_reset_jumps: Duration,
 }
 
 impl DetectionOptions {
@@ -45,8 +49,9 @@ impl DetectionOptions {
             allowed_magnitude_jumps: 1,
             magnitude_threshold: 1.0,
             max_heart_rate_diff: 5,
-            duration_for_movement: std::time::Duration::from_secs(60 * 15),
-            max_delay: std::time::Duration::from_secs(60),
+            duration_for_movement: Duration::from_secs(60 * 15),
+            max_delay: Duration::from_secs(60),
+            time_to_reset_jumps: Duration::from_secs(60 * 15),
         }
     }
 
@@ -110,6 +115,7 @@ fn sleep_detection(
         max_heart_rate_diff,
         duration_for_movement,
         max_delay,
+        time_to_reset_jumps,
     }: DetectionOptions,
     resting_heart_rate: u8,
 ) -> BTreeMap<usize, DataPoint> {
@@ -146,6 +152,8 @@ fn sleep_detection(
 
     let mut sleep_chunk = Vec::<usize>::new();
 
+    let mut timer_to_reset_jumps = Duration::default();
+
     for (
         i,
         DataPoint {
@@ -158,6 +166,12 @@ fn sleep_detection(
     ) in data.iter().enumerate()
     {
         let time_diff = *timestamp_end - *timestamp_start;
+
+        timer_to_reset_jumps += time_diff;
+        if timer_to_reset_jumps > time_to_reset_jumps {
+            jumps_counter = 0;
+            timer_to_reset_jumps = Duration::default();
+        }
 
         if *magnitude_delta > magnitude_threshold {
             jumps_counter += 1;
