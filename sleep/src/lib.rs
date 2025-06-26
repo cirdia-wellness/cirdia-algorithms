@@ -131,12 +131,7 @@ fn sleep_detection(
             let second = &this[1];
 
             let magnitude_delta =
-                second.accelerometer.magnitude() - first.accelerometer.magnitude();
-
-            let magnitude_delta = match magnitude_delta.is_sign_negative() {
-                true => magnitude_delta * -1.0,
-                false => magnitude_delta,
-            };
+                (second.accelerometer.magnitude() - first.accelerometer.magnitude()).abs();
 
             DataPoint {
                 magnitude_delta,
