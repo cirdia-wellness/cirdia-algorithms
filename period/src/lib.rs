@@ -293,9 +293,43 @@ pub fn period<R: Into<Record>>(
                     _ => {
                         const CHECK_NEXT_INDEXES_OFFSET: usize = 3;
 
-                        for j in 0..=CHECK_NEXT_INDEXES_OFFSET
-                        {
-                            
+                        let mut temperature_growth: u8 = 0;
+                        let mut end_timestamp = &end_timestamp;
+
+                        for j in 0..CHECK_NEXT_INDEXES_OFFSET {
+                            let (prev_end_timestamp, prev_temperature) =
+                                match get_next_point_temperature(
+                                    end_timestamp,
+                                    inter_period_result.get(i + j),
+                                ) {
+                                    Some(v) => v,
+                                    None => break,
+                                };
+
+                            let (next_end_timestamp, next_temperature) =
+                                match get_next_point_temperature(
+                                    prev_end_timestamp,
+                                    inter_period_result.get(i + j + 1),
+                                ) {
+                                    Some(v) => v,
+                                    None => break,
+                                };
+
+                            if next_temperature > prev_temperature
+                                && next_temperature - prev_temperature > TEMPERATURE_RISING_DIFF
+                            {
+                                temperature_growth += 1;
+                                end_timestamp = next_end_timestamp;
+                            }
+                        }
+
+                        // TODO: Improve using data from prev cycle if provided
+                        if temperature_growth >= 2 {
+                            period_result.push(Period {
+                                start_timestamp,
+                                end_timestamp: *end_timestamp,
+                                kind: PeriodStage::Ovulation,
+                            });
                         }
                     }
                 };
@@ -303,7 +337,47 @@ pub fn period<R: Into<Record>>(
             DataPoint::End {
                 start_timestamp,
                 end_timestamp,
-            } => todo!(),
+            } => {
+                let last = period_result.last();
+
+                match last {
+                    Some(last)
+                        if last.kind == PeriodStage::PostOvulation
+                            && end_timestamp - last.end_timestamp <= DAY =>
+                    {
+                        period_result.push(Period {
+                            start_timestamp,
+                            end_timestamp,
+                            kind: PeriodStage::PeriodStart,
+                        });
+                    }
+                    _ => {
+                        const ELEMENTS_TO_VALIDATE: usize = 3;
+
+                        let mut temperature_above_base: u8 = 0;
+                        inter_period_result
+                            .iter()
+                            .skip(i)
+                            .take(ELEMENTS_TO_VALIDATE)
+                            .for_each(|this| match this {
+                                DataPoint::MiddleUnchecked { temperature, .. }
+                                    if *temperature <= base_temperature =>
+                                {
+                                    temperature_above_base += 1
+                                }
+                                _ => (),
+                            });
+
+                        if temperature_above_base >= 2 {
+                            period_result.push(Period {
+                                start_timestamp,
+                                end_timestamp,
+                                kind: PeriodStage::PeriodStart,
+                            });
+                        }
+                    }
+                }
+            }
             // Skip unknown case at all. Better interpolate this as other point if this suitable
             DataPoint::UnknownOrCorruptedData => (),
         }
