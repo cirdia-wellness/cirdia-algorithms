@@ -9,12 +9,18 @@ const ERROR_MSG: &str = "floating number is subnormal";
 pub struct NormalF64(f64);
 
 impl NormalF64 {
+    /// Try to create new normal floating point number. Returns `None` if value is subnormal
     pub const fn try_new(v: f64) -> Option<Self> {
         if v.is_subnormal() {
             return None;
         }
 
         Some(Self(v))
+    }
+
+    #[allow(unsafe_code)]
+    pub const unsafe fn unchecked_new(v: f64) -> Self {
+        Self(v)
     }
 
     pub const fn into_inner(self) -> f64 {
@@ -52,5 +58,25 @@ impl TryFrom<f32> for NormalF64 {
 
     fn try_from(value: f32) -> Result<Self, Self::Error> {
         Self::try_new(f64::from(value)).ok_or(ERROR_MSG)
+    }
+}
+
+impl std::ops::Deref for NormalF64 {
+    type Target = f64;
+
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+
+impl AsRef<f64> for NormalF64 {
+    fn as_ref(&self) -> &f64 {
+        &self.0
+    }
+}
+
+impl std::fmt::Display for NormalF64 {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.0)
     }
 }
