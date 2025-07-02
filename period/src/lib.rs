@@ -424,7 +424,7 @@ pub fn period<R: Into<Record>>(
                 }
             }
             // Skip unknown case at all. Better interpolate this as other point if this suitable
-            DataPoint::UnknownOrCorruptedData { .. } => (),
+            DataPoint::UnknownOrCorruptedData => (),
         }
 
         i += 1;
@@ -580,7 +580,7 @@ mod tests {
             make_record(36.1, 60, 7 * DAY.as_secs()),
         ];
         let result = period(records, 36.5);
-        assert!(result.len() > 0);
+        assert!(!result.is_empty());
     }
 
     // FIX:
@@ -608,7 +608,7 @@ mod tests {
         let mut records = vec![
             make_record(36.2, 60, 2 * DAY.as_secs()),
             make_record(36.8, 60, 0),
-            make_record(36.1, 60, 1 * DAY.as_secs()),
+            make_record(36.1, 60, DAY.as_secs()),
         ];
         // Shuffle to ensure non-monotonic order
         records.reverse();
