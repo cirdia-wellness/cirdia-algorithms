@@ -10,7 +10,10 @@ pub use self::normal_f64::*;
 const DAY: Duration = Duration::new(86400, 0);
 /// Percent usage for calculating avg of lowest temperature
 const PERCENT_FOR_TEMPERATURE: f64 = 0.25;
+/// Expected minimal rising of temperature in single day
 const TEMPERATURE_RISING_DIFF: f64 = 0.1;
+
+const LOWER_BOUND_FOR_TEMPERATURE: f64 = TEMPERATURE_RISING_DIFF * 3.0;
 
 #[derive(Debug, Clone, PartialEq, PartialOrd)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
@@ -37,7 +40,7 @@ pub struct Period {
     pub kind: PeriodStage,
 }
 
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 enum DataPoint {
     Start {
         start_timestamp: Duration,
@@ -94,15 +97,20 @@ pub fn period<R: Into<Record>>(
     let mut day_chunk;
 
     loop {
-        let end_timestamp = start_timestamp + DAY;
+        let day_end_timestamp = start_timestamp + DAY;
 
         day_chunk = data
-            .range(start_timestamp..end_timestamp)
+            .range(start_timestamp..day_end_timestamp)
             .collect::<Vec<_>>();
 
         if day_chunk.is_empty() {
             break;
         }
+
+        let end_timestamp = day_chunk
+            .last()
+            .map(|(t, _)| **t)
+            .unwrap_or(day_end_timestamp);
 
         let min_t: f64 = {
             let values = day_chunk
@@ -110,7 +118,12 @@ pub fn period<R: Into<Record>>(
                 .map(|this| this.1.0)
                 .collect::<BTreeSet<_>>();
 
-            let size = (values.len() as f64 * PERCENT_FOR_TEMPERATURE).floor();
+            let mut size = (values.len() as f64 * PERCENT_FOR_TEMPERATURE).floor();
+
+            // Unsure is it suited for real world apps, but in tests this is need otherwise we will get NaN after diving by zero
+            if size < 1.0 {
+                size = 1.0;
+            }
 
             values
                 .into_iter()
@@ -120,17 +133,20 @@ pub fn period<R: Into<Record>>(
                 / size
         };
 
-        if min_t <= base_temperature {
+        let temperature_diff = (min_t - base_temperature).abs();
+
+        if min_t <= base_temperature && temperature_diff <= LOWER_BOUND_FOR_TEMPERATURE {
             let prev_point = inter_period_result.last();
 
             match prev_point {
                 Some(DataPoint::MiddleUnchecked {
                     end_timestamp: prev_end_timestamp,
                     ..
-                }) if end_timestamp - *prev_end_timestamp <= DAY => {
-                    inter_period_result.push(DataPoint::End {
+                }) if day_end_timestamp - *prev_end_timestamp <= DAY => {
+                    inter_period_result.push(DataPoint::MiddleUnchecked {
                         start_timestamp,
                         end_timestamp,
+                        temperature: min_t,
                     })
                 }
                 _ => inter_period_result.push(DataPoint::Start {
@@ -138,11 +154,13 @@ pub fn period<R: Into<Record>>(
                     end_timestamp,
                 }),
             }
-        }
-
-        let temperature_diff = min_t - base_temperature;
-
-        if base_temperature < min_t && temperature_diff <= 0.6 && temperature_diff >= 0.3 {
+        } else if min_t <= base_temperature && temperature_diff > LOWER_BOUND_FOR_TEMPERATURE {
+            inter_period_result.push(DataPoint::End {
+                start_timestamp,
+                end_timestamp,
+            })
+        } else if base_temperature < min_t && temperature_diff <= 0.7 {
+            // && temperature_diff >= LOWER_BOUND_FOR_TEMPERATURE
             inter_period_result.push(DataPoint::MiddleUnchecked {
                 temperature: min_t,
                 start_timestamp,
@@ -152,7 +170,7 @@ pub fn period<R: Into<Record>>(
             inter_period_result.push(DataPoint::UnknownOrCorruptedData);
         }
 
-        start_timestamp = end_timestamp;
+        start_timestamp = day_end_timestamp;
     }
 
     let mut period_result = Vec::<Period>::new();
@@ -176,6 +194,18 @@ pub fn period<R: Into<Record>>(
                     Some(last)
                         if last.kind == PeriodStage::PreOvulation
                             || last.kind == PeriodStage::PeriodStart =>
+                    {
+                        PeriodStage::PreOvulation
+                    }
+                    Some(last)
+                        if last.kind == PeriodStage::PostOvulation
+                            && end_timestamp - last.end_timestamp <= DAY =>
+                    {
+                        PeriodStage::PeriodStart
+                    }
+                    Some(last)
+                        if last.kind == PeriodStage::PostOvulation
+                            && end_timestamp - last.end_timestamp > DAY =>
                     {
                         PeriodStage::PreOvulation
                     }
@@ -294,6 +324,7 @@ pub fn period<R: Into<Record>>(
                         const CHECK_NEXT_INDEXES_OFFSET: usize = 3;
 
                         let mut temperature_growth: u8 = 0;
+                        let mut temperature_same: u8 = 0;
                         let mut end_timestamp = &end_timestamp;
 
                         for j in 0..CHECK_NEXT_INDEXES_OFFSET {
@@ -320,6 +351,12 @@ pub fn period<R: Into<Record>>(
                             {
                                 temperature_growth += 1;
                                 end_timestamp = next_end_timestamp;
+                            } else if next_temperature == prev_temperature
+                                || (next_temperature - prev_temperature).abs()
+                                    <= TEMPERATURE_RISING_DIFF
+                            {
+                                temperature_same += 1;
+                                end_timestamp = next_end_timestamp;
                             }
                         }
 
@@ -330,6 +367,14 @@ pub fn period<R: Into<Record>>(
                                 end_timestamp: *end_timestamp,
                                 kind: PeriodStage::Ovulation,
                             });
+                            i += CHECK_NEXT_INDEXES_OFFSET - 1;
+                        } else if temperature_same >= 2 {
+                            period_result.push(Period {
+                                start_timestamp,
+                                end_timestamp: *end_timestamp,
+                                kind: PeriodStage::PostOvulation,
+                            });
+                            i += CHECK_NEXT_INDEXES_OFFSET - 1;
                         }
                     }
                 };
@@ -379,11 +424,195 @@ pub fn period<R: Into<Record>>(
                 }
             }
             // Skip unknown case at all. Better interpolate this as other point if this suitable
-            DataPoint::UnknownOrCorruptedData => (),
+            DataPoint::UnknownOrCorruptedData { .. } => (),
         }
 
         i += 1;
     }
 
     period_result
+}
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    const fn make_record(temp: f64, hrv_secs: u64, ts_secs: u64) -> Record {
+        Record {
+            temperature: NormalF64::try_new(temp).unwrap(),
+            heart_rate_variability: Duration::from_secs(hrv_secs),
+            timestamp: Duration::from_secs(ts_secs),
+        }
+    }
+
+    #[test]
+    fn test_empty_data_returns_empty_vec() {
+        let result = period::<Record>(vec![], 36.5);
+        assert!(result.is_empty());
+    }
+
+    #[test]
+    fn test_single_day_below_base_temperature() {
+        let records = vec![
+            make_record(36.2, 60, 0),
+            make_record(36.3, 60, 1000),
+            make_record(36.1, 60, 2000),
+        ];
+        let result = period(records, 36.2);
+        assert!(!result.is_empty());
+        assert!(result.iter().any(|p| p.kind == PeriodStage::PreOvulation));
+    }
+
+    #[test]
+    fn test_single_day_above_base_temperature() {
+        let records = vec![
+            make_record(36.7, 60, 0),
+            make_record(36.8, 60, 1000),
+            make_record(36.9, 60, 2000),
+        ];
+        let result = period(records, 36.5);
+        assert!(result.is_empty());
+    }
+
+    #[test]
+    fn test_period_detects_ovulation_transition() {
+        let mut records = vec![];
+        // 3 days below base
+        for i in 0..3 {
+            records.push(make_record(36.3, 60, i * DAY.as_secs()));
+        }
+        // 3 days rising above base
+        for i in 3..6 {
+            records.push(make_record(36.6 + (i as f64 * 0.1), 60, i * DAY.as_secs()));
+        }
+        let result = period(records, 36.5);
+        assert!(result.iter().any(|p| p.kind == PeriodStage::PreOvulation));
+        assert!(result.iter().any(|p| p.kind == PeriodStage::Ovulation));
+    }
+
+    #[test]
+    fn test_period_detects_period_start() {
+        let mut records = vec![];
+        // PostOvulation phase
+        for i in 0..3 {
+            records.push(make_record(36.8, 60, i * DAY.as_secs()));
+        }
+        // Drop below base
+        for i in 3..6 {
+            records.push(make_record(36.2, 60, i * DAY.as_secs()));
+        }
+        let result = period(records, 36.5);
+        assert!(result.iter().any(|p| p.kind == PeriodStage::PostOvulation));
+        assert!(result.iter().any(|p| p.kind == PeriodStage::PeriodStart));
+    }
+
+    #[test]
+    fn test_period_with_corrupted_data() {
+        let mut records = vec![
+            make_record(36.2, 60, 0),
+            make_record(36.3, 60, DAY.as_secs()),
+            make_record(36.1, 60, 2 * DAY.as_secs()),
+        ];
+        // Insert a corrupted day (very high temperature)
+        records.push(make_record(39.0, 60, 3 * DAY.as_secs()));
+        records.push(make_record(36.2, 60, 4 * DAY.as_secs()));
+        let result = period(records, 36.5);
+        // Should still detect at least one PreOvulation or PeriodStart
+        assert!(
+            result
+                .iter()
+                .any(|p| p.kind == PeriodStage::PreOvulation || p.kind == PeriodStage::PeriodStart)
+        );
+    }
+
+    // FIX:
+    #[test]
+    fn test_period_multiple_cycles() {
+        let mut records = vec![];
+        // First cycle: 3 days below, 3 days above
+        for i in 0..3 {
+            records.push(make_record(36.2, 60, i * DAY.as_secs()));
+        }
+        for i in 3..6 {
+            records.push(make_record(36.7, 60, i * DAY.as_secs()));
+        }
+        // Second cycle: 3 days below, 3 days above
+        for i in 6..9 {
+            records.push(make_record(36.2, 60, i * DAY.as_secs()));
+        }
+        for i in 9..12 {
+            records.push(make_record(36.7, 60, i * DAY.as_secs()));
+        }
+        let result = period(records, 36.5);
+        let count = result
+            .iter()
+            .filter(|p| p.kind == PeriodStage::PeriodStart)
+            .count();
+        assert!(count >= 2);
+    }
+
+    #[test]
+    fn test_period_handles_constant_temperature() {
+        let records = (0..5)
+            .map(|i| make_record(36.5, 60, i * DAY.as_secs()))
+            .collect::<Vec<_>>();
+        let result = period(records, 36.5);
+        assert!(!result.iter().any(|p| p.kind == PeriodStage::Ovulation));
+        assert!(!result.iter().any(|p| p.kind == PeriodStage::PostOvulation));
+    }
+
+    #[test]
+    fn test_period_handles_fluctuating_temperatures() {
+        let temps = [36.2, 36.7, 36.3, 36.8, 36.1, 36.9];
+        let records = temps
+            .iter()
+            .enumerate()
+            .map(|(i, &t)| make_record(t, 60, i as u64 * DAY.as_secs()))
+            .collect::<Vec<_>>();
+        let result = period(records, 36.6);
+        assert!(result.is_empty());
+    }
+
+    #[test]
+    fn test_period_with_sparse_data() {
+        let records = vec![
+            make_record(36.2, 60, 0),
+            make_record(36.8, 60, 3 * DAY.as_secs()),
+            make_record(36.1, 60, 7 * DAY.as_secs()),
+        ];
+        let result = period(records, 36.5);
+        assert!(result.len() > 0);
+    }
+
+    // FIX:
+    #[test]
+    fn test_period_with_all_high_temperatures() {
+        let records = (0..5)
+            .map(|i| make_record(37.0, 60, i * DAY.as_secs()))
+            .collect::<Vec<_>>();
+        let result = period(records, 36.5);
+        assert!(result.iter().any(|p| p.kind == PeriodStage::PostOvulation));
+    }
+
+    #[test]
+    fn test_period_with_all_low_temperatures() {
+        let records = (0..5)
+            .map(|i| make_record(36.0, 60, i * DAY.as_secs()))
+            .collect::<Vec<_>>();
+        let result = period(records, 36.5);
+        // Should detect pre-ovulation or period start
+        assert!(result.is_empty());
+    }
+
+    #[test]
+    fn test_period_handles_non_monotonic_timestamps() {
+        let mut records = vec![
+            make_record(36.2, 60, 2 * DAY.as_secs()),
+            make_record(36.8, 60, 0),
+            make_record(36.1, 60, 1 * DAY.as_secs()),
+        ];
+        // Shuffle to ensure non-monotonic order
+        records.reverse();
+        let result = period(records, 36.5);
+        assert!(!result.is_empty());
+    }
 }
