@@ -40,6 +40,7 @@ pub struct DetectionOptions {
     pub duration_for_movement: Duration,
     /// Max delay between data points in sensors data. If delay bigger that this value sleep counting will be reset
     pub max_delay: Duration,
+    /// Time after which jumps counter resets (repeats)
     pub time_to_reset_jumps: Duration,
 }
 
