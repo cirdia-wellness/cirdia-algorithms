@@ -399,7 +399,7 @@ pub fn period<R: Into<Record>>(
                     _ => {
                         const ELEMENTS_TO_VALIDATE: usize = 3;
 
-                        let mut temperature_above_base: u8 = 0;
+                        let mut temperature_lower_base: u8 = 0;
                         inter_period_result
                             .iter()
                             .skip(i)
@@ -408,12 +408,12 @@ pub fn period<R: Into<Record>>(
                                 DataPoint::MiddleUnchecked { temperature, .. }
                                     if *temperature <= base_temperature =>
                                 {
-                                    temperature_above_base += 1
+                                    temperature_lower_base += 1
                                 }
                                 _ => (),
                             });
 
-                        if temperature_above_base >= 2 {
+                        if temperature_lower_base >= 2 {
                             period_result.push(Period {
                                 start_timestamp,
                                 end_timestamp,
