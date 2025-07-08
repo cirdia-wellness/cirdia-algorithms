@@ -5,6 +5,7 @@ members = [
     "steps",
     "heart_rate",
     "sleep",
+    "period",
 ]
 resolver = "2"
 
