@@ -111,12 +111,8 @@ mod tests {
             let precision = match expected < actual {
                 true => expected as f64 / actual as f64,
                 false => actual as f64 / expected as f64,
-            };
-
-            let precision = match precision.is_sign_negative() {
-                true => precision * -1.0,
-                false => precision,
-            };
+            }
+            .abs();
 
             report.write().unwrap().push(ReportRecord {
                 file_name,

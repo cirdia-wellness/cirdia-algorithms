@@ -141,12 +141,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         let precision = match expected_calories < actual_calories {
             true => expected_calories / actual_calories,
             false => actual_calories / expected_calories,
-        };
-
-        let precision = match precision.is_sign_negative() {
-            true => precision * -1.0,
-            false => precision,
-        };
+        }
+        .abs();
 
         if let Some((_, count, _)) = threshold.iter_mut().find(|(th, _, _)| precision > *th) {
             *count += 1;

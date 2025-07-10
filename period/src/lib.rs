@@ -176,12 +176,7 @@ pub fn period<R: Into<Record>>(
     let mut period_result = Vec::<Period>::new();
 
     let mut i = 0;
-    loop {
-        let point = match inter_period_result.get(i) {
-            Some(p) => p.to_owned(),
-            None => break,
-        };
-
+    while let Some(point) = inter_period_result.get(i).cloned() {
         // Notes for future. Currently method checks for last point to remove possible errors
         // This should improve precision but ideally it should not only look at last element
         // but at X elements forward and back.
