@@ -50,8 +50,13 @@ impl From<(Duration, u8)> for ActivityRecord {
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
 #[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
 pub struct Report {
+    pub total_vo2_duration: Duration,
+    pub total_anaerobic_duration: Duration,
+    pub total_aerobic_duration: Duration,
+    pub total_fatburn_duration: Duration,
+    pub total_warmup_duration: Duration,
     pub total_resting_duration: Duration,
-    pub total_exercise_duration: Duration,
+
     pub activity: Vec<Activity>,
 }
 
@@ -144,7 +149,11 @@ pub fn heart_activity<T: Into<ActivityRecord>>(
     heart_rates.sort_by_key(|this| this.timestamp);
 
     let mut total_resting_duration = Duration::default();
-    let mut total_exercise_duration = Duration::default();
+    let mut total_vo2_duration = Duration::default();
+    let mut total_anaerobic_duration = Duration::default();
+    let mut total_aerobic_duration = Duration::default();
+    let mut total_fatburn_duration = Duration::default();
+    let mut total_warmup_duration = Duration::default();
 
     let activities = heart_rates
         .windows(WINDOW_SIZE)
@@ -159,9 +168,13 @@ pub fn heart_activity<T: Into<ActivityRecord>>(
 
             let kind = ActivityKind::from_rate(age, rhr, *heart_rate);
 
-            match kind.is_exercising() {
-                true => total_exercise_duration += duration,
-                false => total_resting_duration += duration,
+            match kind {
+                ActivityKind::VO2 => total_vo2_duration += duration,
+                ActivityKind::Anaerobic => total_anaerobic_duration += duration,
+                ActivityKind::Aerobic => total_aerobic_duration += duration,
+                ActivityKind::FatBurn => total_fatburn_duration += duration,
+                ActivityKind::WarmUp => total_warmup_duration += duration,
+                ActivityKind::Resting => total_resting_duration += duration,
             }
 
             Activity {
@@ -173,9 +186,13 @@ pub fn heart_activity<T: Into<ActivityRecord>>(
         .collect::<Vec<_>>();
 
     Report {
-        total_resting_duration,
-        total_exercise_duration,
         activity: activities,
+        total_resting_duration,
+        total_vo2_duration,
+        total_anaerobic_duration,
+        total_aerobic_duration,
+        total_fatburn_duration,
+        total_warmup_duration,
     }
 }
 
@@ -187,7 +204,7 @@ mod tests {
     fn test_empty_input() {
         let report = heart_activity::<ActivityRecord>(vec![], 30, 60);
         assert_eq!(report.total_resting_duration, Duration::ZERO);
-        assert_eq!(report.total_exercise_duration, Duration::ZERO);
+        assert_eq!(report.total_vo2_duration, Duration::ZERO);
         assert!(report.activity.is_empty());
     }
 
@@ -195,7 +212,7 @@ mod tests {
     fn test_single_entry() {
         let report = heart_activity(vec![(Duration::from_secs(0), 70)], 30, 60);
         assert_eq!(report.total_resting_duration, Duration::ZERO);
-        assert_eq!(report.total_exercise_duration, Duration::ZERO);
+        assert_eq!(report.total_vo2_duration, Duration::ZERO);
         assert!(report.activity.is_empty());
     }
 
@@ -207,7 +224,7 @@ mod tests {
             (Duration::from_secs(20), 62),
         ];
         let report = heart_activity(data, 40, 60);
-        assert_eq!(report.total_exercise_duration, Duration::ZERO);
+        assert_eq!(report.total_vo2_duration, Duration::ZERO);
         assert_eq!(report.total_resting_duration, Duration::from_secs(20));
         assert!(
             report
@@ -226,7 +243,7 @@ mod tests {
         ];
         let report = heart_activity(data, 20, 60);
         assert_eq!(report.total_resting_duration, Duration::ZERO);
-        assert_eq!(report.total_exercise_duration, Duration::from_secs(20));
+        assert_eq!(report.total_vo2_duration, Duration::from_secs(20));
         assert!(report.activity.iter().all(|a| a.kind == ActivityKind::VO2));
     }
 
@@ -268,18 +285,15 @@ mod tests {
 
         // Check durations: 5 intervals of 10s each
         let mut expected_rest = Duration::ZERO;
-        let mut expected_ex = Duration::ZERO;
+
         for i in 0..data.len() - 1 {
             let kind = report.activity[i].kind;
             let diff = Duration::from_secs(10);
-            if kind.is_exercising() {
-                expected_ex += diff;
-            } else {
+            if matches!(kind, ActivityKind::Resting) {
                 expected_rest += diff;
             }
         }
         assert_eq!(report.total_resting_duration, expected_rest);
-        assert_eq!(report.total_exercise_duration, expected_ex);
     }
 
     #[test]
@@ -303,7 +317,7 @@ mod tests {
         // Third: Anaerobic (20-30)
         // Last: Resting (no interval after)
         assert_eq!(report.total_resting_duration, Duration::from_secs(10));
-        assert_eq!(report.total_exercise_duration, Duration::from_secs(20));
+        assert_eq!(report.total_vo2_duration, Duration::from_secs(0));
         assert_eq!(report.activity[0].kind, ActivityKind::Resting);
         assert_eq!(report.activity[1].kind, ActivityKind::Aerobic);
         assert_eq!(report.activity[2].kind, ActivityKind::Anaerobic);
@@ -335,7 +349,7 @@ mod tests {
         // Should process all entries
         assert_eq!(report.activity.len(), 999);
         assert_eq!(
-            report.total_resting_duration + report.total_exercise_duration,
+            report.total_resting_duration + report.total_vo2_duration,
             Duration::from_secs(999)
         );
     }
