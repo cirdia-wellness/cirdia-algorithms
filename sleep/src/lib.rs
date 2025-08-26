@@ -232,6 +232,67 @@ pub fn sleep_duration(
 
     time
 }
+
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
+#[cfg_attr(feature = "serde", derive(serde::Serialize, serde::Deserialize))]
+pub struct SleepAnalysis {
+    pub sleep_start: Duration,
+    pub sleep_end: Duration,
+
+    pub deep_duration: Duration,
+    pub light_duration: Duration,
+    pub rem_duration: Duration,
+
+    pub sleep_interruptions_duration: Duration,
+    pub woke_up_count: u8,
+}
+
+pub fn sleep_analysis(
+    data: impl IntoIterator<Item = SleepMetrics>,
+    opt: DetectionOptions,
+    resting_heart_rate: u8,
+) -> SleepAnalysis {
+    let mut sleep_start = Duration::default();
+    let mut sleep_end = Duration::default();
+
+    let mut deep_duration = Duration::default();
+    let light_duration = Duration::default();
+    let rem_duration = Duration::default();
+
+    let mut sleep_interruptions_duration = Duration::default();
+    let mut woke_up_count = 0;
+
+    let mut prev_index = 0;
+    sleep_detection(data, opt, resting_heart_rate)
+        .into_iter()
+        .for_each(|(index, point)| {
+            if prev_index == 0 {
+                deep_duration += point.duration();
+                sleep_start = point.timestamp_start;
+            }
+
+            if prev_index + 1 == index {
+                deep_duration += point.duration();
+            } else {
+                woke_up_count += 1;
+                sleep_interruptions_duration += point.duration();
+            }
+
+            sleep_end = point.timestamp_end;
+            prev_index = index;
+        });
+
+    SleepAnalysis {
+        sleep_start,
+        sleep_end,
+        deep_duration,
+        light_duration,
+        rem_duration,
+        sleep_interruptions_duration,
+        woke_up_count,
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
