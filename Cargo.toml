@@ -6,6 +6,7 @@ members = [
     "heart_rate",
     "sleep",
     "period",
+    "sustain_mode",
 ]
 resolver = "2"
 
