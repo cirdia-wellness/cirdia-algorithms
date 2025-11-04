@@ -25,7 +25,7 @@ pub struct MovementData {
 pub fn process_raw(data: impl IntoIterator<Item = MovementData>) -> Vec<f64> {
     thread_local! {
         static FFT_PLANNER: LazyLock<RefCell<realfft::RealFftPlanner<f64>>> =
-        LazyLock::new(|| RefCell::new(realfft::RealFftPlanner::<f64>::new()));
+            LazyLock::new(|| RefCell::new(realfft::RealFftPlanner::<f64>::new()));
     }
 
     let mut data = data
@@ -62,7 +62,7 @@ pub struct SymmetryOptions {
     pub magnitude: f64,
 }
 
-pub fn steps_symetry(
+pub fn steps_symmetry(
     data: impl IntoIterator<Item = MovementData>,
     SymmetryOptions { magnitude }: SymmetryOptions,
 ) -> StepSymmetryAnalyzeReport {
@@ -83,5 +83,133 @@ pub fn steps_symetry(
 
     StepSymmetryAnalyzeReport {
         number_of_unsymmetrical_steps,
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn acceleration_magnitude() {
+        let a = Acceleration {
+            x: 3.0,
+            y: 4.0,
+            z: 0.0,
+        };
+
+        assert_eq!(a.magnitude(), 5.0);
+    }
+
+    #[test]
+    fn process_raw_returns_nonempty_and_finite() {
+        let data = vec![
+            MovementData {
+                accelerometer: Acceleration {
+                    x: 1.0,
+                    y: 0.0,
+                    z: 0.0,
+                },
+                gyroscope: Acceleration {
+                    x: 0.0,
+                    y: 0.0,
+                    z: 0.0,
+                },
+            },
+            MovementData {
+                accelerometer: Acceleration {
+                    x: 0.0,
+                    y: 1.0,
+                    z: 0.0,
+                },
+                gyroscope: Acceleration {
+                    x: 0.0,
+                    y: 0.0,
+                    z: 0.0,
+                },
+            },
+            MovementData {
+                accelerometer: Acceleration {
+                    x: -1.0,
+                    y: 0.0,
+                    z: 0.0,
+                },
+                gyroscope: Acceleration {
+                    x: 0.0,
+                    y: 0.0,
+                    z: 0.0,
+                },
+            },
+            MovementData {
+                accelerometer: Acceleration {
+                    x: 0.0,
+                    y: -1.0,
+                    z: 0.0,
+                },
+                gyroscope: Acceleration {
+                    x: 0.0,
+                    y: 0.0,
+                    z: 0.0,
+                },
+            },
+        ];
+
+        let out = process_raw(data);
+        assert!(!out.is_empty(), "process_raw returned an empty spectrum");
+        assert!(
+            out.iter().all(|v| v.is_finite()),
+            "spectrum contains non-finite values"
+        );
+    }
+
+    #[test]
+    fn steps_symmetry_large_threshold_zero_unsymmetrical() {
+        // Using a very large threshold guarantees no step will be considered unsymmetrical
+        let data = vec![
+            MovementData {
+                accelerometer: Acceleration {
+                    x: 1.0,
+                    y: 2.0,
+                    z: 3.0,
+                },
+                gyroscope: Acceleration {
+                    x: 0.1,
+                    y: 0.2,
+                    z: 0.3,
+                },
+            },
+            MovementData {
+                accelerometer: Acceleration {
+                    x: 1.0,
+                    y: 2.0,
+                    z: 3.0,
+                },
+                gyroscope: Acceleration {
+                    x: 0.1,
+                    y: 0.2,
+                    z: 0.3,
+                },
+            },
+            MovementData {
+                accelerometer: Acceleration {
+                    x: 1.0,
+                    y: 2.0,
+                    z: 3.0,
+                },
+                gyroscope: Acceleration {
+                    x: 0.1,
+                    y: 0.2,
+                    z: 0.3,
+                },
+            },
+        ];
+
+        let report = steps_symmetry(
+            data,
+            SymmetryOptions {
+                magnitude: f64::MAX / 4.0,
+            },
+        );
+        assert_eq!(report.number_of_unsymmetrical_steps, 0);
     }
 }
