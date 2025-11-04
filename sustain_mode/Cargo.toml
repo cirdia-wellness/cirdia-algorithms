@@ -4,6 +4,13 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+realfft = { version = "3.5" }
+num-traits = "0.2"
+serde = { workspace = true, optional = true }
+
+[features]
+default = []
+serde = [ "dep:serde" ] 
 
 [lints]
 workspace = true
